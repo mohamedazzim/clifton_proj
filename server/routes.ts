@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactSchema } from "@shared/schema";
+import translationRoutes from './routes/translation.js';
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Founders routes
@@ -67,6 +68,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(500).json({ message: "Failed to fetch contacts" });
     }
   });
+
+  // Translation routes
+  app.use('/api/translation', translationRoutes);
 
   const httpServer = createServer(app);
   return httpServer;
