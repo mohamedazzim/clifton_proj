@@ -6,8 +6,7 @@ import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
 import { ProductsThreeBackground } from '../components/ProductsThreeBackground';
 import { LoadingScreen } from '../components/LoadingScreen';
-import { LanguageSelector } from '../components/LanguageSelector';
-import { useProductTranslation } from '../hooks/useTranslation';
+
 
 interface ProductDetailProps {
   category: string;
@@ -18,7 +17,6 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
   const { t } = useLanguage();
   const { theme } = useTheme();
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [, setLocation] = useLocation();
 
   // Product details data
@@ -92,14 +90,6 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
 
   const product = productDetails[productName as keyof typeof productDetails];
 
-  // Use translation hook
-  const translatedProduct = useProductTranslation(
-    product?.name || '',
-    product?.description || '',
-    product?.detailedDescription || '',
-    selectedLanguage
-  );
-
   // Add loading effect
   useEffect(() => {
     const loadingTimer = setTimeout(() => {
@@ -154,37 +144,9 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 text-white drop-shadow-2xl">
               {product.title}
             </h1>
-            <p className="text-xl sm:text-2xl text-white/90 max-w-4xl mx-auto mb-8 leading-relaxed drop-shadow-lg">
-              {translatedProduct.description}
+            <p className="text-xl sm:text-2xl text-white/90 max-w-4xl mx-auto mb-12 leading-relaxed drop-shadow-lg">
+              {product.description}
             </p>
-            
-            {/* Translation Status and Language Selector */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
-              <LanguageSelector 
-                currentLanguage={selectedLanguage}
-                onLanguageChange={setSelectedLanguage}
-              />
-              {translatedProduct.isLoading && (
-                <div className="flex items-center gap-2 text-white/80 text-sm">
-                  <div className="animate-spin w-4 h-4 border-2 border-white/30 border-t-white rounded-full"></div>
-                  <span>Translating...</span>
-                </div>
-              )}
-              {translatedProduct.error && (
-                <div className="flex items-center gap-2 text-red-300 text-sm">
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                  </svg>
-                  <span>Translation failed</span>
-                  <button 
-                    onClick={translatedProduct.retryTranslation}
-                    className="underline hover:no-underline"
-                  >
-                    Retry
-                  </button>
-                </div>
-              )}
-            </div>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button className="group noise-grid gradient-border glass px-8 py-4 rounded-xl text-white hover-scale transition-all duration-500 font-semibold text-lg relative overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20">
@@ -235,7 +197,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
               <div className="noise-grid gradient-border glass rounded-3xl p-8 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">About This Product</h2>
                 <div className="prose prose-gray dark:prose-invert max-w-none">
-                  {translatedProduct.detailedDescription.split('\n\n').map((paragraph: string, index: number) => (
+                  {product.detailedDescription.split('\n\n').map((paragraph: string, index: number) => (
                     <p key={index} className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-lg">
                       {paragraph}
                     </p>

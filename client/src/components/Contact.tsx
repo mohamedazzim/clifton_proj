@@ -142,27 +142,32 @@ export function Contact() {
           <div className="space-y-6 sm:space-y-8 animate-slide-left">
             <div className="noise-grid gradient-border glass rounded-2xl p-6 sm:p-8 bg-gray-800/90 dark:bg-gray-900/90 backdrop-blur-md">
               <img 
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
-                alt="Modern office building in Madrid, Spain" 
+                src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" 
+                alt="Modern office building in São Paulo, Brazil" 
                 className="w-full h-48 object-cover rounded-xl mb-6"
               />
               <h3 className="text-2xl font-bold mb-6">{t("contact.info.title")}</h3>
               <div className="space-y-4">
-                <div className="flex items-center">
-                  <i className="fas fa-map-marker-alt w-6 text-gray-600 dark:text-gray-400"></i>
-                  <span className="ml-3">{t("contact.info.address")}</span>
+                <div className="flex items-start">
+                  <i className="fas fa-map-marker-alt w-6 text-gray-600 dark:text-gray-400 mt-1"></i>
+                  <div className="ml-3">
+                    <div>Rua Mathias Maciel de Almeida, 55</div>
+                    <div>Centro - 06.730-482</div>
+                    <div>Vargem Grande Paulista</div>
+                    <div>São Paulo, Brasil</div>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <i className="fas fa-phone w-6 text-gray-600 dark:text-gray-400 mt-1"></i>
+                  <div className="ml-3">
+                    <div>+55 11 4559-3029</div>
+                    <div>+55 11 99734-5464</div>
+                    <div>+55 11 96488-9444</div>
+                  </div>
                 </div>
                 <div className="flex items-center">
-                  <i className="fas fa-phone w-6 text-gray-600 dark:text-gray-400"></i>
-                  <span className="ml-3">+34 91 123 4567</span>
-                </div>
-                <div className="flex items-center">
-                  <i className="fas fa-envelope w-6 text-gray-600 dark:text-gray-400"></i>
-                  <span className="ml-3">info@clifton.es</span>
-                </div>
-                <div className="flex items-center">
-                  <i className="fab fa-whatsapp w-6 text-gray-600 dark:text-gray-400"></i>
-                  <span className="ml-3">+34 600 123 456</span>
+                  <i className="fas fa-id-card w-6 text-gray-600 dark:text-gray-400"></i>
+                  <span className="ml-3">CNPJ: 60.290.109/0001-32</span>
                 </div>
               </div>
             </div>
