@@ -17,6 +17,52 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [fadeClass, setFadeClass] = useState('opacity-100');
   const [slideDirection, setSlideDirection] = useState('translate-x-0');
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Product details data
+  const productDetails = {
+    'Coffee': {
+      title: 'Premium Coffee',
+      description: 'Premium quality coffee beans sourced from the finest farms worldwide',
+      detailedDescription: 'Our coffee selection includes arabica and robusta varieties from certified sustainable farms across Ethiopia, Colombia, Brazil, and Central America. We ensure fair trade practices and maintain strict quality control from farm to export.',
+      specifications: ['Grade A arabica beans', 'Moisture content: 8-12%', 'Screen size: 15-18', 'Processing: Washed and natural'],
+      origins: ['Ethiopia', 'Colombia', 'Brazil', 'Guatemala'],
+      certifications: ['Fair Trade', 'Organic', 'UTZ Certified']
+    },
+    'Salt': {
+      title: 'Industrial & Food Grade Salt',
+      description: 'High-grade industrial and food-grade salt for various applications',
+      detailedDescription: 'We supply premium quality salt products including sea salt, rock salt, and refined salt for industrial and food applications. Our salt meets international purity standards and is available in various grades and packaging options.',
+      specifications: ['Purity: 99.5%+', 'Moisture: <0.5%', 'Particle size: Various grades', 'Food grade certified'],
+      origins: ['Mediterranean Sea', 'Dead Sea', 'Himalayan Mines'],
+      certifications: ['ISO 9001', 'HACCP', 'FDA Approved']
+    },
+    'Sugar': {
+      title: 'Refined & Raw Sugar',
+      description: 'Refined and raw sugar varieties meeting international quality standards',
+      detailedDescription: 'Our sugar portfolio includes refined white sugar, raw sugar, and specialty sugars sourced from top sugar-producing regions. We maintain strict quality control and offer competitive pricing for bulk quantities.',
+      specifications: ['Polarization: 99.8° min', 'Moisture: 0.04% max', 'Ash content: 0.04% max', 'ICUMSA 45 rating'],
+      origins: ['Brazil', 'Thailand', 'India', 'Australia'],
+      certifications: ['ISO 22000', 'Kosher', 'Halal']
+    },
+    'Soybeans': {
+      title: 'Sustainable Soybeans',
+      description: 'Sustainable soybean products for food and industrial applications',
+      detailedDescription: 'We offer high-quality soybeans for various applications including animal feed, oil extraction, and food processing. Our soybeans are sourced from certified sustainable farms with full traceability.',
+      specifications: ['Protein content: 34-38%', 'Oil content: 18-20%', 'Moisture: 13% max', 'GMO and non-GMO varieties'],
+      origins: ['Brazil', 'Argentina', 'USA', 'Ukraine'],
+      certifications: ['RTRS Certified', 'Non-GMO Project', 'ISCC Plus']
+    },
+    'Corn': {
+      title: 'Premium Corn (Maize)',
+      description: 'Premium quality corn sourced from certified farms worldwide',
+      detailedDescription: 'Corn, also known as maize, is one of the world\'s most vital staple crops, integral to global food security and agricultural economies. As a versatile grain, corn serves diverse purposes—from human consumption and animal feed to industrial applications such as biofuel production.\n\nOur company specializes in the export of high-quality corn, connecting farmers and producers with markets worldwide. We prioritize sourcing corn that meets international standards for purity, moisture content, and quality, ensuring our clients receive products that adhere to strict regulations and customer specifications.\n\nWith extensive logistics networks and advanced supply chain management, we facilitate seamless trade, ensuring timely delivery across continents. We are committed to sustainable and traceable sourcing practices, supporting farmers who use environmentally responsible cultivation methods.\n\nWhether you seek bulk shipments for large-scale industrial use or quality corn for retail, our expertise and global reach enable us to provide tailored solutions that meet your business needs. Trust us to be your reliable partner in navigating the dynamic landscape of corn trade internationally.',
+      specifications: ['Moisture content: 14% max', 'Foreign matter: 2% max', 'Broken kernels: 5% max', 'Test weight: 56 lbs/bushel min'],
+      origins: ['USA', 'Brazil', 'Argentina', 'Ukraine'],
+      certifications: ['Non-GMO Project', 'Organic', 'Feed Grade', 'Food Grade']
+    }
+  };
 
   // Product category configurations
   const categoryConfig = {
@@ -60,6 +106,14 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
           description: 'Sustainable soybean products for food and industrial applications',
           tradeVolume: '1,500-15,000 MT',
           minOrder: '75 MT'
+        },
+        {
+          name: 'Corn',
+          image: '/images/products/agricultural/coffee.jpg',
+          gradient: 'from-yellow-600 to-yellow-800',
+          description: 'Premium quality corn sourced from certified farms worldwide',
+          tradeVolume: '2,000-20,000 MT',
+          minOrder: '100 MT'
         }
       ]
     },
@@ -96,6 +150,39 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
   };
 
   const currentCategory = categoryConfig[category as keyof typeof categoryConfig];
+
+  // Modal handlers
+  const openModal = (product: any) => {
+    const details = productDetails[product.name as keyof typeof productDetails];
+    if (details) {
+      setSelectedProduct({ ...product, ...details });
+      setIsModalOpen(true);
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+    document.body.style.overflow = 'unset';
+  };
+
+  // Close modal on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isModalOpen) {
+        closeModal();
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener('keydown', handleEscape);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isModalOpen]);
 
   // Add loading effect for all category pages
   useEffect(() => {
@@ -328,9 +415,17 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
                     </div>
                   </div>
                   
-                  <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    Request Quote
-                  </button>
+                  <div className="space-y-3">
+                    <button 
+                      onClick={() => openModal(product)}
+                      className="w-full bg-gradient-to-r from-gray-600 to-gray-800 text-white py-3 px-4 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:from-gray-700 hover:to-gray-900"
+                    >
+                      View Details
+                    </button>
+                    <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                      Request Quote
+                    </button>
+                  </div>
                 </div>
 
                 {/* Floating Elements */}
@@ -346,6 +441,128 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
           </div>
         </div>
       </section>
+
+      {/* Product Details Modal */}
+      {isModalOpen && selectedProduct && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={closeModal}>
+          <div 
+            className="relative max-w-4xl w-full max-h-[90vh] overflow-y-auto noise-grid gradient-border glass rounded-3xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border border-gray-200/30 dark:border-gray-700/30"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-6 right-6 z-10 w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center justify-center"
+            >
+              <svg className="w-6 h-6 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Modal Content */}
+            <div className="p-8">
+              {/* Header */}
+              <div className="mb-8">
+                <div className="flex flex-col lg:flex-row gap-8">
+                  {/* Product Image */}
+                  <div className="lg:w-1/3">
+                    <div className="aspect-square overflow-hidden rounded-2xl">
+                      <img 
+                        src={selectedProduct.image} 
+                        alt={selectedProduct.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Product Info */}
+                  <div className="lg:w-2/3">
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                      {selectedProduct.title}
+                    </h2>
+                    <p className="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                      {selectedProduct.description}
+                    </p>
+                    
+                    {/* Trade Info */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                      <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50">
+                        <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Trade Volume</h4>
+                        <p className="text-gray-600 dark:text-gray-400">{selectedProduct.tradeVolume}</p>
+                      </div>
+                      <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50">
+                        <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Minimum Order</h4>
+                        <p className="text-gray-600 dark:text-gray-400">{selectedProduct.minOrder}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Detailed Description */}
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">About This Product</h3>
+                <div className="prose prose-gray dark:prose-invert max-w-none">
+                  {selectedProduct.detailedDescription.split('\n\n').map((paragraph: string, index: number) => (
+                    <p key={index} className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+
+              {/* Specifications */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <div>
+                  <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Specifications</h4>
+                  <ul className="space-y-2">
+                    {selectedProduct.specifications?.map((spec: string, index: number) => (
+                      <li key={index} className="flex items-start">
+                        <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                        <span className="text-gray-600 dark:text-gray-400">{spec}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Origins</h4>
+                  <ul className="space-y-2">
+                    {selectedProduct.origins?.map((origin: string, index: number) => (
+                      <li key={index} className="flex items-start">
+                        <span className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                        <span className="text-gray-600 dark:text-gray-400">{origin}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Certifications</h4>
+                  <ul className="space-y-2">
+                    {selectedProduct.certifications?.map((cert: string, index: number) => (
+                      <li key={index} className="flex items-start">
+                        <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                        <span className="text-gray-600 dark:text-gray-400">{cert}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                  Request Quote
+                </button>
+                <button className="flex-1 bg-gradient-to-r from-gray-600 to-gray-800 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                  Download Specifications
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>
