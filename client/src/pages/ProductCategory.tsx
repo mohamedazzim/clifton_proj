@@ -41,7 +41,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
     'Sugar': {
       title: 'Refined & Raw Sugar',
       description: 'Refined and raw sugar varieties meeting international quality standards',
-      detailedDescription: 'Our sugar portfolio includes refined white sugar, raw sugar, and specialty sugars sourced from top sugar-producing regions. We maintain strict quality control and offer competitive pricing for bulk quantities.',
+      detailedDescription: 'Our sugar portfolio includes refined white sugar, raw sugar, and specialty sugars sourced from top sugar-producing regions. We maintain strict quality control and offer competitive pricing for bulk quantities. Detailed description will be updated soon.',
       specifications: ['Polarization: 99.8° min', 'Moisture: 0.04% max', 'Ash content: 0.04% max', 'ICUMSA 45 rating'],
       origins: ['Brazil', 'Thailand', 'India', 'Australia'],
       certifications: ['ISO 22000', 'Kosher', 'Halal']
@@ -109,7 +109,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
         },
         {
           name: 'Corn',
-          image: '/images/products/agricultural/coffee.jpg',
+          image: '/images/products/agricultural/sugar.jpg',
           gradient: 'from-yellow-600 to-yellow-800',
           description: 'Premium quality corn sourced from certified farms worldwide',
           tradeVolume: '2,000-20,000 MT',
@@ -415,10 +415,15 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
                     </div>
                   </div>
                   
-                  <div className="space-y-3">
+                  <div className="space-y-3 relative z-10">
                     <button 
-                      onClick={() => openModal(product)}
-                      className="w-full bg-gradient-to-r from-gray-600 to-gray-800 text-white py-3 px-4 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:from-gray-700 hover:to-gray-900"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('View Details clicked for:', product.name);
+                        openModal(product);
+                      }}
+                      className="w-full bg-gradient-to-r from-gray-600 to-gray-800 text-white py-3 px-4 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:from-gray-700 hover:to-gray-900 cursor-pointer"
                     >
                       View Details
                     </button>
@@ -429,7 +434,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
                 </div>
 
                 {/* Floating Elements */}
-                <div className="absolute top-4 right-4 w-8 h-8 opacity-10 group-hover:opacity-20 transition-all duration-500">
+                <div className="absolute top-4 right-4 w-8 h-8 opacity-10 group-hover:opacity-20 transition-all duration-500 pointer-events-none">
                   <svg viewBox="0 0 24 24" className="w-full h-full text-current">
                     <polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5" stroke="currentColor" strokeWidth="1" fill="none">
                       <animateTransform attributeName="transform" type="rotate" values="0 12 12; 360 12 12" dur="15s" repeatCount="indefinite"/>
