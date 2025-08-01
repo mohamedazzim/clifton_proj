@@ -59,13 +59,13 @@ export default function Home() {
       <FloatingVectorField />
       <Navigation />
       <HeroSection />
-      <VisionMission />
       <Products />
       <ModernProducts />
       <Projects />
       <Testimonials />
       <OurClients />
       <Founders />
+      <VisionMission />
       <Contact />
       <Footer />
     </div>

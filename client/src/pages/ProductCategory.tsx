@@ -152,7 +152,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
               {pageTitle}
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Coming Soon
+              {t("productCategory.comingSoon")}
             </p>
           </div>
         </section>
@@ -168,21 +168,19 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
                   </svg>
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                  Will Be Updated Soon
+                  {t("productCategory.willBeUpdatedSoon")}
                 </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                  We're working hard to bring you detailed information about this product category. 
-                  Our team is preparing comprehensive content including product specifications, 
-                  pricing information, and trade volumes.
+                  {t("productCategory.workingHard")} {t("productCategory.preparingContent")}
                 </p>
               </div>
               
               <div className="space-y-4">
                 <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:scale-105">
-                  Notify Me When Available
+                  {t("productCategory.notifyMe")}
                 </button>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Get notified when this product category becomes available
+                  {t("productCategory.getNotified")}
                 </p>
               </div>
             </div>
@@ -241,11 +239,11 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button className="group noise-grid gradient-border glass px-8 py-4 rounded-xl text-white hover-scale transition-all duration-500 font-semibold text-lg relative overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20">
-                <span className="relative z-10">Request Quote</span>
+                <span className="relative z-10">{t("productCategory.requestQuote")}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
               </button>
               <button className="group bg-white text-black px-8 py-4 rounded-xl hover-scale transition-all duration-500 font-semibold text-lg border-2 border-transparent hover:border-white/20 relative overflow-hidden">
-                <span className="relative z-10">View Catalog</span>
+                <span className="relative z-10">{t("productCategory.viewCatalog")}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-200 transform skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
               </button>
             </div>
@@ -273,10 +271,10 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-              Our {currentCategory.title}
+              {t("productCategory.ourProducts").replace("{category}", currentCategory.title)}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
-              Discover our comprehensive range of high-quality products with competitive pricing and reliable supply chains.
+              {t("productCategory.discoverRange")}
             </p>
           </div>
 
@@ -323,10 +321,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
                       }}
                       className="w-full bg-gradient-to-r from-gray-600 to-gray-800 text-white py-3 px-4 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:from-gray-700 hover:to-gray-900 cursor-pointer"
                     >
-                      View Details
-                    </button>
-                    <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-4 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                      Request Quote
+                      {t("productCategory.viewDetails")}
                     </button>
                   </div>
                 </div>

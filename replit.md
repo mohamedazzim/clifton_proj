@@ -29,7 +29,18 @@ The architecture follows a monorepo structure, ensuring shared types and schemas
 
 ## Recent Changes (August 1, 2025)
 
-### Product Card UI Cleanup & Individual Product Page Updates
+### UI Layout & Translation Updates
+- **Moved "About Us" section before "Contact Us" section** on main landing page as requested
+- **Removed "Request Quote" button from agriculture_product endpoint** product cards for cleaner appearance  
+- **Completed comprehensive Portuguese translation implementation**:
+  * Added missing translation keys for ProductCategory component
+  * Translated all hardcoded English text including "Request Quote", "View Details", "View Catalog"
+  * Added translations for "Coming Soon", "Will Be Updated Soon", notification messages
+  * Ensured complete end-to-end Portuguese language support across entire application
+- **Enhanced translation system** with new productCategory translation namespace
+- All user-facing text now properly uses translation keys for both English and Portuguese
+
+### Product Card UI Cleanup & Individual Product Page Updates  
 - **Removed min trade volume and min order from agriculture product cards** on `/products/agriculture_product` endpoint as requested
 - **Updated individual product pages with specific minimum order requirements**:
   * Coffee: Min 50 MT (changed from 25 MT)

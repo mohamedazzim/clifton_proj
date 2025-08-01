@@ -159,6 +159,19 @@ export const translations = {
         title: "Competitive Pricing",
         description: "Market-leading prices with flexible payment terms"
       }
+    },
+    productCategory: {
+      requestQuote: "Request Quote",
+      viewCatalog: "View Catalog",
+      viewDetails: "View Details",
+      comingSoon: "Coming Soon",
+      willBeUpdatedSoon: "Will Be Updated Soon",
+      workingHard: "We're working hard to bring you detailed information about this product category.",
+      preparingContent: "Our team is preparing comprehensive content including product specifications, pricing information, and trade volumes.",
+      notifyMe: "Notify Me When Available",
+      getNotified: "Get notified when this product category becomes available",
+      ourProducts: "Our {category}",
+      discoverRange: "Discover our comprehensive range of high-quality products with competitive pricing and reliable supply chains."
     }
   },
   pt: {
@@ -326,6 +339,19 @@ export const translations = {
         title: "Preços Competitivos",
         description: "Preços líderes de mercado com termos de pagamento flexíveis"
       }
+    },
+    productCategory: {
+      requestQuote: "Solicitar Cotação",
+      viewCatalog: "Ver Catálogo",
+      viewDetails: "Ver Detalhes",
+      comingSoon: "Em Breve",
+      willBeUpdatedSoon: "Será Atualizado em Breve",
+      workingHard: "Estamos trabalhando duro para trazer informações detalhadas sobre esta categoria de produtos.",
+      preparingContent: "Nossa equipe está preparando conteúdo abrangente incluindo especificações de produtos, informações de preços e volumes de comércio.",
+      notifyMe: "Notifique-me Quando Disponível",
+      getNotified: "Seja notificado quando esta categoria de produtos estiver disponível",
+      ourProducts: "Nossos {category}",
+      discoverRange: "Descubra nossa gama abrangente de produtos de alta qualidade com preços competitivos e cadeias de suprimentos confiáveis."
     }
   }
 };
