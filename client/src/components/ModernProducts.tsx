@@ -20,16 +20,16 @@ export function ModernProducts() {
       name: t('products.agricultural.title'), 
       description: t('products.agricultural.description'),
       image: "/images/products/agriculture-cattle.jpg", 
-      category: "Agriculture",
-      buttonText: "Learn More",
+      category: t("modernProducts.agriculture"),
+      buttonText: t("modernProducts.learnMore"),
       slug: "agriculture_product"
     },
     {
       name: t('products.textiles.title'),
       description: t('products.textiles.description'),
       image: "/images/products/textiles_and_fashion.jpg",
-      category: "Fashion",
-      buttonText: "Learn More",
+      category: t("modernProducts.fashion"),
+      buttonText: t("modernProducts.learnMore"),
       slug: "textiles_fashion"
     }
   ];
@@ -53,8 +53,7 @@ export function ModernProducts() {
             {t('products.title')}
           </div>
           <h2 className="text-lg sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6">
-            <span className="text-gray-900 dark:text-white">Premium </span>
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">Commodities</span>
+            <span className="text-gray-900 dark:text-white">{t("modernProducts.premiumCommodities")}</span>
           </h2>
           <p className="text-sm sm:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
             {t('products.subtitle')}

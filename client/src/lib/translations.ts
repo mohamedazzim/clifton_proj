@@ -33,7 +33,10 @@ export const translations = {
     },
     founders: {
       title: "Meet Our Founders",
-      subtitle: "Visionary leaders with decades of experience in international commerce"
+      subtitle: "Visionary leaders with decades of experience in international commerce",
+      connectingMarkets: "Connecting global markets through premium commodity trading. Trusted by businesses worldwide for reliable import-export solutions.",
+      licensedTrader: "Licensed commodity trader | Certified by Spanish Trade Authority | ISO 9001:2015 Quality Management",
+      andMore: "and more"
     },
     services: {
       title: "Our Services",
@@ -172,6 +175,29 @@ export const translations = {
       getNotified: "Get notified when this product category becomes available",
       ourProducts: "Our {category}",
       discoverRange: "Discover our comprehensive range of high-quality products with competitive pricing and reliable supply chains."
+    },
+    heroSection: {
+      import: "Import",
+      export: "Export",
+      delivery: "Delivery",
+      with: "with",
+      and: "&"
+    },
+    modernProducts: {
+      learnMore: "Learn More",
+      premiumCommodities: "Premium Commodities",
+      agriculture: "Agriculture",
+      fashion: "Fashion"
+    },
+    testimonials: {
+      clientTestimonials: "Client Testimonials",
+      whatClientsSay: "What Our Clients Say",
+      trustedByBusinesses: "Trusted by businesses worldwide for premium commodity trading"
+    },
+    ourClients: {
+      trustedPartners: "Our Trusted Partners",
+      ourClients: "Our Clients",
+      partneringWith: "Partnering with industry leaders worldwide to deliver exceptional commodity trading solutions"
     }
   },
   pt: {
@@ -208,7 +234,10 @@ export const translations = {
     },
     founders: {
       title: "Conheça Nossos Fundadores",
-      subtitle: "Líderes visionários com décadas de experiência em comércio internacional"
+      subtitle: "Líderes visionários com décadas de experiência em comércio internacional",
+      connectingMarkets: "Conectando mercados globais através do comércio de commodities premium. Confiado por empresas em todo o mundo para soluções confiáveis de importação-exportação.",
+      licensedTrader: "Comerciante de commodities licenciado | Certificado pela Autoridade de Comércio Espanhola | Gestão de Qualidade ISO 9001:2015",
+      andMore: "e mais"
     },
     services: {
       title: "Nossos Serviços",
@@ -352,6 +381,29 @@ export const translations = {
       getNotified: "Seja notificado quando esta categoria de produtos estiver disponível",
       ourProducts: "Nossos {category}",
       discoverRange: "Descubra nossa gama abrangente de produtos de alta qualidade com preços competitivos e cadeias de suprimentos confiáveis."
+    },
+    heroSection: {
+      import: "Importação",
+      export: "Exportação",
+      delivery: "Entrega",
+      with: "com",
+      and: "e"
+    },
+    modernProducts: {
+      learnMore: "Saiba Mais",
+      premiumCommodities: "Commodities Premium",
+      agriculture: "Agricultura",
+      fashion: "Moda"
+    },
+    testimonials: {
+      clientTestimonials: "Depoimentos de Clientes",
+      whatClientsSay: "O Que Nossos Clientes Dizem",
+      trustedByBusinesses: "Confiado por empresas em todo o mundo para comércio de commodities premium"
+    },
+    ourClients: {
+      trustedPartners: "Nossos Parceiros Confiáveis",
+      ourClients: "Nossos Clientes",
+      partneringWith: "Fazendo parcerias com líderes da indústria em todo o mundo para entregar soluções excepcionais de comércio de commodities"
     }
   }
 };

@@ -27,10 +27,10 @@ export function OurClients() {
         {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-gray-500/10 to-blue-500/10 rounded-full border border-gray-200/30 dark:border-gray-700/30 mb-6">
-            <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">Our Trusted Partners</span>
+            <span className="text-sm font-semibold text-gray-600 dark:text-gray-400">{t("ourClients.trustedPartners")}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-blue-600">Clients</span>
+{t("ourClients.ourClients")}
           </h2>
         </div>
 
@@ -78,7 +78,7 @@ export function OurClients() {
         {/* Bottom Text */}
         <div className="text-center mt-12 sm:mt-16">
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Partnering with industry leaders worldwide to deliver exceptional commodity trading solutions
+{t("ourClients.partneringWith")}
           </p>
         </div>
       </div>

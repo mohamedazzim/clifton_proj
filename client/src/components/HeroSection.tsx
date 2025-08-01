@@ -193,21 +193,21 @@ export function HeroSection() {
               <div className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap animate-fade-up animation-delay-300">
                 <span className="text-xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-black text-gray-900 dark:text-gray-100 tracking-wider leading-none" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '900', letterSpacing: '0.15em', textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>CLIFTON</span>
                 
-                <span className="text-lg sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-gray-100 tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '700', letterSpacing: '0.1em', textShadow: '1px 1px 3px rgba(0,0,0,0.2)' }}>Import</span>
+                <span className="text-lg sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-gray-100 tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '700', letterSpacing: '0.1em', textShadow: '1px 1px 3px rgba(0,0,0,0.2)' }}>{t("heroSection.import")}</span>
 
-                <span className="text-lg sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-light text-gray-700 dark:text-gray-300" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '300', letterSpacing: '0.05em' }}>&</span>
+                <span className="text-lg sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-light text-gray-700 dark:text-gray-300" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '300', letterSpacing: '0.05em' }}>{t("heroSection.and")}</span>
 
-                <span className="text-lg sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-gray-100 tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '700', letterSpacing: '0.1em', textShadow: '1px 1px 3px rgba(0,0,0,0.2)' }}>Export</span>
+                <span className="text-lg sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-gray-100 tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '700', letterSpacing: '0.1em', textShadow: '1px 1px 3px rgba(0,0,0,0.2)' }}>{t("heroSection.export")}</span>
 
-                <span className="text-base sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-medium text-gray-700 dark:text-gray-300" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '500', letterSpacing: '0.08em' }}>with</span>
+                <span className="text-base sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-medium text-gray-700 dark:text-gray-300" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '500', letterSpacing: '0.08em' }}>{t("heroSection.with")}</span>
                 
-                <span className="text-lg sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-gray-100 tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '700', letterSpacing: '0.1em', textShadow: '1px 1px 3px rgba(0,0,0,0.2)' }}>Delivery</span>
+                <span className="text-lg sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-gray-100 tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '700', letterSpacing: '0.1em', textShadow: '1px 1px 3px rgba(0,0,0,0.2)' }}>{t("heroSection.delivery")}</span>
               </div>
             </div>
             
             <div className="relative">
               <p className="text-xs sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-10 dark:text-gray-300 animate-fade-up animation-delay-1500 max-w-4xl mx-auto leading-relaxed font-medium text-[#2f3440] px-4">
-                Connecting continents through seamless trade solutions From Europe to global markets, we bridge opportunities with excellence
+{t("hero.subtitle")}
               </p>
               
               {/* Animated underline */}
@@ -219,14 +219,14 @@ export function HeroSection() {
                 onClick={scrollToProducts}
                 className="group noise-grid gradient-border glass px-4 sm:px-8 py-2 sm:py-4 rounded-md text-black dark:text-white hover-scale transition-all duration-500 font-semibold text-sm sm:text-lg relative overflow-hidden"
               >
-                <span className="relative z-10">Explore Our Products</span>
+                <span className="relative z-10">{t("hero.cta.primary")}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-black/5 dark:from-white/10 dark:to-white/5 transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
               </button>
               <button 
                 onClick={scrollToContact}
                 className="group bg-black dark:bg-white text-white dark:text-black px-4 sm:px-8 py-2 sm:py-4 rounded-md hover-scale transition-all duration-500 font-semibold text-sm sm:text-lg border-2 border-transparent hover:border-black/20 dark:hover:border-white/20 relative overflow-hidden"
               >
-                <span className="relative z-10">Contact Us Today</span>
+                <span className="relative z-10">{t("hero.cta.secondary")}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 dark:from-black/5 dark:to-black/10 transform skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
               </button>
             </div>
