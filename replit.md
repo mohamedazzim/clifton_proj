@@ -29,6 +29,14 @@ The architecture follows a monorepo structure, ensuring shared types and schemas
 
 ## Recent Changes (August 1, 2025)
 
+### Hero Section Enhancement & Content Cleanup
+- **Removed "cringy icons"** from hero section Import/Export/Delivery text as requested
+- Enhanced hero typography with professional fonts and better spacing
+- Improved "CLIFTON" brand styling with advanced typography effects
+- Made Import/Export/Delivery text more professional and catchy
+- Updated founder bio: Joseph Ebenezer emphasizes "TRADING, IMPORT and EXPORT" experience
+- Products section title confirmed as "Our Services" with focused messaging
+
 ### Phone Number Format Update
 - Updated all phone numbers from +55 format to 0055 format as requested
 - Changed +55 11 4559-3029 → 0055 11 4559-3029
