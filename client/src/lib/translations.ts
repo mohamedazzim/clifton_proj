@@ -36,6 +36,7 @@ export const translations = {
       subtitle: "Visionary leaders with decades of experience in international commerce"
     },
     products: {
+<<<<<<< HEAD
       title: "Our Services",
       subtitle: "Comprehensive import and export solutions connecting global markets with precision and reliability",
       learnMore: "Learn More",
@@ -47,6 +48,11 @@ export const translations = {
         title: "Textiles & Fashion",
         description: "Quality fabrics, garments, and fashion accessories for international trade"
       }
+=======
+      title: "What We Do",
+      subtitle: "We offer a comprehensive range of services tailored to meet the diverse needs of our clients",
+      learnMore: "Learn More"
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
     },
     projects: {
       title: "Why Choose Us?",
@@ -139,9 +145,23 @@ export const translations = {
         title: "Agricultural Products",
         description: "Premium agricultural commodities including coffee, salt, sugar, and soybeans"
       },
+<<<<<<< HEAD
       textiles: {
         title: "Textiles & Fashion",
         description: "Quality fabrics, garments, and fashion accessories for international trade"
+=======
+      electronics: {
+        title: "Consumer Electronics", 
+        description: "High-quality electronic devices and components for global markets"
+      },
+      textiles: {
+        title: "Textiles & Fashion",
+        description: "Quality fabrics, garments, and fashion accessories for international trade"
+      },
+      automotive: {
+        title: "Automotive Components",
+        description: "Reliable automotive parts and components for the global automotive industry"
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
       }
     },
     benefits: {
@@ -196,6 +216,7 @@ export const translations = {
       subtitle: "Líderes visionários com décadas de experiência em comércio internacional"
     },
     products: {
+<<<<<<< HEAD
       title: "Nossos Serviços",
       subtitle: "Soluções abrangentes de importação e exportação conectando mercados globais com precisão e confiabilidade",
       learnMore: "Saiba Mais",
@@ -207,6 +228,11 @@ export const translations = {
         title: "Têxteis e Moda",
         description: "Tecidos de qualidade, roupas e acessórios de moda para comércio internacional"
       }
+=======
+      title: "O Que Fazemos",
+      subtitle: "Oferecemos uma gama abrangente de serviços personalizados para atender às diversas necessidades de nossos clientes",
+      learnMore: "Saiba Mais"
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
     },
     projects: {
       title: "Por Que Nos Escolher?",
@@ -294,6 +320,27 @@ export const translations = {
       requestQuoteBtn: "Solicitar Cotação",
       contactTeam: "Equipe de Vendas"
     },
+<<<<<<< HEAD
+=======
+    products: {
+      agricultural: {
+        title: "Produtos Agrícolas",
+        description: "Commodities agrícolas premium incluindo café, sal, açúcar e soja"
+      },
+      electronics: {
+        title: "Eletrônicos de Consumo",
+        description: "Dispositivos eletrônicos de alta qualidade e componentes para mercados globais"
+      },
+      textiles: {
+        title: "Têxteis e Moda",
+        description: "Tecidos de qualidade, roupas e acessórios de moda para comércio internacional"
+      },
+      automotive: {
+        title: "Componentes Automotivos",
+        description: "Peças automotivas confiáveis e componentes para a indústria automotiva global"
+      }
+    },
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
     benefits: {
       quality: {
         title: "Qualidade Certificada",

@@ -61,7 +61,11 @@ export class MemStorage implements IStorage {
     const foundersData: InsertFounder[] = [
       {
         name: "Benson Clement",
+<<<<<<< HEAD
         position: "CEO",
+=======
+        position: "Managing Director",
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
         bio: "BA English Literature, MBA HR and Marketing. With 12 years of experience in textiles, trading, import and export, Benson leads strategic operations and business development.",
         imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
         email: "benson@cliftontraders.com",
@@ -73,8 +77,13 @@ export class MemStorage implements IStorage {
       },
       {
         name: "Joseph Ebenezer",
+<<<<<<< HEAD
         position: "COO",
         bio: "B.Sc (Physics), MBA (HR & Marketing). With 10 years of experience in TRADING, IMPORT and EXPORT, sales & marketing in IT & Non-IT sector services, drives technical strategy and market expansion.",
+=======
+        position: "Technical Director",
+        bio: "B.Sc (Physics), MBA (HR & Marketing). With 10 years of experience in sales & marketing in IT & Non-IT sector services, Joseph drives technical strategy and market expansion.",
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
         imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
         email: "joseph@cliftontraders.com",
         linkedin: "https://linkedin.com/in/joseph-ebenezer-clifton",

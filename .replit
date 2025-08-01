@@ -1,4 +1,5 @@
 modules = ["nodejs-20", "web"]
+<<<<<<< HEAD
 run = "node index.js"
 
 [nix]
@@ -6,6 +7,23 @@ channel = "stable-25_05"
 
 [agent]
 expertMode = true
+=======
+run = "npm run dev"
+hidden = [".config", ".git", "generated-icon.png", "node_modules", "dist"]
+
+[nix]
+channel = "stable-25_05"
+packages = ["postgresql"]
+
+[deployment]
+deploymentTarget = "autoscale"
+run = ["npm", "run", "start"]
+build = ["npm", "run", "build"]
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
 
 [workflows]
 runButton = "Project"
@@ -17,10 +35,21 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
+<<<<<<< HEAD
 args = "Server"
 
 [[workflows.workflow]]
 name = "Server"
+=======
+args = "Start application"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Start Game"
+
+[[workflows.workflow]]
+name = "Start application"
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
 author = "agent"
 
 [[workflows.workflow.tasks]]
@@ -28,9 +57,23 @@ task = "shell.exec"
 args = "npm run dev"
 waitForPort = 5000
 
+<<<<<<< HEAD
 [[ports]]
 localPort = 5000
 externalPort = 80
 
 [deployment]
 run = ["sh", "-c", "node index.js"]
+=======
+[[workflows.workflow]]
+name = "Start Game"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
+waitForPort = 5000
+
+[agent]
+integrations = ["javascript_openai==1.0.0"]
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1

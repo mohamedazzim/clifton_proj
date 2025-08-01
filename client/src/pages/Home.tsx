@@ -60,12 +60,19 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <VisionMission />
+<<<<<<< HEAD
+=======
+      <Founders />
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
       <Products />
       <ModernProducts />
       <Projects />
       <Testimonials />
       <OurClients />
+<<<<<<< HEAD
       <Founders />
+=======
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
       <Contact />
       <Footer />
     </div>

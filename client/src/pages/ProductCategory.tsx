@@ -73,6 +73,19 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
         }
       ]
     },
+<<<<<<< HEAD
+=======
+    consumer_electronics: {
+      title: 'Consumer Electronics',
+      subtitle: 'High-quality electronic devices and components for global markets',
+      backgroundImages: [
+        '/images/products/coffee.jpg',
+        '/images/products/salt.jpeg',
+        '/images/products/sugar.jpg'
+      ],
+      products: []
+    },
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
     textiles_fashion: {
       title: 'Textiles & Fashion',
       subtitle: 'Quality fabrics, garments, and fashion accessories for international trade',
@@ -82,6 +95,19 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
         '/images/products/sugar.jpg'
       ],
       products: []
+<<<<<<< HEAD
+=======
+    },
+    automotive_components: {
+      title: 'Automotive Components',
+      subtitle: 'Reliable automotive parts and components for the global automotive industry',
+      backgroundImages: [
+        '/images/products/coffee.jpg',
+        '/images/products/salt.jpeg',
+        '/images/products/sugar.jpg'
+      ],
+      products: []
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
     }
   };
 

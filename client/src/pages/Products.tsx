@@ -16,7 +16,13 @@ const Products = () => {
   // Background images for sliding effect
   const backgroundImages = [
     '/images/products/agriculture-cattle.jpg',
+<<<<<<< HEAD
     '/images/products/textiles_and_fashion.jpg'
+=======
+    '/images/products/consumer-electronics.jpg',
+    '/images/products/textiles_and_fashion.jpg',
+    '/images/products/automotive.jpg'
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
   ];
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -64,11 +70,32 @@ const Products = () => {
       description: t('products.agricultural.description')
     },
     {
+<<<<<<< HEAD
+=======
+      name: t('products.electronics.title'),
+      slug: 'consumer_electronics',
+      image: '/images/products/consumer-electronics.jpg',
+      gradient: 'from-blue-600 to-blue-800',
+      description: t('products.electronics.description')
+    },
+    
+    {
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
       name: t('products.textiles.title'),
       slug: 'textiles_fashion',
       image: '/images/products/textiles_and_fashion.jpg',
       gradient: 'from-purple-600 to-purple-800',
       description: t('products.textiles.description')
+<<<<<<< HEAD
+=======
+    },
+    {
+      name: t('products.automotive.title'),
+      slug: 'automotive_components',
+      image: '/images/products/automotive.jpg',
+      gradient: 'from-red-600 to-red-800',
+      description: t('products.automotive.description')
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
     }
   ];
 
@@ -179,7 +206,11 @@ const Products = () => {
       {/* Products Grid */}
       <section className="relative py-20 px-5 sm:px-8 lg:px-10">
         <div className="max-w-7xl mx-auto">
+<<<<<<< HEAD
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 justify-items-center max-w-5xl mx-auto">
+=======
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
             {products.map((product, index) => (
               <div
                 key={product.name}
@@ -187,7 +218,11 @@ const Products = () => {
                   e.preventDefault();
                   handleProductClick(product.slug);
                 }}
+<<<<<<< HEAD
                 className="w-full max-w-md group relative noise-grid gradient-border glass rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 hover:scale-105 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30 cursor-pointer"
+=======
+                className="group relative noise-grid gradient-border glass rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 hover:scale-105 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30 cursor-pointer"
+>>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
                 style={{ 
                   animationDelay: `${index * 150}ms`,
                   boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.05)',
