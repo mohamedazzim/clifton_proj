@@ -74,19 +74,19 @@ export function Footer() {
             <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">{t("footer.services.title")}</h4>
             <ul className="space-y-2 sm:space-y-3 text-gray-400 dark:text-gray-600">
               <li className="hover:text-white dark:hover:text-black transition-colors cursor-pointer text-xs sm:text-sm">
-                Coffee Trading & Export
+                {t("footer.services.coffee")}
               </li>
               <li className="hover:text-white dark:hover:text-black transition-colors cursor-pointer text-xs sm:text-sm">
-                Premium Salt Supply
+                {t("footer.services.salt")}
               </li>
               <li className="hover:text-white dark:hover:text-black transition-colors cursor-pointer text-xs sm:text-sm">
-                Sugar Import & Distribution
+                {t("footer.services.sugar")}
               </li>
               <li className="hover:text-white dark:hover:text-black transition-colors cursor-pointer text-xs sm:text-sm">
-                Soye Products & Logistics
+                {t("footer.services.soy")}
               </li>
               <li className="hover:text-white dark:hover:text-black transition-colors cursor-pointer text-xs sm:text-sm">
-                Global Trade Consulting
+                {t("footer.services.consulting")}
               </li>
             </ul>
           </div>
@@ -110,9 +110,9 @@ export function Footer() {
                   <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                 </svg>
                 <span className="text-xs sm:text-sm">
-                  <div>+55 11 4559-3029</div>
-                  <div>+55 11 99734-5464</div>
-                  <div>+55 11 96488-9444</div>
+                  <div>0055 11 4559-3029</div>
+                  <div>0055 11 99734-5464</div>
+                  <div>0055 11 96488-9444</div>
                 </span>
               </li>
               <li className="flex items-center space-x-2 sm:space-x-3">
@@ -125,7 +125,7 @@ export function Footer() {
             
             {/* Social Media */}
             <div className="mt-4 sm:mt-6">
-              <h5 className="font-medium mb-2 sm:mb-3 text-white dark:text-black text-xs sm:text-sm">Follow Us</h5>
+              <h5 className="font-medium mb-2 sm:mb-3 text-white dark:text-black text-xs sm:text-sm">{t("footer.social")}</h5>
               <div className="flex space-x-3 sm:space-x-4">
                 <a href="#" className="w-6 h-6 sm:w-8 sm:h-8 bg-gray-600 hover:bg-gray-500 dark:bg-gray-300 dark:hover:bg-gray-400 rounded-full flex items-center justify-center transition-colors">
                   <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white dark:text-black" fill="currentColor" viewBox="0 0 24 24">

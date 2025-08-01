@@ -102,15 +102,61 @@ export const translations = {
       quickLinks: "Quick Links",
       services: {
         title: "Services",
-        import: "Import Services",
-        export: "Export Services",
-        logistics: "Logistics & Supply Chain",
-        quality: "Market Research & Consulting"
+        coffee: "Coffee Trading & Export",
+        salt: "Premium Salt Supply",
+        sugar: "Sugar Import & Distribution",
+        soy: "Soy Products & Logistics",
+        consulting: "Global Trade Consulting"
       },
       contact: "Contact",
+      social: "Follow Us",
       copyright: "© 2024 CLIFTON. All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service"
+    },
+    productDetail: {
+      aboutProduct: "About This Product",
+      specifications: "Specifications",
+      origins: "Origins",
+      certifications: "Certifications",
+      tradeVolume: "Trade Volume",
+      minOrder: "Minimum Order",
+      requestQuote: "Ready to Order?",
+      contactUs: "Contact our team to discuss your requirements and get a competitive quote for",
+      requestQuoteBtn: "Request Quote",
+      contactTeam: "Contact Sales Team"
+    },
+    products: {
+      agricultural: {
+        title: "Agricultural Products",
+        description: "Premium agricultural commodities including coffee, salt, sugar, and soybeans"
+      },
+      electronics: {
+        title: "Consumer Electronics", 
+        description: "High-quality electronic devices and components for global markets"
+      },
+      textiles: {
+        title: "Textiles & Fashion",
+        description: "Quality fabrics, garments, and fashion accessories for international trade"
+      },
+      automotive: {
+        title: "Automotive Components",
+        description: "Reliable automotive parts and components for the global automotive industry"
+      }
+    },
+    benefits: {
+      quality: {
+        title: "Quality Certified",
+        description: "International quality standards with full traceability"
+      },
+      delivery: {
+        title: "Fast Delivery",
+        description: "Efficient logistics and timely global shipping"
+      },
+      pricing: {
+        title: "Competitive Pricing",
+        description: "Market-leading prices with flexible payment terms"
+      }
     }
   },
   pt: {
@@ -216,15 +262,61 @@ export const translations = {
       quickLinks: "Links Rápidos",
       services: {
         title: "Serviços",
-        import: "Serviços de Importação",
-        export: "Serviços de Exportação",
-        logistics: "Logística e Cadeia de Suprimentos",
-        quality: "Pesquisa de Mercado e Consultoria"
+        coffee: "Comércio e Exportação de Café",
+        salt: "Fornecimento de Sal Premium",
+        sugar: "Importação e Distribuição de Açúcar",
+        soy: "Produtos de Soja e Logística",
+        consulting: "Consultoria de Comércio Global"
       },
       contact: "Contato",
+      social: "Siga-nos",
       copyright: "© 2024 CLIFTON. Todos os direitos reservados.",
       privacy: "Política de Privacidade",
       terms: "Termos de Serviço"
+    },
+    productDetail: {
+      aboutProduct: "Sobre Este Produto",
+      specifications: "Especificações",
+      origins: "Origens",
+      certifications: "Certificações",
+      tradeVolume: "Volume de Comércio",
+      minOrder: "Pedido Mínimo",
+      requestQuote: "Pronto para Fazer o Pedido?",
+      contactUs: "Entre em contato com nossa equipe para discutir suas necessidades e obter uma cotação competitiva para",
+      requestQuoteBtn: "Solicitar Cotação",
+      contactTeam: "Equipe de Vendas"
+    },
+    products: {
+      agricultural: {
+        title: "Produtos Agrícolas",
+        description: "Commodities agrícolas premium incluindo café, sal, açúcar e soja"
+      },
+      electronics: {
+        title: "Eletrônicos de Consumo",
+        description: "Dispositivos eletrônicos de alta qualidade e componentes para mercados globais"
+      },
+      textiles: {
+        title: "Têxteis e Moda",
+        description: "Tecidos de qualidade, roupas e acessórios de moda para comércio internacional"
+      },
+      automotive: {
+        title: "Componentes Automotivos",
+        description: "Peças automotivas confiáveis e componentes para a indústria automotiva global"
+      }
+    },
+    benefits: {
+      quality: {
+        title: "Qualidade Certificada",
+        description: "Padrões internacionais de qualidade com rastreabilidade completa"
+      },
+      delivery: {
+        title: "Entrega Rápida",
+        description: "Logística eficiente e envio global pontual"
+      },
+      pricing: {
+        title: "Preços Competitivos",
+        description: "Preços líderes de mercado com termos de pagamento flexíveis"
+      }
     }
   }
 };

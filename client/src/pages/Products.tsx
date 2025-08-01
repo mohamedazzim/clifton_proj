@@ -59,33 +59,33 @@ const Products = () => {
 
   const products = [
     {
-      name: 'Agricultural Products',
+      name: t('products.agricultural.title'),
       slug: 'agriculture_product',
       image: '/images/products/agriculture-cattle.jpg',
       gradient: 'from-green-600 to-green-800',
-      description: 'Premium agricultural commodities including coffee, salt, sugar, and soybeans'
+      description: t('products.agricultural.description')
     },
     {
-      name: 'Consumer Electronics',
+      name: t('products.electronics.title'),
       slug: 'consumer_electronics',
       image: '/images/products/consumer-electronics.jpg',
       gradient: 'from-blue-600 to-blue-800',
-      description: 'High-quality electronic devices and components for global markets'
+      description: t('products.electronics.description')
     },
     
     {
-      name: 'Textiles & Fashion',
+      name: t('products.textiles.title'),
       slug: 'textiles_fashion',
       image: '/images/products/textiles_and_fashion.jpg',
       gradient: 'from-purple-600 to-purple-800',
-      description: 'Quality fabrics, garments, and fashion accessories for international trade'
+      description: t('products.textiles.description')
     },
     {
-      name: 'Automotive Components',
+      name: t('products.automotive.title'),
       slug: 'automotive_components',
       image: '/images/products/automotive.jpg',
       gradient: 'from-red-600 to-red-800',
-      description: 'Reliable automotive parts and components for the global automotive industry'
+      description: t('products.automotive.description')
     }
   ];
 
@@ -100,18 +100,18 @@ const Products = () => {
   const benefits = [
     {
       icon: '🏆',
-      title: 'Quality Certified',
-      description: 'International quality standards with full traceability'
+      title: t('benefits.quality.title'),
+      description: t('benefits.quality.description')
     },
     {
       icon: '🚚',
-      title: 'Fast Delivery',
-      description: 'Efficient logistics and timely global shipping'
+      title: t('benefits.delivery.title'),
+      description: t('benefits.delivery.description')
     },
     {
       icon: '💰',
-      title: 'Competitive Pricing',
-      description: 'Market-leading prices with flexible payment terms'
+      title: t('benefits.pricing.title'),
+      description: t('benefits.pricing.description')
     },
     {
       icon: '🌍',

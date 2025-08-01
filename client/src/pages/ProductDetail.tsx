@@ -181,11 +181,11 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
                 {/* Trade Info */}
                 <div className="space-y-4">
                   <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50">
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Trade Volume</h4>
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">{t("productDetail.tradeVolume")}</h4>
                     <p className="text-gray-600 dark:text-gray-400">{product.tradeVolume}</p>
                   </div>
                   <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50">
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Minimum Order</h4>
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">{t("productDetail.minOrder")}</h4>
                     <p className="text-gray-600 dark:text-gray-400">{product.minOrder}</p>
                   </div>
                 </div>
@@ -195,7 +195,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
             {/* Product Description */}
             <div className="lg:col-span-2">
               <div className="noise-grid gradient-border glass rounded-3xl p-8 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">About This Product</h2>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t("productDetail.aboutProduct")}</h2>
                 <div className="prose prose-gray dark:prose-invert max-w-none">
                   {product.detailedDescription.split('\n\n').map((paragraph: string, index: number) => (
                     <p key={index} className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-lg">
@@ -211,7 +211,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Specifications */}
             <div className="noise-grid gradient-border glass rounded-3xl p-8 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Specifications</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t("productDetail.specifications")}</h3>
               <ul className="space-y-3">
                 {product.specifications?.map((spec: string, index: number) => (
                   <li key={index} className="flex items-start">
@@ -224,7 +224,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
 
             {/* Origins */}
             <div className="noise-grid gradient-border glass rounded-3xl p-8 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Origins</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t("productDetail.origins")}</h3>
               <ul className="space-y-3">
                 {product.origins?.map((origin: string, index: number) => (
                   <li key={index} className="flex items-start">
@@ -237,7 +237,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
 
             {/* Certifications */}
             <div className="noise-grid gradient-border glass rounded-3xl p-8 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Certifications</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t("productDetail.certifications")}</h3>
               <ul className="space-y-3">
                 {product.certifications?.map((cert: string, index: number) => (
                   <li key={index} className="flex items-start">
@@ -252,16 +252,16 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
           {/* Call to Action */}
           <div className="mt-16 text-center">
             <div className="noise-grid gradient-border glass rounded-3xl p-12 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30">
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Ready to Order?</h3>
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t("productDetail.requestQuote")}</h3>
               <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-                Contact our team to discuss your requirements and get a competitive quote for {product.name.toLowerCase()}.
+                {t("productDetail.contactUs")} {product.name.toLowerCase()}.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-8 rounded-xl font-semibold text-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                  Request Quote
+                  {t("productDetail.requestQuoteBtn")}
                 </button>
                 <button className="bg-gradient-to-r from-gray-600 to-gray-800 text-white py-4 px-8 rounded-xl font-semibold text-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                  Contact Sales Team
+                  {t("productDetail.contactTeam")}
                 </button>
               </div>
             </div>

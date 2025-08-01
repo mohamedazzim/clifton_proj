@@ -29,6 +29,22 @@ The architecture follows a monorepo structure, ensuring shared types and schemas
 
 ## Recent Changes (August 1, 2025)
 
+### Phone Number Format Update
+- Updated all phone numbers from +55 format to 0055 format as requested
+- Changed +55 11 4559-3029 → 0055 11 4559-3029
+- Changed +55 11 99734-5464 → 0055 11 99734-5464  
+- Changed +55 11 96488-9444 → 0055 11 96488-9444
+- Applied changes across Footer and Contact components
+
+### Complete Portuguese Translation Implementation
+- Expanded translation system for comprehensive end-to-end Portuguese coverage
+- Added Portuguese translations for all product categories and descriptions
+- Translated Footer services section including "Coffee Trading & Export", "Premium Salt Supply", etc.
+- Implemented ProductDetail page translations for specifications, origins, certifications
+- Added benefits section translations (Quality Certified, Fast Delivery, Competitive Pricing)
+- Updated social media section translation ("Follow Us" → "Siga-nos")
+- Ensured all hardcoded English text now uses translation keys for complete PT language support
+
 ### UI/UX Improvements
 - Fixed navbar background to solid milk-white color for better visibility
 - Removed all transparency effects from navigation bar

@@ -160,9 +160,9 @@ export function Contact() {
                 <div className="flex items-start">
                   <i className="fas fa-phone w-6 text-gray-600 dark:text-gray-400 mt-1"></i>
                   <div className="ml-3">
-                    <div>+55 11 4559-3029</div>
-                    <div>+55 11 99734-5464</div>
-                    <div>+55 11 96488-9444</div>
+                    <div>0055 11 4559-3029</div>
+                    <div>0055 11 99734-5464</div>
+                    <div>0055 11 96488-9444</div>
                   </div>
                 </div>
                 <div className="flex items-center">
