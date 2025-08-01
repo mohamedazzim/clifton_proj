@@ -38,7 +38,15 @@ export const translations = {
     products: {
       title: "Our Services",
       subtitle: "Comprehensive import and export solutions connecting global markets with precision and reliability",
-      learnMore: "Learn More"
+      learnMore: "Learn More",
+      agricultural: {
+        title: "Agricultural Products",
+        description: "Premium agricultural commodities including coffee, salt, sugar, and soybeans"
+      },
+      textiles: {
+        title: "Textiles & Fashion",
+        description: "Quality fabrics, garments, and fashion accessories for international trade"
+      }
     },
     projects: {
       title: "Why Choose Us?",
@@ -190,7 +198,15 @@ export const translations = {
     products: {
       title: "Nossos Serviços",
       subtitle: "Soluções abrangentes de importação e exportação conectando mercados globais com precisão e confiabilidade",
-      learnMore: "Saiba Mais"
+      learnMore: "Saiba Mais",
+      agricultural: {
+        title: "Produtos Agrícolas",
+        description: "Commodities agrícolas premium incluindo café, sal, açúcar e soja"
+      },
+      textiles: {
+        title: "Têxteis e Moda",
+        description: "Tecidos de qualidade, roupas e acessórios de moda para comércio internacional"
+      }
     },
     projects: {
       title: "Por Que Nos Escolher?",
@@ -277,16 +293,6 @@ export const translations = {
       contactUs: "Entre em contato com nossa equipe para discutir suas necessidades e obter uma cotação competitiva para",
       requestQuoteBtn: "Solicitar Cotação",
       contactTeam: "Equipe de Vendas"
-    },
-    products: {
-      agricultural: {
-        title: "Produtos Agrícolas",
-        description: "Commodities agrícolas premium incluindo café, sal, açúcar e soja"
-      },
-      textiles: {
-        title: "Têxteis e Moda",
-        description: "Tecidos de qualidade, roupas e acessórios de moda para comércio internacional"
-      }
     },
     benefits: {
       quality: {
