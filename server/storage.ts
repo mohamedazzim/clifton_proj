@@ -87,7 +87,17 @@ export class MemStorage implements IStorage {
 
     foundersData.forEach(founder => {
       const id = this.currentFounderId++;
-      this.founders.set(id, { ...founder, id, order: founder.order });
+      const founderData: Founder = {
+        ...founder,
+        id,
+        order: founder.order || 0,
+        email: founder.email || null,
+        linkedin: founder.linkedin || null,
+        twitter: founder.twitter || null,
+        instagram: founder.instagram || null,
+        facebook: founder.facebook || null
+      };
+      this.founders.set(id, founderData);
     });
 
     // Seed products/services
@@ -131,7 +141,7 @@ export class MemStorage implements IStorage {
 
     productsData.forEach(product => {
       const id = this.currentProductId++;
-      this.products.set(id, { ...product, id, order: product.order });
+      this.products.set(id, { ...product, id, order: product.order || 0 });
     });
 
     // Seed projects
@@ -170,7 +180,7 @@ export class MemStorage implements IStorage {
 
     projectsData.forEach(project => {
       const id = this.currentProjectId++;
-      this.projects.set(id, { ...project, id, order: project.order });
+      this.projects.set(id, { ...project, id, order: project.order || 0 });
     });
   }
 
@@ -181,7 +191,16 @@ export class MemStorage implements IStorage {
 
   async createFounder(insertFounder: InsertFounder): Promise<Founder> {
     const id = this.currentFounderId++;
-    const founder: Founder = { ...insertFounder, id, order: insertFounder.order || 0 };
+    const founder: Founder = {
+      ...insertFounder,
+      id,
+      order: insertFounder.order || 0,
+      email: insertFounder.email || null,
+      linkedin: insertFounder.linkedin || null,
+      twitter: insertFounder.twitter || null,
+      instagram: insertFounder.instagram || null,
+      facebook: insertFounder.facebook || null
+    };
     this.founders.set(id, founder);
     return founder;
   }

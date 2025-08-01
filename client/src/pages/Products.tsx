@@ -197,7 +197,6 @@ const Products = () => {
       {/* Products Grid */}
       <section className="relative py-20 px-5 sm:px-8 lg:px-10">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 justify-items-center max-w-5xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {products.map((product, index) => (
               <div
@@ -206,7 +205,6 @@ const Products = () => {
                   e.preventDefault();
                   handleProductClick(product.slug);
                 }}
-                className="w-full max-w-md group relative noise-grid gradient-border glass rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 hover:scale-105 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30 cursor-pointer"
                 className="group relative noise-grid gradient-border glass rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 hover:scale-105 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30 cursor-pointer"
                 style={{ 
                   animationDelay: `${index * 150}ms`,

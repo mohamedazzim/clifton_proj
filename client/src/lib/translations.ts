@@ -35,7 +35,7 @@ export const translations = {
       title: "Meet Our Founders",
       subtitle: "Visionary leaders with decades of experience in international commerce"
     },
-    products: {
+    services: {
       title: "Our Services",
       subtitle: "Comprehensive import and export solutions connecting global markets with precision and reliability",
       learnMore: "Learn More",
@@ -142,13 +142,10 @@ export const translations = {
       textiles: {
         title: "Textiles & Fashion",
         description: "Quality fabrics, garments, and fashion accessories for international trade"
+      },
       electronics: {
         title: "Consumer Electronics", 
         description: "High-quality electronic devices and components for global markets"
-      },
-      textiles: {
-        title: "Textiles & Fashion",
-        description: "Quality fabrics, garments, and fashion accessories for international trade"
       },
       automotive: {
         title: "Automotive Components",
@@ -206,7 +203,7 @@ export const translations = {
       title: "Conheça Nossos Fundadores",
       subtitle: "Líderes visionários com décadas de experiência em comércio internacional"
     },
-    products: {
+    services: {
       title: "Nossos Serviços",
       subtitle: "Soluções abrangentes de importação e exportação conectando mercados globais com precisão e confiabilidade",
       learnMore: "Saiba Mais",
@@ -218,6 +215,8 @@ export const translations = {
         title: "Têxteis e Moda",
         description: "Tecidos de qualidade, roupas e acessórios de moda para comércio internacional"
       }
+    },
+    whatWeDo: {
       title: "O Que Fazemos",
       subtitle: "Oferecemos uma gama abrangente de serviços personalizados para atender às diversas necessidades de nossos clientes",
       learnMore: "Saiba Mais"

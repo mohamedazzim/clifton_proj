@@ -1,8 +1,6 @@
 import React from 'react';
 import { useLocation } from "wouter";
 import { useLanguage } from "./LanguageProvider";
-import { useLocation } from "wouter";
-import { useLanguage } from "./LanguageProvider";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -222,7 +220,6 @@ export function ModernProducts() {
                     </div>
                   </div>
                 </div>
-            ))}
               </SwiperSlide>
             ))}
           </Swiper>
