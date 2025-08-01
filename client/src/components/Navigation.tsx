@@ -3,11 +3,7 @@ import { useLocation } from "wouter";
 import { useTheme } from "./ThemeProvider";
 import { useLanguage } from "./LanguageProvider";
 
-<<<<<<< HEAD
 
-=======
-import WhatsApp_Image_2025_06_23_at_15_47_14_b699984d_removebg_preview from "@assets/WhatsApp_Image_2025-06-23_at_15.47.14_b699984d-removebg-preview.png";
->>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
 
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -49,11 +45,7 @@ export function Navigation() {
   return (
     <nav className="fixed top-0 w-full z-50 px-5 sm:px-8 lg:px-10 pt-5 sm:pt-8">
       <div className="max-w-7xl mx-auto">
-<<<<<<< HEAD
         <div className="rounded-2xl px-6 sm:px-10 py-5 glass glass-enhanced backdrop-blur-xl shadow-2xl border border-white/20 pl-[30px] pr-[30px] pt-[12px] pb-[12px]">
-=======
-        <div className="rounded-2xl px-6 sm:px-10 py-5 bg-stone-50 shadow-2xl border border-gray-200 pl-[30px] pr-[30px] pt-[12px] pb-[12px]">
->>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">

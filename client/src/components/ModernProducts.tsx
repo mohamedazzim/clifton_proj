@@ -1,8 +1,6 @@
-<<<<<<< HEAD
 import React from 'react';
 import { useLocation } from "wouter";
 import { useLanguage } from "./LanguageProvider";
-=======
 import { useLocation } from "wouter";
 import { useLanguage } from "./LanguageProvider";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,7 +10,6 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
->>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
 
 interface ProductItem {
   name: string;
@@ -37,8 +34,6 @@ export function ModernProducts() {
       slug: "agriculture_product"
     },
     {
-<<<<<<< HEAD
-=======
       name: "Consumer Electronics",
       description: "Latest technology products and consumer electronics for international distribution.",
       image: "/images/products/consumer-electronics.jpg",
@@ -48,15 +43,12 @@ export function ModernProducts() {
     },
    
     {
->>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
       name: "Textiles & Fashion",
       description: "Quality textiles and fashion products for international retail and wholesale markets.",
       image: "/images/products/textiles_and_fashion.jpg",
       category: "Fashion",
       buttonText: "Learn More",
       slug: "textiles_fashion"
-<<<<<<< HEAD
-=======
     },
     {
       name: "Automotive Components",
@@ -65,7 +57,6 @@ export function ModernProducts() {
       category: "Automotive", 
       buttonText: "Learn More",
       slug: "automotive_components"
->>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
     }
   ];
 
@@ -79,9 +70,7 @@ export function ModernProducts() {
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-<<<<<<< HEAD
 
-=======
       <style>
         {`
           .products-swiper .swiper-button-next,
@@ -97,23 +86,18 @@ export function ModernProducts() {
           }
         `}
       </style>
->>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-block bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-6 py-2 rounded-full font-medium mb-6 backdrop-blur-sm border border-blue-200/50 dark:border-blue-700/50 text-[18px]">
-<<<<<<< HEAD
             {t('products.title')}
-=======
             Our Products
->>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
           </div>
           <h2 className="text-lg sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6">
             <span className="text-gray-900 dark:text-white">Premium </span>
             <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">Commodities</span>
           </h2>
           <p className="text-sm sm:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-<<<<<<< HEAD
             {t('products.subtitle')}
           </p>
         </div>
@@ -148,9 +132,10 @@ export function ModernProducts() {
                   <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base mb-4 leading-relaxed">
                     {product.description}
                   </p>
-=======
-            Sourcing and delivering the finest agricultural products to markets worldwide with uncompromising quality standards
-          </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Products Grid with Navigation */}
@@ -216,7 +201,6 @@ export function ModernProducts() {
                     <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
                       {product.description}
                     </p>
->>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
                     
                     {/* Bottom Section */}
                     <div className="flex items-center justify-between">
@@ -238,9 +222,7 @@ export function ModernProducts() {
                     </div>
                   </div>
                 </div>
-<<<<<<< HEAD
             ))}
-=======
               </SwiperSlide>
             ))}
           </Swiper>
@@ -251,7 +233,6 @@ export function ModernProducts() {
           </div>
           <div className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md border border-white/20 dark:border-gray-600/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/30 dark:hover:bg-gray-700/30 hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl z-10">
             <ChevronRight className="w-6 h-6 text-gray-800 dark:text-gray-200" />
->>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
           </div>
         </div>
       </div>

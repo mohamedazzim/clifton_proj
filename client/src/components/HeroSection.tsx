@@ -188,7 +188,6 @@ export function HeroSection() {
               </div>
             </div>
 
-<<<<<<< HEAD
             {/* Professional Hero Text */}
             <div className="mb-8 text-center">
               <div className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap animate-fade-up animation-delay-300">
@@ -203,7 +202,6 @@ export function HeroSection() {
                 <span className="text-base sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-medium text-gray-700 dark:text-gray-300" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '500', letterSpacing: '0.08em' }}>with</span>
                 
                 <span className="text-lg sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-gray-100 tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '700', letterSpacing: '0.1em', textShadow: '1px 1px 3px rgba(0,0,0,0.2)' }}>Delivery</span>
-=======
             {/* Centered Animated Text with Static Icons */}
             <div className="mb-8 text-center">
               <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap animate-fade-up animation-delay-300">
@@ -248,7 +246,6 @@ export function HeroSection() {
                   </div>
                 </div>
 
->>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
               </div>
             </div>
             
