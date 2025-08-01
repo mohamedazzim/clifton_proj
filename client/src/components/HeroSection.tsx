@@ -66,12 +66,12 @@ export function HeroSection() {
             key={index}
             className={`absolute inset-0 bg-cover bg-center transition-all duration-2000 ease-in-out ${
               index === currentSlide 
-                ? 'opacity-10' 
+                ? 'opacity-40' 
                 : 'opacity-0'
             }`}
             style={{ 
               backgroundImage: `url(${image})`,
-              filter: 'grayscale(100%) brightness(1.8) contrast(0.6)',
+              filter: 'sepia(20%) brightness(1.3) contrast(0.8) saturate(0.7)',
               transform: index === currentSlide 
                 ? 'scale(1.02)' 
                 : 'scale(1.05)',
@@ -82,9 +82,9 @@ export function HeroSection() {
       {/* Enhanced Background Overlay */}
       <div className="absolute inset-0 z-1">
         {/* Milk-white background overlay */}
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(248, 250, 252, 0.85)' }}></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-stone-50/80 via-stone-50/60 to-stone-50/80"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-50/40 via-transparent to-stone-50/40"></div>
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(248, 250, 252, 0.65)' }}></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-50/60 via-stone-50/40 to-stone-50/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-50/30 via-transparent to-stone-50/30"></div>
         
         {/* Sharp Edge Overlays for Light Mode */}
         <div className="absolute inset-0 overflow-hidden block dark:hidden">
@@ -297,6 +297,22 @@ export function HeroSection() {
             Scroll Down
           </span>
         </div>
+      </div>
+
+      {/* Carousel Navigation Dots */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-3">
+        {heroImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide 
+                ? 'bg-gray-800 scale-125 shadow-lg' 
+                : 'bg-gray-400 hover:bg-gray-600'
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );
