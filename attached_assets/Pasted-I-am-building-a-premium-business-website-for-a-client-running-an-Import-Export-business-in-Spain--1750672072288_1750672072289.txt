@@ -1,0 +1,146 @@
+I am building a premium business website for a client running an Import/Export business in Spain.
+👉 This website will:
+
+Replace PDF-based catalogs
+
+Showcase their work quality and company information
+
+Provide multilingual support (English + Portuguese)
+
+Highlight the founders, vision, and mission
+
+Present their products in a clean, catalog-style display
+
+🏗 General Project Requirements
+✅ Business landing page website
+✅ Fully responsive (mobile, tablet, desktop) 
+✅ SEO-friendly (semantic HTML, meta tags, sitemap.xml, robots.txt)
+✅ Modern, clean, and professional UI/UX,use tailwin css and the three.js for scrolling animation and prallex animation (full page is pure black and white with gradients colours of black and white)
+I NEED GRID BOX IN TRANSPRENT LAYOUT AND NAVIGATION MENU TOO
+
+
+✅ Color palette to match pure black logo :
+
+
+✅ Production-ready code structure
+
+🖼 Core Pages / Sections
+✅ Proper NavBar
+
+Links: Home, About Us, Our Products, Projects, Contact Us
+
+Language switcher
+
+✅ Hero Section
+
+Full-width hero banner with text overlay / call-to-action
+
+Subtle animation or parallax effect
+
+✅ Vision / Mission
+
+Dedicated section with mission and vision statements
+
+✅ Founders Section
+
+Showcase founders/owners: name, photo, short bio
+
+✅ About Us Page
+
+Company overview
+
+Founders section
+
+Vision & mission
+
+✅ Our Products Page
+
+Catalog of products: name, description, image, category
+
+No cart or checkout (showcase only)
+
+✅ Project Showcase Section
+
+List of previous projects: title, description, images, location, year
+
+Sort/filter by year or category
+
+✅ Contact Us Page
+
+Contact form: Name, Email, Message
+
+Optionally add WhatsApp / Telegram link
+
+✅ Footer
+
+Company info
+
+Social media links (if any)
+
+Privacy Policy / Terms link
+
+🌍 Multilingual Support
+✅ Prompt language selection (English | Português) on first load
+✅ Store language preference in localStorage or cookies
+✅ All content loads in selected language
+✅ Option to switch language anytime
+
+🧱 Frontend Stack
+React.js (with React Router)
+
+Tailwind CSS (with custom palette)
+
+i18next for language translations
+
+Axios for API calls
+
+🔧 Backend Stack
+Node.js + Express.js (or Django if preferred)
+
+MongoDB Atlas (or PostgreSQL if relational preferred)
+
+RESTful APIs
+
+👨‍💼 Admin Panel (Optional but Preferred)
+✅ Admin login (hardcoded or basic auth)
+✅ Dashboard to:
+
+Add/Edit/Delete Projects
+
+Add/Edit/Delete Products
+
+View contact queries
+
+🌐 Deployment Requirements
+✅ Full-stack deployed on VPS or Vercel (split frontend/backend folders)
+✅ Use .env files for config
+✅ MongoDB Atlas or local DB
+
+📁 Output Structure
+✅ Separate folders:
+
+/frontend/ (React app)
+
+/backend/ (Express or Django APIs)
+
+✅ Include:
+
+.env.example files
+
+README with setup and deployment instructions
+
+Sample translations (English + Portuguese)
+
+Seed data: 3 projects, 5 products, 2 founders
+
+✅ Delivery Expectations
+File-by-file code output
+
+Clear file paths (e.g. /frontend/src/components/NavBar.js)
+
+Special setup instructions if any
+
+Scalable and clean code, ready for production
+
+💡 Final Note:
+Prioritize a visually elegant, clean design that reinforces the professionalism of the brand. The site should be their primary online identity.
