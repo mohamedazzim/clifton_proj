@@ -60,12 +60,12 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <VisionMission />
-      <Founders />
       <Products />
       <ModernProducts />
       <Projects />
       <Testimonials />
       <OurClients />
+      <Founders />
       <Contact />
       <Footer />
     </div>

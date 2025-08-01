@@ -36,8 +36,8 @@ export const translations = {
       subtitle: "Visionary leaders with decades of experience in international commerce"
     },
     products: {
-      title: "What We Do",
-      subtitle: "We offer a comprehensive range of services tailored to meet the diverse needs of our clients",
+      title: "Our Services",
+      subtitle: "Comprehensive import and export solutions connecting global markets with precision and reliability",
       learnMore: "Learn More"
     },
     projects: {
@@ -196,8 +196,8 @@ export const translations = {
       subtitle: "Líderes visionários com décadas de experiência em comércio internacional"
     },
     products: {
-      title: "O Que Fazemos",
-      subtitle: "Oferecemos uma gama abrangente de serviços personalizados para atender às diversas necessidades de nossos clientes",
+      title: "Nossos Serviços",
+      subtitle: "Soluções abrangentes de importação e exportação conectando mercados globais com precisão e confiabilidade",
       learnMore: "Saiba Mais"
     },
     projects: {
