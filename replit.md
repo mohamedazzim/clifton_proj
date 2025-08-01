@@ -29,6 +29,19 @@ The architecture follows a monorepo structure, ensuring shared types and schemas
 
 ## Recent Changes (August 1, 2025)
 
+### Product Card UI Cleanup & Individual Product Page Updates
+- **Removed min trade volume and min order from agriculture product cards** on `/products/agriculture_product` endpoint as requested
+- **Updated individual product pages with specific minimum order requirements**:
+  * Coffee: Min 50 MT (changed from 25 MT)
+  * Sugar: Min 12500 MT (changed from 100 MT) 
+  * Corn: Min 12500 MT (changed from 100 MT)
+  * Soybeans: Min 5000 MT (changed from 75 MT)
+- **Improved product card layout** by removing trade volume/min order sections for cleaner appearance
+- Product cards now focus on product description and call-to-action buttons only
+- Individual product detail pages retain all comprehensive information including the updated minimum orders
+
+## Previous Changes (August 1, 2025)
+
 <<<<<<< HEAD
 ### Hero Section Enhancement & Content Cleanup
 - **Removed "cringy icons"** from hero section Import/Export/Delivery text as requested

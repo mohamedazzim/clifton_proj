@@ -32,7 +32,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
       origins: ['Ethiopia', 'Colombia', 'Brazil', 'Guatemala'],
       certifications: ['Fair Trade', 'Organic', 'UTZ Certified'],
       tradeVolume: '500-5,000 MT',
-      minOrder: '25 MT'
+      minOrder: '50 MT'
     },
     'salt': {
       name: 'Salt',
@@ -58,7 +58,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
       origins: ['Brazil', 'Thailand', 'India', 'Australia'],
       certifications: ['ISO 22000', 'Kosher', 'Halal'],
       tradeVolume: '2,000-25,000 MT',
-      minOrder: '100 MT'
+      minOrder: '12500 MT'
     },
     'soybeans': {
       name: 'Soybeans',
@@ -71,7 +71,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
       origins: ['Brazil', 'Argentina', 'USA', 'Ukraine'],
       certifications: ['RTRS Certified', 'Non-GMO Project', 'ISCC Plus'],
       tradeVolume: '1,500-15,000 MT',
-      minOrder: '75 MT'
+      minOrder: '5000 MT'
     },
     'corn': {
       name: 'Corn',
@@ -84,7 +84,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
       origins: ['USA', 'Brazil', 'Argentina', 'Ukraine'],
       certifications: ['Non-GMO Project', 'Organic', 'Feed Grade', 'Food Grade'],
       tradeVolume: '2,000-20,000 MT',
-      minOrder: '100 MT'
+      minOrder: '12500 MT'
     }
   };
 

@@ -309,20 +309,9 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-black group-hover:to-gray-600 dark:group-hover:from-white dark:group-hover:to-gray-300 group-hover:bg-clip-text transition-all duration-500">
                     {product.name}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
                     {product.description}
                   </p>
-                  
-                  <div className="space-y-3 mb-6">
-                    <div className="flex justify-between items-center py-2 border-b border-gray-200/30 dark:border-gray-700/30">
-                      <span className="text-xs text-gray-500 dark:text-gray-400">Trade Volume</span>
-                      <span className="font-semibold text-gray-900 dark:text-white text-sm">{product.tradeVolume}</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs text-gray-500 dark:text-gray-400">Min Order</span>
-                      <span className="font-semibold text-gray-900 dark:text-white text-sm">{product.minOrder}</span>
-                    </div>
-                  </div>
                   
                   <div className="space-y-3 relative z-10">
                     <button 
