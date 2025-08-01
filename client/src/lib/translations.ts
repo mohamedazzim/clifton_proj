@@ -161,6 +161,10 @@ export const translations = {
       pricing: {
         title: "Competitive Pricing",
         description: "Market-leading prices with flexible payment terms"
+      },
+      globalReach: {
+        title: "Global Reach",
+        description: "Worldwide network of trusted suppliers and partners"
       }
     },
     productCategory: {
@@ -367,6 +371,10 @@ export const translations = {
       pricing: {
         title: "Preços Competitivos",
         description: "Preços líderes de mercado com termos de pagamento flexíveis"
+      },
+      globalReach: {
+        title: "Alcance Global",
+        description: "Rede mundial de fornecedores e parceiros confiáveis"
       }
     },
     productCategory: {

@@ -81,7 +81,40 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
         '/images/products/salt.jpeg',
         '/images/products/sugar.jpg'
       ],
-      products: []
+      products: [
+        {
+          name: 'Premium Cotton Fabrics',
+          image: '/images/products/agricultural/coffee.jpg',
+          gradient: 'from-blue-600 to-blue-800',
+          description: 'High-quality cotton textiles from certified organic farms for fashion and home applications',
+          tradeVolume: '50-500 MT',
+          minOrder: '5 MT'
+        },
+        {
+          name: 'Luxury Silk Products',
+          image: '/images/products/agricultural/salt.jpg',
+          gradient: 'from-purple-600 to-purple-800',
+          description: 'Premium silk fabrics and garments sourced from traditional silk-producing regions',
+          tradeVolume: '10-100 MT',
+          minOrder: '1 MT'
+        },
+        {
+          name: 'Synthetic Fiber Textiles',
+          image: '/images/products/agricultural/soybeans.jpg',
+          gradient: 'from-green-600 to-green-800',
+          description: 'Modern synthetic textiles including polyester, nylon, and blended fabrics for industrial use',
+          tradeVolume: '100-1,000 MT',
+          minOrder: '10 MT'
+        },
+        {
+          name: 'Fashion Accessories',
+          image: '/images/products/agricultural/sugar.jpg',
+          gradient: 'from-red-600 to-red-800',
+          description: 'Complete range of fashion accessories including belts, bags, scarves, and jewelry components',
+          tradeVolume: '5-50 MT',
+          minOrder: '500 kg'
+        }
+      ]
     }
   };
 
@@ -133,8 +166,8 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
     return <LoadingScreen onComplete={() => setIsLoading(false)} duration={1000} />;
   }
   
-  // Show "Will be updated soon" for all categories except agriculture_product
-  if (category !== 'agriculture_product') {
+  // Show "Will be updated soon" for categories without products (none currently)
+  if (category !== 'agriculture_product' && category !== 'textiles_fashion') {
     const categoryTitles = {
       textiles_fashion: 'Textiles & Fashion'
     };

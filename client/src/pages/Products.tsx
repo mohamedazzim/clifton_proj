@@ -98,8 +98,8 @@ const Products = () => {
     },
     {
       icon: '🌍',
-      title: 'Global Reach',
-      description: 'Worldwide network of trusted suppliers and partners'
+      title: t('benefits.globalReach.title'),
+      description: t('benefits.globalReach.description')
     }
   ];
 
