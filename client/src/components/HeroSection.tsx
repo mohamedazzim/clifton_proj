@@ -188,50 +188,20 @@ export function HeroSection() {
               </div>
             </div>
 
-            {/* Centered Animated Text with Static Icons */}
+            {/* Professional Hero Text */}
             <div className="mb-8 text-center">
-              <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap animate-fade-up animation-delay-300">
-                <div className="flex items-center gap-1 sm:gap-2">
-                  <span className="text-xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-black text-gray-900 dark:text-gray-100 tracking-wider leading-none" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '900', letterSpacing: '0.15em', textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>CLIFTON</span>
-                  <div className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 relative">
-                    <svg className="w-full h-full text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2L13.09 7.26L18 6L16.74 11.26L22 12L16.74 12.74L18 18L12.74 16.74L12 22L11.26 16.74L6 18L7.26 12.74L2 12L7.26 11.26L6 6L11.26 7.26L12 2Z"/>
-                    </svg>
-                  </div>
-                </div>
+              <div className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap animate-fade-up animation-delay-300">
+                <span className="text-xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-black text-gray-900 dark:text-gray-100 tracking-wider leading-none" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '900', letterSpacing: '0.15em', textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>CLIFTON</span>
                 
-                <div className="flex items-center gap-1 sm:gap-2 relative z-10">
-                  <span className="text-sm sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-semibold text-gray-900 dark:text-gray-200">Import</span>
-                  <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 relative">
-                    <svg className="w-full h-full text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V12M7 8V4M17 8V12M17 16V20M3 12H21M7 8H17" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 20L8 16H16L12 20Z" />
-                    </svg>
-                  </div>
-                </div>
+                <span className="text-lg sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-gray-100 tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '700', letterSpacing: '0.1em', textShadow: '1px 1px 3px rgba(0,0,0,0.2)' }}>Import</span>
 
-                <span className="text-sm sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-light text-gray-900 dark:text-gray-300 relative z-10">&</span>
+                <span className="text-lg sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-light text-gray-700 dark:text-gray-300" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '300', letterSpacing: '0.05em' }}>&</span>
 
-                <div className="flex items-center gap-1 sm:gap-2 relative z-10">
-                  <span className="text-sm sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-semibold text-gray-900 dark:text-gray-200">Export</span>
-                  <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 relative">
-                    <svg className="w-full h-full text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16V12M17 8V4M7 8V12M7 16V20M21 12H3M17 8H7" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4L16 8H8L12 4Z" />
-                    </svg>
-                  </div>
-                </div>
+                <span className="text-lg sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-gray-100 tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '700', letterSpacing: '0.1em', textShadow: '1px 1px 3px rgba(0,0,0,0.2)' }}>Export</span>
 
-                <div className="flex items-center gap-1 sm:gap-2 relative z-10">
-                  <span className="text-xs sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-medium text-gray-900 dark:text-gray-300">with</span>
-                  <span className="text-sm sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-semibold text-gray-900 dark:text-gray-200">Delivery</span>
-                  <div className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 relative">
-                    <svg className="w-full h-full text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                    </svg>
-                  </div>
-                </div>
-
+                <span className="text-base sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-medium text-gray-700 dark:text-gray-300" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '500', letterSpacing: '0.08em' }}>with</span>
+                
+                <span className="text-lg sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-gray-100 tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '700', letterSpacing: '0.1em', textShadow: '1px 1px 3px rgba(0,0,0,0.2)' }}>Delivery</span>
               </div>
             </div>
             
