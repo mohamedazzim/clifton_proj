@@ -45,7 +45,7 @@ export function Navigation() {
   return (
     <nav className="fixed top-0 w-full z-50 px-5 sm:px-8 lg:px-10 pt-5 sm:pt-8">
       <div className="max-w-7xl mx-auto">
-        <div className="noise-grid gradient-border glass rounded-2xl px-6 sm:px-10 py-5 backdrop-blur-xl bg-white/98 dark:bg-black/98 shadow-2xl border border-gray-200/50 dark:border-gray-800/50 pl-[30px] pr-[30px] pt-[12px] pb-[12px]">
+        <div className="noise-grid gradient-border glass rounded-2xl px-6 sm:px-10 py-5 bg-stone-50 dark:bg-gray-900 shadow-2xl border border-gray-200/50 dark:border-gray-800/50 pl-[30px] pr-[30px] pt-[12px] pb-[12px]">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
