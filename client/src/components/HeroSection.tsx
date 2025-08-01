@@ -66,12 +66,12 @@ export function HeroSection() {
             key={index}
             className={`absolute inset-0 bg-cover bg-center transition-all duration-2000 ease-in-out ${
               index === currentSlide 
-                ? 'opacity-40' 
+                ? 'opacity-70' 
                 : 'opacity-0'
             }`}
             style={{ 
               backgroundImage: `url(${image})`,
-              filter: 'sepia(20%) brightness(1.3) contrast(0.8) saturate(0.7)',
+              filter: 'sepia(10%) brightness(1.1) contrast(0.9) saturate(0.8)',
               transform: index === currentSlide 
                 ? 'scale(1.02)' 
                 : 'scale(1.05)',
@@ -82,9 +82,9 @@ export function HeroSection() {
       {/* Enhanced Background Overlay */}
       <div className="absolute inset-0 z-1">
         {/* Milk-white background overlay */}
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(248, 250, 252, 0.65)' }}></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-stone-50/60 via-stone-50/40 to-stone-50/60"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-50/30 via-transparent to-stone-50/30"></div>
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(248, 250, 252, 0.45)' }}></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-50/40 via-stone-50/20 to-stone-50/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-50/20 via-transparent to-stone-50/20"></div>
         
         {/* Sharp Edge Overlays for Light Mode */}
         <div className="absolute inset-0 overflow-hidden block dark:hidden">

@@ -145,12 +145,12 @@ const Products = () => {
             className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out ${fadeClass} ${slideDirection}`}
             style={{
               backgroundImage: `url(${backgroundImages[currentImageIndex]})`,
-              filter: 'sepia(20%) brightness(1.2) contrast(0.8) saturate(0.7)',
+              filter: 'sepia(10%) brightness(1.1) contrast(0.9) saturate(0.8)',
             }}
           />
           
           {/* Milk-white overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-stone-50/70 via-stone-50/50 to-stone-50/70 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-50/50 via-stone-50/30 to-stone-50/50 z-10"></div>
         </div>
 
         {/* Content */}
