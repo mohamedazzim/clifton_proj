@@ -16,10 +16,7 @@ const Products = () => {
   // Background images for sliding effect
   const backgroundImages = [
     '/images/products/agriculture-cattle.jpg',
-    '/images/products/textiles_and_fashion.jpg',
-    '/images/products/consumer-electronics.jpg',
-    '/images/products/textiles_and_fashion.jpg',
-    '/images/products/automotive.jpg'
+    '/images/products/textiles_and_fashion.jpg'
   ];
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -67,26 +64,11 @@ const Products = () => {
       description: t('products.agricultural.description')
     },
     {
-      name: t('products.electronics.title'),
-      slug: 'consumer_electronics',
-      image: '/images/products/consumer-electronics.jpg',
-      gradient: 'from-blue-600 to-blue-800',
-      description: t('products.electronics.description')
-    },
-    
-    {
       name: t('products.textiles.title'),
       slug: 'textiles_fashion',
       image: '/images/products/textiles_and_fashion.jpg',
       gradient: 'from-purple-600 to-purple-800',
       description: t('products.textiles.description')
-    },
-    {
-      name: t('products.automotive.title'),
-      slug: 'automotive_components',
-      image: '/images/products/automotive.jpg',
-      gradient: 'from-red-600 to-red-800',
-      description: t('products.automotive.description')
     }
   ];
 
@@ -197,7 +179,7 @@ const Products = () => {
       {/* Products Grid */}
       <section className="relative py-20 px-5 sm:px-8 lg:px-10">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 lg:gap-12 justify-items-center max-w-4xl mx-auto">
             {products.map((product, index) => (
               <div
                 key={product.name}

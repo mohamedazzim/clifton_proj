@@ -135,6 +135,8 @@ export const translations = {
       contactTeam: "Contact Sales Team"
     },
     products: {
+      title: "Our Products",
+      subtitle: "Comprehensive import and export solutions connecting global markets with precision and reliability",
       agricultural: {
         title: "Agricultural Products",
         description: "Premium agricultural commodities including coffee, salt, sugar, and soybeans"
@@ -142,14 +144,6 @@ export const translations = {
       textiles: {
         title: "Textiles & Fashion",
         description: "Quality fabrics, garments, and fashion accessories for international trade"
-      },
-      electronics: {
-        title: "Consumer Electronics", 
-        description: "High-quality electronic devices and components for global markets"
-      },
-      automotive: {
-        title: "Automotive Components",
-        description: "Reliable automotive parts and components for the global automotive industry"
       }
     },
     benefits: {
@@ -308,21 +302,15 @@ export const translations = {
       contactTeam: "Equipe de Vendas"
     },
     products: {
+      title: "Nossos Produtos",
+      subtitle: "Soluções abrangentes de importação e exportação conectando mercados globais com precisão e confiabilidade",
       agricultural: {
         title: "Produtos Agrícolas",
         description: "Commodities agrícolas premium incluindo café, sal, açúcar e soja"
       },
-      electronics: {
-        title: "Eletrônicos de Consumo",
-        description: "Dispositivos eletrônicos de alta qualidade e componentes para mercados globais"
-      },
       textiles: {
         title: "Têxteis e Moda",
         description: "Tecidos de qualidade, roupas e acessórios de moda para comércio internacional"
-      },
-      automotive: {
-        title: "Componentes Automotivos",
-        description: "Peças automotivas confiáveis e componentes para a indústria automotiva global"
       }
     },
     benefits: {

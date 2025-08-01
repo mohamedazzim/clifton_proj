@@ -1,13 +1,6 @@
 import React from 'react';
 import { useLocation } from "wouter";
 import { useLanguage } from "./LanguageProvider";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
 
 interface ProductItem {
   name: string;
@@ -24,37 +17,20 @@ export function ModernProducts() {
 
   const products: ProductItem[] = [
     {
-      name: "Agricultural Products", 
-      description: "Premium agricultural products and specialty foods from Spain to global markets.",
+      name: t('products.agricultural.title'), 
+      description: t('products.agricultural.description'),
       image: "/images/products/agriculture-cattle.jpg", 
       category: "Agriculture",
       buttonText: "Learn More",
       slug: "agriculture_product"
     },
     {
-      name: "Consumer Electronics",
-      description: "Latest technology products and consumer electronics for international distribution.",
-      image: "/images/products/consumer-electronics.jpg",
-      category: "Technology",
-      buttonText: "Learn More",
-      slug: "consumer_electronics"
-    },
-   
-    {
-      name: "Textiles & Fashion",
-      description: "Quality textiles and fashion products for international retail and wholesale markets.",
+      name: t('products.textiles.title'),
+      description: t('products.textiles.description'),
       image: "/images/products/textiles_and_fashion.jpg",
       category: "Fashion",
       buttonText: "Learn More",
       slug: "textiles_fashion"
-    },
-    {
-      name: "Automotive Components",
-      description: "Precision automotive components for global manufacturers.",
-      image: "/images/products/automotive.jpg",
-      category: "Automotive", 
-      buttonText: "Learn More",
-      slug: "automotive_components"
     }
   ];
 
@@ -69,27 +45,12 @@ export function ModernProducts() {
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
 
-      <style>
-        {`
-          .products-swiper .swiper-button-next,
-          .products-swiper .swiper-button-prev {
-            display: none;
-          }
-          
-          @media screen and (max-width: 769px) {
-            .swiper-button-prev-custom,
-            .swiper-button-next-custom {
-              display: flex;
-            }
-          }
-        `}
-      </style>
+
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-block bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-6 py-2 rounded-full font-medium mb-6 backdrop-blur-sm border border-blue-200/50 dark:border-blue-700/50 text-[18px]">
             {t('products.title')}
-            Our Products
           </div>
           <h2 className="text-lg sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6">
             <span className="text-gray-900 dark:text-white">Premium </span>
@@ -102,7 +63,7 @@ export function ModernProducts() {
 
         {/* Products Grid - Responsive 2 Column Layout */}
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 justify-items-center max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 justify-items-center max-w-4xl mx-auto">
             {products.map((product, index) => (
               <div 
                 key={index}
@@ -130,106 +91,27 @@ export function ModernProducts() {
                   <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base mb-4 leading-relaxed">
                     {product.description}
                   </p>
+                  
+                  {/* Category Badge */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100/70 dark:bg-gray-700/70 px-3 py-1 rounded-full backdrop-blur-sm">
+                      {product.category}
+                    </span>
+                    
+                    {/* Action Button */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleProductClick(product.slug);
+                      }}
+                      className="bg-white/10 hover:bg-white/20 dark:bg-gray-700/10 dark:hover:bg-gray-600/20 backdrop-blur-md border border-white/20 dark:border-gray-600/20 text-gray-900 dark:text-white py-2 px-4 rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    >
+                      {product.buttonText}
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Products Grid with Navigation */}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
-          <Swiper
-            modules={[Navigation]}
-            spaceBetween={16}
-            loop={false}
-            grabCursor={true}
-            allowTouchMove={true}
-            navigation={{
-              prevEl: '.swiper-button-prev-custom',
-              nextEl: '.swiper-button-next-custom',
-            }}
-            breakpoints={{
-              0: {
-                slidesPerView: 1,
-                spaceBetween: 12,
-              },
-              480: {
-                slidesPerView: 1,
-                spaceBetween: 16,
-              },
-              770: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 24,
-              },
-              1280: {
-                slidesPerView: 4,
-                spaceBetween: 24,
-              },
-            }}
-            className="products-swiper"
-          >
-            {products.map((product, index) => (
-              <SwiperSlide key={index}>
-                <div 
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleProductClick(product.slug);
-                  }}
-                  className="noise-grid gradient-border glass rounded-xl shadow-lg bg-white/30 dark:bg-gray-800/30 backdrop-blur-md border border-white/20 dark:border-gray-600/20 hover:shadow-xl transition-all duration-300 hover:bg-white/40 dark:hover:bg-gray-800/40 cursor-pointer hover:scale-105"
-                  style={{ pointerEvents: 'auto' }}
-                >
-                  {/* Product Image */}
-                  <div className="relative h-40 sm:h-48 overflow-hidden rounded-lg m-2 sm:m-3 mb-0">
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-cover rounded-lg transition-transform duration-300 hover:scale-105"
-                    />
-                  </div>
-                  
-                  {/* Product Content */}
-                  <div className="p-3 sm:p-4 pt-2 sm:pt-3">
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-2 sm:mb-3">
-                      {product.name}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed">
-                      {product.description}
-                    </p>
-                    
-                    {/* Bottom Section */}
-                    <div className="flex items-center justify-between">
-                      {/* Category Badge */}
-                      <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100/70 dark:bg-gray-700/70 px-2 sm:px-3 py-1 rounded-full backdrop-blur-sm">
-                        {product.category}
-                      </span>
-                      
-                      {/* Action Button */}
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleProductClick(product.slug);
-                        }}
-                        className="bg-white/10 hover:bg-white/20 dark:bg-gray-700/10 dark:hover:bg-gray-600/20 backdrop-blur-md border border-white/20 dark:border-gray-600/20 text-gray-900 dark:text-white py-1.5 sm:py-2 px-3 sm:px-4 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                      >
-                        {product.buttonText}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          
-          {/* Custom Navigation Buttons */}
-          <div className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md border border-white/20 dark:border-gray-600/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/30 dark:hover:bg-gray-700/30 hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl z-10">
-            <ChevronLeft className="w-6 h-6 text-gray-800 dark:text-gray-200" />
-          </div>
-          <div className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 dark:bg-gray-800/10 backdrop-blur-md border border-white/20 dark:border-gray-600/20 rounded-full flex items-center justify-center cursor-pointer hover:bg-white/30 dark:hover:bg-gray-700/30 hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl z-10">
-            <ChevronRight className="w-6 h-6 text-gray-800 dark:text-gray-200" />
           </div>
         </div>
       </div>

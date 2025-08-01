@@ -37,14 +37,10 @@ export function ProductsThreeBackground() {
 
     // Create geometric shapes representing different product categories
     const geometries = [
-      // Electronics - Circuit board pattern
-      new THREE.BoxGeometry(0.3, 0.3, 0.1),
       // Agriculture - Cube for coffee/sugar
       new THREE.BoxGeometry(0.2, 0.2, 0.2),
       // Textiles - Cylinder for fabric rolls
       new THREE.CylinderGeometry(0.1, 0.1, 0.4),
-      // Automotive - Torus for wheels/parts
-      new THREE.TorusGeometry(0.2, 0.05, 8, 16),
       // Generic product boxes
       new THREE.BoxGeometry(0.25, 0.15, 0.25),
       // Spheres for various products
