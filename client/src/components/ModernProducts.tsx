@@ -31,29 +31,12 @@ export function ModernProducts() {
       slug: "agriculture_product"
     },
     {
-      name: "Consumer Electronics",
-      description: "Latest technology products and consumer electronics for international distribution.",
-      image: "/images/products/consumer-electronics.jpg",
-      category: "Technology",
-      buttonText: "Learn More",
-      slug: "consumer_electronics"
-    },
-   
-    {
       name: "Textiles & Fashion",
       description: "Quality textiles and fashion products for international retail and wholesale markets.",
       image: "/images/products/textiles_and_fashion.jpg",
       category: "Fashion",
       buttonText: "Learn More",
       slug: "textiles_fashion"
-    },
-    {
-      name: "Automotive Components",
-      description: "Precision automotive components for global manufacturers.",
-      image: "/images/products/automotive.jpg",
-      category: "Automotive", 
-      buttonText: "Learn More",
-      slug: "automotive_components"
     }
   ];
 
