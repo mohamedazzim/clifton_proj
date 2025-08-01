@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { useTheme } from "./ThemeProvider";
 import { useLanguage } from "./LanguageProvider";
 
-import WhatsApp_Image_2025_06_23_at_15_47_14_b699984d_removebg_preview from "@assets/WhatsApp_Image_2025-06-23_at_15.47.14_b699984d-removebg-preview.png";
+
 
 export function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
