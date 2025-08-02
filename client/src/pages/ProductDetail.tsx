@@ -85,6 +85,58 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
       certifications: ['Non-GMO Project', 'Organic', 'Feed Grade', 'Food Grade'],
       tradeVolume: '2,000-20,000 MT',
       minOrder: '12500 MT'
+    },
+    'premium cotton fabrics': {
+      name: 'Premium Cotton Fabrics',
+      title: 'Premium Cotton Fabrics',
+      image: '/images/products/agricultural/coffee.jpg',
+      gradient: 'from-blue-600 to-blue-800',
+      description: 'High-quality cotton textiles from certified organic farms for fashion and home applications',
+      detailedDescription: 'Premium cotton fabrics represent the pinnacle of textile excellence, sourced from the world\'s finest cotton-producing regions. Our comprehensive portfolio includes organic cotton, conventional cotton, and specialty blends designed to meet the demanding requirements of fashion houses, home textile manufacturers, and industrial applications.\n\nAs a leading trader in premium cotton textiles, CLIFTON maintains direct relationships with certified mills and producers who adhere to the highest standards of quality, sustainability, and ethical production. Our cotton fabrics are carefully selected for their superior fiber length, strength, and consistency, ensuring exceptional performance in end-use applications.\n\nWe offer a diverse range of cotton fabric specifications, from lightweight voiles and lawns perfect for summer garments to heavy-duty canvas and denim suitable for industrial applications. Each fabric undergoes rigorous quality testing to ensure compliance with international standards for colorfastness, shrinkage, and durability.\n\nOur commitment to sustainability extends throughout our supply chain, with a focus on organic and responsibly sourced cotton that supports environmental stewardship and fair labor practices. Partner with CLIFTON for your premium cotton fabric needs and experience the reliability that comes from working with industry professionals dedicated to excellence.',
+      specifications: ['100% Cotton or Cotton Blends', 'Weight: 80-400 GSM', 'Width: 150-280 cm', 'Organic & GOTS Certified options available'],
+      origins: ['India', 'Egypt', 'USA', 'Turkey'],
+      certifications: ['GOTS Certified', 'OEKO-TEX Standard 100', 'Fair Trade', 'Organic Cotton'],
+      tradeVolume: '50-500 MT',
+      minOrder: '5 MT'
+    },
+    'luxury silk products': {
+      name: 'Luxury Silk Products',
+      title: 'Luxury Silk Products',
+      image: '/images/products/agricultural/salt.jpg',
+      gradient: 'from-purple-600 to-purple-800',
+      description: 'Premium silk fabrics and garments sourced from traditional silk-producing regions',
+      detailedDescription: 'Luxury silk products epitomize elegance and quality in the global textile market. Our extensive collection features the finest silk fabrics sourced from traditional silk-producing regions known for their centuries-old expertise in sericulture and silk weaving.\n\nCLIFTON specializes in premium silk varieties including Mulberry silk, Tussah silk, and specialty blends that combine silk with other premium fibers. Our silk products range from delicate chiffons and satins perfect for haute couture to robust silk blends suitable for luxury home furnishings and accessories.\n\nWe maintain direct partnerships with certified silk producers who uphold traditional quality standards while incorporating modern sustainable practices. Each silk product is carefully inspected for luster, drape, and consistency, ensuring that only the finest materials reach our clients.\n\nOur silk portfolio caters to diverse market segments including luxury fashion houses, interior designers, and specialty retailers seeking authentic, high-quality silk products. We understand the unique requirements of silk handling, storage, and transportation, ensuring that products maintain their integrity throughout the supply chain.\n\nExperience the timeless appeal of premium silk with CLIFTON as your trusted trading partner in the luxury textile market.',
+      specifications: ['100% Pure Silk or Silk Blends', 'Weight: 12-25 Momme', 'Width: 114-140 cm', 'Grade A+ Quality'],
+      origins: ['China', 'India', 'Japan', 'Italy'],
+      certifications: ['Cradle to Cradle Certified', 'OEKO-TEX Standard 100', 'Mulberry Silk Certified'],
+      tradeVolume: '10-100 MT',
+      minOrder: '1 MT'
+    },
+    'synthetic fiber textiles': {
+      name: 'Synthetic Fiber Textiles',
+      title: 'Synthetic Fiber Textiles',
+      image: '/images/products/agricultural/soybeans.jpg',
+      gradient: 'from-green-600 to-green-800',
+      description: 'Modern synthetic textiles including polyester, nylon, and blended fabrics for industrial use',
+      detailedDescription: 'Synthetic fiber textiles represent the cutting edge of modern textile technology, offering superior performance characteristics for demanding industrial and commercial applications. Our comprehensive range includes polyester, nylon, polypropylene, and advanced technical fabrics designed to meet specific performance requirements.\n\nCLIFTON partners with leading synthetic textile manufacturers who utilize state-of-the-art production technologies to create fabrics with enhanced durability, moisture management, and specialized properties. Our synthetic textiles serve diverse industries including automotive, aerospace, medical, and technical applications.\n\nOur product portfolio encompasses lightweight performance fabrics for sportswear and activewear, heavy-duty industrial textiles for filtration and geotextile applications, and specialty synthetic blends that combine the best properties of multiple fiber types.\n\nWe understand the critical importance of consistency and performance in synthetic textiles, which is why all our products undergo rigorous testing for strength, chemical resistance, and dimensional stability. Our technical team works closely with clients to identify the optimal synthetic textile solutions for their specific applications.\n\nLeverage the advantages of modern synthetic textiles with CLIFTON as your reliable partner in advanced textile solutions.',
+      specifications: ['Polyester, Nylon, PP, Technical Blends', 'Weight: 50-800 GSM', 'Width: 150-320 cm', 'Performance Enhanced'],
+      origins: ['China', 'Turkey', 'South Korea', 'Taiwan'],
+      certifications: ['ISO 9001', 'REACH Compliant', 'Recycled Content Certified'],
+      tradeVolume: '100-1,000 MT',
+      minOrder: '10 MT'
+    },
+    'fashion accessories': {
+      name: 'Fashion Accessories',
+      title: 'Fashion Accessories',
+      image: '/images/products/agricultural/sugar.jpg',
+      gradient: 'from-red-600 to-red-800',
+      description: 'Complete range of fashion accessories including belts, bags, scarves, and jewelry components',
+      detailedDescription: 'Fashion accessories form an integral part of the global fashion industry, providing the finishing touches that define style and personal expression. CLIFTON offers a comprehensive range of fashion accessories sourced from skilled artisans and established manufacturers worldwide.\n\nOur extensive accessories portfolio includes leather goods such as belts, handbags, and wallets; textile accessories including scarves, shawls, and wraps; and jewelry components ranging from findings and beads to finished pieces. Each category is carefully curated to meet the diverse needs of fashion retailers, designers, and distributors.\n\nWe maintain partnerships with certified suppliers who combine traditional craftsmanship with modern production techniques, ensuring consistent quality and timely delivery. Our accessories are available in various materials including genuine leather, synthetic alternatives, precious and semi-precious metals, and sustainable materials.\n\nQuality control is paramount in our accessories division, with each product undergoing thorough inspection for craftsmanship, durability, and finish quality. We understand the seasonal nature of fashion accessories and work closely with clients to align inventory with market trends and seasonal demands.\n\nElevate your fashion offerings with premium accessories from CLIFTON, your trusted partner in the global fashion accessory trade.',
+      specifications: ['Mixed Materials: Leather, Metal, Textile', 'Various Sizes & Designs', 'Seasonal Collections', 'Custom Manufacturing Available'],
+      origins: ['India', 'China', 'Italy', 'Turkey'],
+      certifications: ['Leather Working Group Certified', 'Responsible Jewelry Council', 'Fair Trade'],
+      tradeVolume: '5-50 MT',
+      minOrder: '500 kg'
     }
   };
 
@@ -148,16 +200,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
               {product.description}
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button className="group noise-grid gradient-border glass px-8 py-4 rounded-xl text-white hover-scale transition-all duration-500 font-semibold text-lg relative overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20">
-                <span className="relative z-10">Request Quote</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/10 transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
-              </button>
-              <button className="group bg-white text-black px-8 py-4 rounded-xl hover-scale transition-all duration-500 font-semibold text-lg border-2 border-transparent hover:border-white/20 relative overflow-hidden">
-                <span className="relative z-10">Download Specifications</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-200 transform skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
-              </button>
-            </div>
+
           </div>
         </div>
       </section>
@@ -252,16 +295,16 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
           {/* Call to Action */}
           <div className="mt-16 text-center">
             <div className="noise-grid gradient-border glass rounded-3xl p-12 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30">
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t("productDetail.requestQuote")}</h3>
+              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Ready to Order?</h3>
               <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-                {t("productDetail.contactUs")} {product.name.toLowerCase()}.
+                Contact our team to discuss your requirements and get a competitive quote for {product.name.toLowerCase()}.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-8 rounded-xl font-semibold text-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                  {t("productDetail.requestQuoteBtn")}
-                </button>
-                <button className="bg-gradient-to-r from-gray-600 to-gray-800 text-white py-4 px-8 rounded-xl font-semibold text-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                  {t("productDetail.contactTeam")}
+              <div className="flex justify-center">
+                <button 
+                  onClick={() => setLocation('/contact')}
+                  className="bg-gradient-to-r from-gray-600 to-gray-800 text-white py-4 px-8 rounded-xl font-semibold text-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                >
+                  Contact Sales Team
                 </button>
               </div>
             </div>
