@@ -74,43 +74,43 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
       ]
     },
     textiles_fashion: {
-      title: 'Textiles & Fashion',
-      subtitle: 'Quality fabrics, garments, and fashion accessories for international trade',
+      title: 'Premium Textiles',
+      subtitle: 'Crafting the future of fashion with sustainable, innovative textile solutions',
       backgroundImages: [
-        '/images/products/coffee.jpg',
-        '/images/products/salt.jpeg',
-        '/images/products/sugar.jpg'
+        'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+        'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
+        'https://images.unsplash.com/photo-1564584217132-2271feaeb3c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'
       ],
       products: [
         {
-          name: 'Premium Cotton Fabrics',
-          image: '/images/products/agricultural/coffee.jpg',
-          gradient: 'from-blue-600 to-blue-800',
-          description: 'High-quality cotton textiles from certified organic farms for fashion and home applications',
+          name: 'Organic Cotton',
+          image: 'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          gradient: 'from-green-600 to-emerald-800',
+          description: 'GOTS certified organic cotton fabrics from sustainable farms, perfect for eco-conscious fashion brands',
           tradeVolume: '50-500 MT',
           minOrder: '5 MT'
         },
         {
-          name: 'Luxury Silk Products',
-          image: '/images/products/agricultural/salt.jpg',
-          gradient: 'from-purple-600 to-purple-800',
-          description: 'Premium silk fabrics and garments sourced from traditional silk-producing regions',
+          name: 'Luxury Silk',
+          image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          gradient: 'from-purple-600 to-pink-800',
+          description: 'Grade A+ luxury silk fabrics sourced from traditional silk-producing regions with centuries of expertise',
           tradeVolume: '10-100 MT',
           minOrder: '1 MT'
         },
         {
-          name: 'Synthetic Fiber Textiles',
-          image: '/images/products/agricultural/soybeans.jpg',
-          gradient: 'from-green-600 to-green-800',
-          description: 'Modern synthetic textiles including polyester, nylon, and blended fabrics for industrial use',
+          name: 'Textile Innovation',
+          image: 'https://images.unsplash.com/photo-1564584217132-2271feaeb3c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          gradient: 'from-blue-600 to-cyan-800',
+          description: 'Performance-enhanced synthetic fibers with advanced moisture-wicking and durability properties for modern applications',
           tradeVolume: '100-1,000 MT',
           minOrder: '10 MT'
         },
         {
           name: 'Fashion Accessories',
-          image: '/images/products/agricultural/sugar.jpg',
-          gradient: 'from-red-600 to-red-800',
-          description: 'Complete range of fashion accessories including belts, bags, scarves, and jewelry components',
+          image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+          gradient: 'from-amber-600 to-orange-800',
+          description: 'Premium fashion accessories including leather goods, jewelry components, and textile-based accessories for global brands',
           tradeVolume: '5-50 MT',
           minOrder: '500 kg'
         }
@@ -179,7 +179,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
         <Navigation />
         
         {/* Hero Section */}
-        <section className="relative pt-32 pb-20 px-5 sm:px-8 lg:px-10 min-h-[60vh] flex items-center">
+        <section className="relative pt-40 pb-20 px-5 sm:px-8 lg:px-10 min-h-[60vh] flex items-center">
           <div className="max-w-7xl mx-auto text-center w-full">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-gray-900 dark:text-white">
               {pageTitle}
@@ -231,7 +231,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
       <div className="min-h-screen bg-stone-50 dark:bg-gray-900 relative overflow-hidden">
         <ProductsThreeBackground />
         <Navigation />
-        <div className="pt-32 text-center">
+        <div className="pt-40 text-center">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Product category not found
           </h1>
@@ -247,7 +247,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
       <Navigation />
       
       {/* Hero Section with Sliding Background */}
-      <section className="relative pt-32 pb-20 px-5 sm:px-8 lg:px-10 min-h-screen flex items-center overflow-hidden">
+      <section className="relative pt-40 pb-20 px-5 sm:px-8 lg:px-10 min-h-screen flex items-center overflow-hidden">
         {/* Animated Background Images */}
         <div className="absolute inset-0 z-0">
           <div 
@@ -308,13 +308,25 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {currentCategory.products.map((product, index) => (
+            {currentCategory.products.map((product, index) => {
+              // Special styling for Textile Innovation section
+              const isTextileInnovation = product.name === 'Textile Innovation';
+              const cardBgClass = isTextileInnovation 
+                ? 'bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/40 dark:to-blue-800/40' 
+                : 'bg-white/20 dark:bg-gray-800/20';
+              const borderClass = isTextileInnovation
+                ? 'border-blue-200/50 dark:border-blue-700/50'
+                : 'border-gray-200/30 dark:border-gray-600/30';
+              
+              return (
               <div
                 key={product.name}
-                className="group relative noise-grid gradient-border glass rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 hover:scale-105 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30"
+                className={`group relative noise-grid gradient-border glass rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 hover:scale-105 ${cardBgClass} backdrop-blur-md border ${borderClass}`}
                 style={{ 
                   animationDelay: `${index * 150}ms`,
-                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.05)'
+                  boxShadow: isTextileInnovation 
+                    ? '0 10px 25px rgba(59, 130, 246, 0.15), 0 4px 10px rgba(59, 130, 246, 0.1)'
+                    : '0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.05)'
                 }}
               >
                 {/* Gradient Overlay */}
@@ -364,7 +376,8 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
                   </svg>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
