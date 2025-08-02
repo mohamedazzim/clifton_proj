@@ -31,7 +31,8 @@ The architecture follows a monorepo structure, ensuring shared types and schemas
 
 ### Product Page Button Improvements
 - **Removed "Request Quote" and "Download Specifications" buttons** from all product pages as requested
-- **Updated "Contact Sales Team" button** to redirect to contact form page (/contact)
+- **Updated "Contact Sales Team" button** to redirect to homepage contact section (/#contact)
+- **Removed breadcrumb navigation** from product detail pages for cleaner appearance
 - **Simplified call-to-action section** with cleaner "Ready to Order?" messaging and single contact button
 - **Added complete textile product data** to ProductDetail component:
   * Premium Cotton Fabrics - GOTS certified, 50-500 MT trade volume, 5 MT minimum order
