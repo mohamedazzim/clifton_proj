@@ -78,6 +78,18 @@ export function Navigation() {
               >
                 {t("nav.products")}
               </button>
+              <button 
+                onClick={() => {
+                  setLocation('/tesla-textiles');
+                  setIsMobileMenuOpen(false);
+                  setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }, 100);
+                }}
+                className="text-gray-900 font-bold hover:text-gray-600 transition-colors"
+              >
+                Tesla Style
+              </button>
 
               <button 
                 onClick={() => scrollToSection('contact')}
