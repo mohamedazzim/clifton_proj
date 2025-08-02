@@ -331,7 +331,7 @@ const TeslaStyleTextiles: React.FC = () => {
         </div>
       </section>
 
-        <Footer />
+      <Footer />
       </div>
     </>
   );
