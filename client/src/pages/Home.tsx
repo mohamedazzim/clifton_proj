@@ -48,6 +48,22 @@ export default function Home() {
     loadImages();
   }, []);
 
+  // Handle hash scrolling after component loads
+  useEffect(() => {
+    if (!isLoading) {
+      const hash = window.location.hash;
+      if (hash) {
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    }
+  }, [isLoading]);
+
   if (isLoading) {
     return <LoadingScreen onComplete={() => setIsLoading(false)} />;
   }
