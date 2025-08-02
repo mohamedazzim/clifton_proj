@@ -179,7 +179,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
         <Navigation />
         
         {/* Hero Section */}
-        <section className="relative pt-40 pb-20 px-5 sm:px-8 lg:px-10 min-h-[60vh] flex items-center">
+        <section className="relative pt-48 pb-20 px-5 sm:px-8 lg:px-10 min-h-[60vh] flex items-center">
           <div className="max-w-7xl mx-auto text-center w-full">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-gray-900 dark:text-white">
               {pageTitle}
@@ -231,7 +231,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
       <div className="min-h-screen bg-stone-50 dark:bg-gray-900 relative overflow-hidden">
         <ProductsThreeBackground />
         <Navigation />
-        <div className="pt-40 text-center">
+        <div className="pt-48 text-center">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Product category not found
           </h1>
@@ -247,7 +247,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
       <Navigation />
       
       {/* Hero Section with Sliding Background */}
-      <section className="relative pt-40 pb-20 px-5 sm:px-8 lg:px-10 min-h-screen flex items-center overflow-hidden">
+      <section className="relative pt-48 pb-20 px-5 sm:px-8 lg:px-10 min-h-screen flex items-center overflow-hidden">
         {/* Animated Background Images */}
         <div className="absolute inset-0 z-0">
           <div 
@@ -263,15 +263,15 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
         {/* Content */}
         <div className="max-w-7xl mx-auto text-center relative z-20 w-full">
           <div className="animate-slide-up">
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 text-white drop-shadow-2xl">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 md:mb-8 text-white drop-shadow-2xl px-4 sm:px-0">
               {currentCategory.title}
             </h1>
-            <p className="text-xl sm:text-2xl text-white/90 max-w-4xl mx-auto mb-12 leading-relaxed drop-shadow-lg">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-4xl mx-auto mb-8 md:mb-12 leading-relaxed drop-shadow-lg px-4 sm:px-0">
               {currentCategory.subtitle}
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button className="group bg-white text-black px-8 py-4 rounded-xl hover-scale transition-all duration-500 font-semibold text-lg border-2 border-transparent hover:border-white/20 relative overflow-hidden">
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center px-4 sm:px-0">
+              <button className="group bg-white text-black px-6 md:px-8 py-3 md:py-4 rounded-xl hover-scale transition-all duration-500 font-semibold text-base md:text-lg border-2 border-transparent hover:border-white/20 relative overflow-hidden">
                 <span className="relative z-10">{t("productCategory.viewCatalog")}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-200 transform skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
               </button>
@@ -298,34 +298,34 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
       {/* Products Grid */}
       <section className="relative py-20 px-5 sm:px-8 lg:px-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+          <div className="text-center mb-12 md:mb-16 px-4 sm:px-0">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
               {t("productCategory.ourProducts").replace("{category}", currentCategory.title)}
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
               {t("productCategory.discoverRange")}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
             {currentCategory.products.map((product, index) => {
               // Special styling for Textile Innovation section
               const isTextileInnovation = product.name === 'Textile Innovation';
               const cardBgClass = isTextileInnovation 
-                ? 'bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/40 dark:to-blue-800/40' 
+                ? 'bg-gradient-to-br from-blue-50/80 to-blue-100/80 dark:from-blue-900/30 dark:to-blue-800/30' 
                 : 'bg-white/20 dark:bg-gray-800/20';
               const borderClass = isTextileInnovation
-                ? 'border-blue-200/50 dark:border-blue-700/50'
+                ? 'border-blue-300/40 dark:border-blue-600/40'
                 : 'border-gray-200/30 dark:border-gray-600/30';
               
               return (
               <div
                 key={product.name}
-                className={`group relative noise-grid gradient-border glass rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-4 hover:scale-105 ${cardBgClass} backdrop-blur-md border ${borderClass}`}
+                className={`group relative noise-grid gradient-border glass rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-2 hover:scale-[1.02] ${cardBgClass} backdrop-blur-md border ${borderClass}`}
                 style={{ 
                   animationDelay: `${index * 150}ms`,
                   boxShadow: isTextileInnovation 
-                    ? '0 10px 25px rgba(59, 130, 246, 0.15), 0 4px 10px rgba(59, 130, 246, 0.1)'
+                    ? '0 15px 35px rgba(59, 130, 246, 0.12), 0 8px 15px rgba(59, 130, 246, 0.08)'
                     : '0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.05)'
                 }}
               >
