@@ -184,10 +184,10 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
         <div className="max-w-7xl mx-auto text-center relative z-20 w-full">
           <div className="animate-slide-up">
             {/* Breadcrumb */}
-            <nav className="mb-8">
+            <nav className="mb-8 text-left w-full">
               <button 
                 onClick={() => setLocation(`/products/${category}`)}
-                className="text-white/80 hover:text-white transition-colors duration-200 text-lg"
+                className="text-white/80 hover:text-white transition-colors duration-200 text-lg inline-flex items-center"
               >
                 ← Back to Agricultural Products
               </button>
@@ -301,7 +301,16 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
               </p>
               <div className="flex justify-center">
                 <button 
-                  onClick={() => setLocation('/contact')}
+                  onClick={() => {
+                    // Scroll to contact section on homepage
+                    setLocation('/');
+                    setTimeout(() => {
+                      const contactElement = document.getElementById('contact');
+                      if (contactElement) {
+                        contactElement.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }, 100);
+                  }}
                   className="bg-gradient-to-r from-gray-600 to-gray-800 text-white py-4 px-8 rounded-xl font-semibold text-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
                   Contact Sales Team
