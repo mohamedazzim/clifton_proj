@@ -1,6 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React from 'react';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 
@@ -42,86 +40,7 @@ const teslaStyles = `
   }
 `;
 
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
-
 const TeslaStyleTextiles: React.FC = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const textileSection1Ref = useRef<HTMLDivElement>(null);
-  const textileSection2Ref = useRef<HTMLDivElement>(null);
-  const textileSection3Ref = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Hero section animation
-    gsap.fromTo(
-      '.hero-title',
-      { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.5, ease: 'power3.out' }
-    );
-
-    gsap.fromTo(
-      '.hero-subtitle',
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.2, delay: 0.3, ease: 'power3.out' }
-    );
-
-    // Parallax background effect
-    gsap.to('.hero-bg', {
-      yPercent: -50,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true
-      }
-    });
-
-    // Section fade-in animations
-    const sections = [textileSection1Ref, textileSection2Ref, textileSection3Ref];
-    
-    sections.forEach((sectionRef, index) => {
-      gsap.fromTo(
-        sectionRef.current,
-        { y: 100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 85%',
-            end: 'bottom 15%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-    });
-
-    // Stats counter animation
-    gsap.fromTo(
-      '.stat-number',
-      { textContent: 0 },
-      {
-        textContent: 100,
-        duration: 2,
-        ease: 'power2.out',
-        snap: { textContent: 1 },
-        scrollTrigger: {
-          trigger: statsRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none'
-        }
-      }
-    );
-
-    // Cleanup
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
 
   return (
     <>
@@ -130,7 +49,7 @@ const TeslaStyleTextiles: React.FC = () => {
         <Navigation />
       
       {/* Hero Section - Tesla Style */}
-      <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
         {/* Background Video/Image */}
         <div className="hero-bg absolute inset-0 w-full h-[120%] -top-[10%]">
           <img 
@@ -170,7 +89,7 @@ const TeslaStyleTextiles: React.FC = () => {
       </section>
 
       {/* Cotton Fabrics Section */}
-      <section ref={textileSection1Ref} className="tesla-section h-screen flex items-center bg-white text-black">
+      <section className="tesla-section h-screen flex items-center bg-white text-black">
         <div className="w-full max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
           <div>
             <h2 className="text-5xl md:text-6xl tesla-title mb-8 text-black">
@@ -206,7 +125,7 @@ const TeslaStyleTextiles: React.FC = () => {
       </section>
 
       {/* Silk Products Section */}
-      <section ref={textileSection2Ref} className="tesla-section h-screen flex items-center bg-gray-100">
+      <section className="tesla-section h-screen flex items-center bg-gray-100">
         <div className="w-full max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
           <div className="relative h-96 overflow-hidden order-2 md:order-1">
             <img 
@@ -242,7 +161,7 @@ const TeslaStyleTextiles: React.FC = () => {
       </section>
 
       {/* Synthetic Fibers Section */}
-      <section ref={textileSection3Ref} className="tesla-section h-screen flex items-center bg-gray-50 text-black">
+      <section className="tesla-section h-screen flex items-center bg-gray-50 text-black">
         <div className="w-full max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
           <div>
             <h2 className="text-5xl md:text-6xl tesla-title mb-8 text-gray-900">
@@ -278,7 +197,7 @@ const TeslaStyleTextiles: React.FC = () => {
       </section>
 
       {/* Stats Section */}
-      <section ref={statsRef} className="tesla-section h-screen flex items-center bg-white">
+      <section className="tesla-section h-screen flex items-center bg-white">
         <div className="w-full max-w-7xl mx-auto px-8 text-center">
           <h2 className="text-5xl md:text-6xl tesla-title mb-20 text-black">
             Global Impact
@@ -286,19 +205,19 @@ const TeslaStyleTextiles: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-20">
             <div className="group">
               <div className="text-6xl md:text-7xl tesla-title mb-6 text-black group-hover:text-blue-600 transition-colors duration-300">
-                <span className="stat-number">0</span>+
+                50+
               </div>
               <p className="text-xl tesla-subtitle text-gray-600">Countries Served</p>
             </div>
             <div className="group">
               <div className="text-6xl md:text-7xl tesla-title mb-6 text-black group-hover:text-blue-600 transition-colors duration-300">
-                <span className="stat-number">0</span>K
+                100K
               </div>
               <p className="text-xl tesla-subtitle text-gray-600">Tons Traded</p>
             </div>
             <div className="group">
               <div className="text-6xl md:text-7xl tesla-title mb-6 text-black group-hover:text-blue-600 transition-colors duration-300">
-                <span className="stat-number">0</span>%
+                100%
               </div>
               <p className="text-xl tesla-subtitle text-gray-600">Sustainable</p>
             </div>
