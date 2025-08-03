@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
 import { useLanguage } from '../components/LanguageProvider';
 import { useTheme } from '../components/ThemeProvider';
@@ -7,6 +7,49 @@ import { Footer } from '../components/Footer';
 import { ProductsThreeBackground } from '../components/ProductsThreeBackground';
 import { LoadingScreen } from '../components/LoadingScreen';
 import { BackToTopButton } from '../components/BackToTopButton';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Tesla-style custom CSS
+const teslaStyles = `
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  
+  .tesla-font {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  
+  .tesla-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  
+  .tesla-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.005em;
+    line-height: 1.4;
+  }
+  
+  .tesla-button {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    border-radius: 0;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .tesla-section {
+    scroll-snap-align: start;
+  }
+`;
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 interface ProductCategoryProps {
   category: string;
@@ -20,6 +63,12 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
   const [fadeClass, setFadeClass] = useState('opacity-100');
   const [slideDirection, setSlideDirection] = useState('translate-x-0');
   const [, setLocation] = useLocation();
+  
+  // Tesla animation refs
+  const heroRef = useRef<HTMLDivElement>(null);
+  const textileSection1Ref = useRef<HTMLDivElement>(null);
+  const textileSection2Ref = useRef<HTMLDivElement>(null);
+  const textileSection3Ref = useRef<HTMLDivElement>(null);
 
   // Product category configurations
   const categoryConfig = {
@@ -167,8 +216,199 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
     return <LoadingScreen onComplete={() => setIsLoading(false)} duration={1000} />;
   }
   
+  // Tesla animations for textiles_fashion
+  useEffect(() => {
+    if (category === 'textiles_fashion') {
+      // Tesla-style animations
+      gsap.set('.hero-title', { y: 40, opacity: 0 });
+      gsap.set('.hero-subtitle', { y: 30, opacity: 0 });
+
+      const masterTimeline = gsap.timeline({ delay: 0.2 });
+
+      masterTimeline
+        .to('.hero-title', {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out'
+        })
+        .to('.hero-subtitle', {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: 'power2.out'
+        }, '-=0.4');
+
+      return () => {
+        masterTimeline.kill();
+      };
+    }
+  }, [category]);
+
+  // Show Tesla-style textiles content for textiles_fashion
+  if (category === 'textiles_fashion') {
+    return (
+      <>
+        <style dangerouslySetInnerHTML={{ __html: teslaStyles }} />
+        <div className="min-h-screen bg-white text-black scroll-smooth tesla-font">
+          <Navigation />
+        
+          {/* Hero Section - Tesla Style */}
+          <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-white pt-20">
+            {/* Background Image */}
+            <div className="hero-bg absolute inset-0 w-full h-[120%] -top-[10%]">
+              <img 
+                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                alt="Premium Textile Factory with Modern Equipment"
+                className="w-full h-full object-cover opacity-25"
+              />
+              <div className="absolute inset-0 bg-white/80"></div>
+            </div>
+            
+            {/* Hero Content */}
+            <div className="relative z-10 text-center px-4">
+              <h1 className="hero-title text-6xl md:text-8xl tesla-title mb-6 text-gray-900">
+                Premium Textiles
+              </h1>
+              <p className="hero-subtitle text-xl md:text-2xl tesla-subtitle max-w-3xl mx-auto leading-relaxed text-gray-700">
+                Crafting the future of fashion with sustainable, innovative textile solutions
+              </p>
+              
+              {/* Tesla-style CTA */}
+              <div className="mt-16 space-y-4">
+                <button className="tesla-button bg-gray-900 text-white px-16 py-4 text-lg font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                  Explore Collection
+                </button>
+                <button className="tesla-button block mx-auto bg-transparent border-2 border-gray-900 text-gray-900 px-16 py-4 text-lg font-medium hover:bg-gray-900 hover:text-white transition-all duration-300">
+                  Learn More
+                </button>
+              </div>
+            </div>
+
+            {/* Scroll indicator */}
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+              <div className="w-6 h-10 border-2 border-gray-900 rounded-full flex justify-center">
+                <div className="w-1 h-3 bg-gray-900 rounded-full mt-2 animate-pulse"></div>
+              </div>
+            </div>
+          </section>
+
+          {/* Cotton Fabrics Section */}
+          <section ref={textileSection1Ref} className="section-1 tesla-section h-screen flex items-center bg-white text-black">
+            <div className="w-full max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
+              <div>
+                <h2 className="text-5xl md:text-6xl tesla-title mb-8 text-black">
+                  Organic Cotton
+                </h2>
+                <p className="text-xl tesla-subtitle leading-relaxed mb-12 text-gray-700">
+                  Premium GOTS certified cotton fabrics sourced from sustainable farms worldwide. 
+                  Each thread tells a story of environmental responsibility and exceptional quality.
+                </p>
+                <div className="space-y-6 text-lg tesla-font">
+                  <div className="flex justify-between border-b border-gray-200 pb-4">
+                    <span className="text-gray-600">Trade Volume</span>
+                    <span className="font-medium text-black">50-500 MT</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-200 pb-4">
+                    <span className="text-gray-600">Minimum Order</span>
+                    <span className="font-medium text-black">5 MT</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-200 pb-4">
+                    <span className="text-gray-600">Certification</span>
+                    <span className="font-medium text-black">GOTS Certified</span>
+                  </div>
+                </div>
+              </div>
+              <div className="relative h-96 overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Organic Cotton Fields and Processing"
+                  className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+            </div>
+          </section>
+
+          {/* Silk Products Section */}
+          <section ref={textileSection2Ref} className="section-2 tesla-section h-screen flex items-center bg-gray-100">
+            <div className="w-full max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
+              <div className="relative h-96 overflow-hidden order-2 md:order-1">
+                <img 
+                  src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Luxury Silk Weaving and Production Process"
+                  className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+              <div className="order-1 md:order-2">
+                <h2 className="text-5xl md:text-6xl tesla-title mb-8 text-black">
+                  Luxury Silk
+                </h2>
+                <p className="text-xl tesla-subtitle leading-relaxed mb-12 text-gray-700">
+                  Grade A+ silk products from traditional silk-producing regions. 
+                  Combining centuries-old craftsmanship with modern sustainable practices.
+                </p>
+                <div className="space-y-6 text-lg tesla-font">
+                  <div className="flex justify-between border-b border-gray-300 pb-4">
+                    <span className="text-gray-600">Trade Volume</span>
+                    <span className="font-medium text-black">10-100 MT</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-300 pb-4">
+                    <span className="text-gray-600">Minimum Order</span>
+                    <span className="font-medium text-black">1 MT</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-300 pb-4">
+                    <span className="text-gray-600">Quality</span>
+                    <span className="font-medium text-black">Grade A+</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Synthetic Fibers Section */}
+          <section ref={textileSection3Ref} className="section-3 tesla-section h-screen flex items-center bg-gray-50 text-black">
+            <div className="w-full max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
+              <div>
+                <h2 className="text-5xl md:text-6xl tesla-title mb-8 text-black">
+                  Innovative Synthetics
+                </h2>
+                <p className="text-xl tesla-subtitle leading-relaxed mb-12 text-gray-700">
+                  Next-generation synthetic fibers with enhanced durability, sustainability, and performance characteristics for modern textile applications.
+                </p>
+                <div className="space-y-6 text-lg tesla-font">
+                  <div className="flex justify-between border-b border-gray-200 pb-4">
+                    <span className="text-gray-600">Trade Volume</span>
+                    <span className="font-medium text-black">25-250 MT</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-200 pb-4">
+                    <span className="text-gray-600">Minimum Order</span>
+                    <span className="font-medium text-black">2 MT</span>
+                  </div>
+                  <div className="flex justify-between border-b border-gray-200 pb-4">
+                    <span className="text-gray-600">Specialty</span>
+                    <span className="font-medium text-black">Performance Fibers</span>
+                  </div>
+                </div>
+              </div>
+              <div className="relative h-96 overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1503428593586-e225b39bddfe?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Advanced Synthetic Textile Production"
+                  className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+            </div>
+          </section>
+
+          <Footer />
+          <BackToTopButton />
+        </div>
+      </>
+    );
+  }
+
   // Show "Will be updated soon" for categories without products (none currently)
-  if (category !== 'agriculture_product' && category !== 'textiles_fashion') {
+  if (category !== 'agriculture_product') {
     const categoryTitles = {
       textiles_fashion: 'Textiles & Fashion'
     };

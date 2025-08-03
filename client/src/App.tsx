@@ -10,7 +10,7 @@ import Home from "@/pages/Home";
 import Products from "@/pages/Products";
 import ProductCategory from "@/pages/ProductCategory";
 import ProductDetail from "@/pages/ProductDetail";
-import TeslaStyleTextiles from "@/pages/TeslaStyleTextiles";
+
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -20,7 +20,7 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/products" component={Products} />
-        <Route path="/tesla-textiles" component={TeslaStyleTextiles} />
+
         <Route path="/products/:category/:productName">
           {(params) => <ProductDetail category={params.category} productName={params.productName} />}
         </Route>
