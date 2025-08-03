@@ -567,3 +567,32 @@
   -webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.15);
   text-stroke: 0.2px rgba(0, 0, 0, 0.15);
 }
+
+/* Loading screen animations */
+@keyframes loadingBlink {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes loadingBounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+}
+
+.loading-blink {
+  animation: loadingBlink 2s ease-in-out infinite;
+}
+
+.loading-bounce {
+  animation: loadingBounce 1.4s ease-in-out infinite;
+}
+
+.loading-bounce-delay-1 {
+  animation: loadingBounce 1.4s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.loading-bounce-delay-2 {
+  animation: loadingBounce 1.4s ease-in-out infinite;
+  animation-delay: 0.4s;
+}

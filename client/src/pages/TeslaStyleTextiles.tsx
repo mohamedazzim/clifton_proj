@@ -159,7 +159,7 @@ const TeslaStyleTextiles: React.FC = () => {
         <Navigation />
       
       {/* Hero Section - Tesla Style */}
-      <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
+      <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-white pt-20">
         {/* Background Video/Image */}
         <div className="hero-bg absolute inset-0 w-full h-[120%] -top-[10%]">
           <img 

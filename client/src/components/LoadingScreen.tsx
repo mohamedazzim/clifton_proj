@@ -78,19 +78,21 @@ export function LoadingScreen({ onComplete, duration = 2000 }: LoadingScreenProp
   const bgColor = theme === 'dark' ? 'bg-black' : 'bg-white';
 
   return (
-    <div className={`fixed inset-0 z-50 flex items-center justify-center ${bgColor} transition-all duration-500 ${isZooming ? 'scale-110 opacity-0' : 'scale-100 opacity-100'}`}>
-      <div className="relative">
+    <div className={`fixed inset-0 z-[10000] flex items-center justify-center ${bgColor} transition-all duration-500 ${isZooming ? 'scale-110 opacity-0' : 'scale-100 opacity-100'}`}>
+      <div className="relative flex flex-col items-center justify-center">
         {/* Blinking Logo */}
-        <img
-          src={logoSrc}
-          alt="CLIFTON Logo"
-          className={`w-32 h-32 md:w-48 md:h-48 object-contain transition-all duration-300 loading-blink ${
-            isZooming ? 'scale-125' : 'scale-100'
-          }`}
-        />
+        <div className="flex items-center justify-center mb-8">
+          <img
+            src={logoSrc}
+            alt="CLIFTON Logo"
+            className={`w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 object-contain transition-all duration-300 loading-blink ${
+              isZooming ? 'scale-125' : 'scale-100'
+            }`}
+          />
+        </div>
         
         {/* Loading dots */}
-        <div className="flex justify-center mt-8 space-x-2">
+        <div className="flex justify-center space-x-2">
           <div 
             className={`w-2 h-2 rounded-full loading-bounce ${theme === 'dark' ? 'bg-white' : 'bg-black'}`}
           ></div>
@@ -102,8 +104,6 @@ export function LoadingScreen({ onComplete, duration = 2000 }: LoadingScreenProp
           ></div>
         </div>
       </div>
-
-
     </div>
   );
 }

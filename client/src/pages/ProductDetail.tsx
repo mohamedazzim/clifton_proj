@@ -6,6 +6,7 @@ import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
 import { ProductsThreeBackground } from '../components/ProductsThreeBackground';
 import { LoadingScreen } from '../components/LoadingScreen';
+import { BackToTopButton } from '../components/BackToTopButton';
 
 
 interface ProductDetailProps {
@@ -308,6 +309,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
       </section>
 
       <Footer />
+      <BackToTopButton />
     </div>
   );
 };
