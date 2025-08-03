@@ -29,7 +29,7 @@ var MemStorage = class {
     const foundersData = [
       {
         name: "Benson Clement",
-        position: "Managing Director",
+        position: "CEO",
         bio: "BA English Literature, MBA HR and Marketing. With 12 years of experience in textiles, trading, import and export, Benson leads strategic operations and business development.",
         imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
         email: "benson@cliftontraders.com",
@@ -41,8 +41,8 @@ var MemStorage = class {
       },
       {
         name: "Joseph Ebenezer",
-        position: "Technical Director",
-        bio: "B.Sc (Physics), MBA (HR & Marketing). With 10 years of experience in sales & marketing in IT & Non-IT sector services, Joseph drives technical strategy and market expansion.",
+        position: "COO",
+        bio: "B.Sc (Physics), MBA (HR & Marketing). With 10 years of experience in TRADING, IMPORT and EXPORT, sales & marketing in IT & Non-IT sector services, drives technical strategy and market expansion.",
         imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
         email: "joseph@cliftontraders.com",
         linkedin: "https://linkedin.com/in/joseph-ebenezer-clifton",
@@ -54,7 +54,17 @@ var MemStorage = class {
     ];
     foundersData.forEach((founder) => {
       const id = this.currentFounderId++;
-      this.founders.set(id, { ...founder, id, order: founder.order });
+      const founderData = {
+        ...founder,
+        id,
+        order: founder.order || 0,
+        email: founder.email || null,
+        linkedin: founder.linkedin || null,
+        twitter: founder.twitter || null,
+        instagram: founder.instagram || null,
+        facebook: founder.facebook || null
+      };
+      this.founders.set(id, founderData);
     });
     const productsData = [
       {
@@ -95,7 +105,7 @@ var MemStorage = class {
     ];
     productsData.forEach((product) => {
       const id = this.currentProductId++;
-      this.products.set(id, { ...product, id, order: product.order });
+      this.products.set(id, { ...product, id, order: product.order || 0 });
     });
     const projectsData = [
       {
@@ -131,7 +141,7 @@ var MemStorage = class {
     ];
     projectsData.forEach((project) => {
       const id = this.currentProjectId++;
-      this.projects.set(id, { ...project, id, order: project.order });
+      this.projects.set(id, { ...project, id, order: project.order || 0 });
     });
   }
   // Founders methods
@@ -140,7 +150,16 @@ var MemStorage = class {
   }
   async createFounder(insertFounder) {
     const id = this.currentFounderId++;
-    const founder = { ...insertFounder, id, order: insertFounder.order || 0 };
+    const founder = {
+      ...insertFounder,
+      id,
+      order: insertFounder.order || 0,
+      email: insertFounder.email || null,
+      linkedin: insertFounder.linkedin || null,
+      twitter: insertFounder.twitter || null,
+      instagram: insertFounder.instagram || null,
+      facebook: insertFounder.facebook || null
+    };
     this.founders.set(id, founder);
     return founder;
   }

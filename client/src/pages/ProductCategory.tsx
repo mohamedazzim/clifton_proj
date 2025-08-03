@@ -248,16 +248,16 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
       
       {/* Hero Section with Sliding Background */}
       <section className="relative pt-48 pb-20 px-5 sm:px-8 lg:px-10 min-h-screen flex items-center overflow-hidden">
-        {/* Animated Background Images */}
-        <div className="absolute inset-0 z-0">
+        {/* Tesla-Style White Background */}
+        <div className="absolute inset-0 z-0 bg-white">
           <div 
-            className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out ${fadeClass} ${slideDirection}`}
+            className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out ${fadeClass} ${slideDirection} opacity-30`}
             style={{
-              backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.90)), url(${currentCategory.backgroundImages[currentImageIndex]})`
+              backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98)), url(${currentCategory.backgroundImages[currentImageIndex]})`
             }}
           />
           
-          <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/10 to-white/20 z-10"></div>
+          <div className="absolute inset-0 bg-white/40 z-10"></div>
         </div>
 
         {/* Content */}
