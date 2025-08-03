@@ -78,8 +78,8 @@ export function LoadingScreen({ onComplete, duration = 2000 }: LoadingScreenProp
   const bgColor = theme === 'dark' ? 'bg-black' : 'bg-white';
 
   return (
-    <div className={`fixed inset-0 z-[10000] flex items-center justify-center ${bgColor} transition-all duration-500 ${isZooming ? 'scale-110 opacity-0' : 'scale-100 opacity-100'}`}>
-      <div className="relative flex flex-col items-center justify-center">
+    <div className={`loading-screen-container ${bgColor} transition-all duration-500 ${isZooming ? 'scale-110 opacity-0' : 'scale-100 opacity-100'}`}>
+      <div className="loading-screen-content">
         {/* Blinking Logo */}
         <div className="flex items-center justify-center mb-8">
           <img
@@ -88,6 +88,12 @@ export function LoadingScreen({ onComplete, duration = 2000 }: LoadingScreenProp
             className={`w-24 h-24 sm:w-32 sm:h-32 md:w-48 md:h-48 object-contain transition-all duration-300 loading-blink ${
               isZooming ? 'scale-125' : 'scale-100'
             }`}
+            style={{ 
+              display: 'block',
+              margin: '0 auto',
+              maxWidth: '100%',
+              height: 'auto'
+            }}
           />
         </div>
         
