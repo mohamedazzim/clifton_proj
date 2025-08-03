@@ -180,7 +180,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
         <Navigation />
         
         {/* Hero Section */}
-        <section className="relative pt-16 pb-20 px-5 sm:px-8 lg:px-10 min-h-[60vh] flex items-center">
+        <section className="relative pt-32 pb-20 px-5 sm:px-8 lg:px-10 min-h-[60vh] flex items-center">
           <div className="max-w-7xl mx-auto text-center w-full">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 text-gray-900 dark:text-white">
               {pageTitle}
@@ -233,7 +233,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
       <div className="min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
         <ProductsThreeBackground />
         <Navigation />
-        <div className="pt-16 text-center">
+        <div className="pt-32 text-center">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Product category not found
           </h1>
@@ -250,7 +250,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
       <Navigation />
       
       {/* Hero Section with Sliding Background */}
-      <section className="relative pt-16 pb-20 px-5 sm:px-8 lg:px-10 min-h-screen flex items-center overflow-hidden">
+      <section className="relative pt-32 pb-20 px-5 sm:px-8 lg:px-10 min-h-screen flex items-center overflow-hidden">
         {/* Tesla-Style White Background */}
         <div className="absolute inset-0 z-0 bg-white">
           <div 
