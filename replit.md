@@ -24,6 +24,8 @@ The backend uses Node.js with Express.js and TypeScript, designed with RESTful A
 - **Dynamic Content**: Data for founders, products, projects, and contacts is served via RESTful API endpoints.
 - **Interactive Elements**: Includes interactive 3D particle system backgrounds and enhanced hover effects on UI components.
 - **Tesla-Style Textiles**: The textiles_fashion category features a Tesla-inspired design with smooth animations, clean typography, and premium presentation.
+- **Fixed CSS Issues**: Resolved malformed dark mode keyframes syntax errors that were causing build warnings.
+- **Fixed React Hooks**: Corrected hooks ordering in ProductCategory component to prevent runtime errors.
 
 ### System Design Choices
 The architecture follows a monorepo structure, ensuring shared types and schemas across the frontend and backend for improved development efficiency and type safety. Performance is prioritized through optimized images, lazy loading, and code splitting. The application is configured for autoscale deployment on Replit, with internal and external port mapping and environment variable management for database connections. All phone numbers are formatted as 0055.

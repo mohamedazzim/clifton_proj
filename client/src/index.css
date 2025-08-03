@@ -237,61 +237,7 @@
   }
 }
 
-/* Dark mode variants */
-.dark @keyframes glowBlue {
-  0%, 100% { 
-    text-shadow: 0 0 5px rgba(96, 165, 250, 0.4), 0 0 10px rgba(96, 165, 250, 0.3), 0 0 15px rgba(96, 165, 250, 0.2);
-    color: rgb(243, 244, 246);
-  }
-  50% { 
-    text-shadow: 0 0 15px rgba(96, 165, 250, 0.8), 0 0 25px rgba(96, 165, 250, 0.6), 0 0 35px rgba(96, 165, 250, 0.4);
-    color: rgb(96, 165, 250);
-  }
-}
-
-.dark @keyframes glowGreen {
-  0%, 100% { 
-    text-shadow: 0 0 5px rgba(74, 222, 128, 0.4), 0 0 10px rgba(74, 222, 128, 0.3), 0 0 15px rgba(74, 222, 128, 0.2);
-    color: rgb(229, 231, 235);
-  }
-  50% { 
-    text-shadow: 0 0 15px rgba(74, 222, 128, 0.8), 0 0 25px rgba(74, 222, 128, 0.6), 0 0 35px rgba(74, 222, 128, 0.4);
-    color: rgb(74, 222, 128);
-  }
-}
-
-.dark @keyframes glowOrange {
-  0%, 100% { 
-    text-shadow: 0 0 5px rgba(251, 146, 60, 0.4), 0 0 10px rgba(251, 146, 60, 0.3), 0 0 15px rgba(251, 146, 60, 0.2);
-    color: rgb(229, 231, 235);
-  }
-  50% { 
-    text-shadow: 0 0 15px rgba(251, 146, 60, 0.8), 0 0 25px rgba(251, 146, 60, 0.6), 0 0 35px rgba(251, 146, 60, 0.4);
-    color: rgb(251, 146, 60);
-  }
-}
-
-.dark @keyframes glowPurple {
-  0%, 100% { 
-    text-shadow: 0 0 5px rgba(168, 85, 247, 0.4), 0 0 10px rgba(168, 85, 247, 0.3), 0 0 15px rgba(168, 85, 247, 0.2);
-    color: rgb(229, 231, 235);
-  }
-  50% { 
-    text-shadow: 0 0 15px rgba(168, 85, 247, 0.8), 0 0 25px rgba(168, 85, 247, 0.6), 0 0 35px rgba(168, 85, 247, 0.4);
-    color: rgb(168, 85, 247);
-  }
-}
-
-.dark @keyframes glowSubtle {
-  0%, 100% { 
-    text-shadow: 0 0 3px rgba(156, 163, 175, 0.4), 0 0 6px rgba(156, 163, 175, 0.3);
-    opacity: 0.8;
-  }
-  50% { 
-    text-shadow: 0 0 8px rgba(156, 163, 175, 0.6), 0 0 15px rgba(156, 163, 175, 0.4);
-    opacity: 1;
-  }
-}
+/* Valid keyframes without dark mode syntax */
 
 @keyframes chevronBounce {
   0%, 100% { 

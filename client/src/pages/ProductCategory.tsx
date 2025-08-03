@@ -211,14 +211,9 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
     }
   }, [category, currentCategory?.backgroundImages.length]);
 
-  // Show loading screen first
-  if (isLoading) {
-    return <LoadingScreen onComplete={() => setIsLoading(false)} duration={1000} />;
-  }
-  
-  // Tesla animations for textiles_fashion
+  // Tesla animations for textiles_fashion - moved before conditional returns
   useEffect(() => {
-    if (category === 'textiles_fashion') {
+    if (category === 'textiles_fashion' && !isLoading) {
       // Tesla-style animations
       gsap.set('.hero-title', { y: 40, opacity: 0 });
       gsap.set('.hero-subtitle', { y: 30, opacity: 0 });
@@ -243,7 +238,12 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
         masterTimeline.kill();
       };
     }
-  }, [category]);
+  }, [category, isLoading]);
+
+  // Show loading screen first
+  if (isLoading) {
+    return <LoadingScreen onComplete={() => setIsLoading(false)} duration={1000} />;
+  }
 
   // Show Tesla-style textiles content for textiles_fashion
   if (category === 'textiles_fashion') {
