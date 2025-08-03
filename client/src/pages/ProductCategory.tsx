@@ -175,7 +175,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
     
     const pageTitle = categoryTitles[category as keyof typeof categoryTitles] || 'Product Category';
     return (
-      <div className="min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
+      <div className="min-h-screen bg-white dark:bg-gray-900">
         <ProductsThreeBackground />
         <Navigation />
         
@@ -230,7 +230,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
   // Only agriculture_product will reach this point and show full content
   if (!currentCategory) {
     return (
-      <div className="min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
+      <div className="min-h-screen bg-white dark:bg-gray-900">
         <ProductsThreeBackground />
         <Navigation />
         <div className="pt-32 text-center">
@@ -245,7 +245,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <ProductsThreeBackground />
       <Navigation />
       

@@ -117,7 +117,7 @@ const Products = () => {
   }
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-gray-900 relative overflow-hidden">
+    <div className="min-h-screen bg-stone-50 dark:bg-gray-900">
       <ProductsThreeBackground />
       <Navigation />
       

@@ -155,7 +155,7 @@ const TeslaStyleTextiles: React.FC = () => {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: teslaStyles }} />
-      <div className="min-h-screen bg-white text-black overflow-x-hidden scroll-smooth tesla-font">
+      <div className="min-h-screen bg-white text-black scroll-smooth tesla-font">
         <Navigation />
       
       {/* Hero Section - Tesla Style */}

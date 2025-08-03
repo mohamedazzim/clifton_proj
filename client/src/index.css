@@ -596,3 +596,18 @@
   animation: loadingBounce 1.4s ease-in-out infinite;
   animation-delay: 0.4s;
 }
+
+/* Force sticky navigation on all pages */
+nav {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+}
+
+/* Ensure back-to-top button is always floating */
+.back-to-top-button {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  z-index: 9999 !important;
+}
