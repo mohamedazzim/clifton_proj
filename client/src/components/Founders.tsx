@@ -1,12 +1,56 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useRef } from "react";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from "./LanguageProvider";
 import { Mail, Linkedin, Twitter, Instagram, Facebook } from "lucide-react";
 import type { Founder } from "@shared/schema";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 import prof from "@assets/prof.jpg";
 
 export function Founders() {
   const { t } = useLanguage();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Optimized GSAP animations
+  useEffect(() => {
+    gsap.set('.founders-title', { y: 40, opacity: 0 });
+    gsap.set('.founders-subtitle', { y: 30, opacity: 0 });
+    gsap.set('.founder-card', { y: 60, opacity: 0, scale: 0.95 });
+
+    const trigger = ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: 'top 85%',
+      onEnter: () => {
+        const tl = gsap.timeline();
+        tl.to('.founders-title', {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out'
+        })
+        .to('.founders-subtitle', {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: 'power2.out'
+        }, '-=0.3')
+        .to('.founder-card', {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'power2.out'
+        }, '-=0.2');
+      }
+    });
+
+    return () => trigger.kill();
+  }, []);
   
   const { data: founders, isLoading } = useQuery<Founder[]>({
     queryKey: ["/api/founders"],
@@ -41,18 +85,18 @@ export function Founders() {
   }
 
   return (
-    <section className="py-20 bg-white dark:bg-black">
+    <section ref={sectionRef} className="py-20 bg-white dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-lg sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-6 px-4">{t("founders.title")}</h2>
-          <p className="text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto px-4">
+          <h2 className="founders-title text-lg sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-6 px-4">{t("founders.title")}</h2>
+          <p className="founders-subtitle text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto px-4">
             {t("founders.subtitle")}
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
           {founders?.map((founder) => (
-            <div key={founder.id} className="text-center">
+            <div key={founder.id} className="founder-card text-center">
               <div className="noise-grid gradient-border glass rounded-2xl p-6 sm:p-8 hover-scale transition-all duration-500 bg-gray-100/90 dark:bg-gray-800/90 backdrop-blur-sm transform-gpu hover:rotate-y-3 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-white/10 perspective-1000 hover:-translate-y-2">
                 <div className="relative mb-4 sm:mb-6 transform-gpu transition-transform duration-300 hover:scale-110">
                   <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full mx-auto relative overflow-hidden shadow-2xl ring-4 ring-white/20 dark:ring-gray-700/50">

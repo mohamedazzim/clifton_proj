@@ -1,10 +1,54 @@
+import { useEffect, useRef } from "react";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from "./LanguageProvider";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 export function VisionMission() {
   const { t } = useLanguage();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Optimized GSAP animations
+  useEffect(() => {
+    gsap.set('.vision-title', { y: 40, opacity: 0 });
+    gsap.set('.vision-subtitle', { y: 30, opacity: 0 });
+    gsap.set('.vision-card', { y: 60, opacity: 0, scale: 0.95 });
+
+    const trigger = ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: 'top 85%',
+      onEnter: () => {
+        const tl = gsap.timeline();
+        tl.to('.vision-title', {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out'
+        })
+        .to('.vision-subtitle', {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: 'power2.out'
+        }, '-=0.3')
+        .to('.vision-card', {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'power2.out'
+        }, '-=0.2');
+      }
+    });
+
+    return () => trigger.kill();
+  }, []);
 
   return (
-    <section id="about" className="vision-mission-section py-20 bg-gradient-to-b from-white to-white dark:from-gray-950 dark:to-black relative overflow-hidden">
+    <section ref={sectionRef} id="about" className="vision-mission-section py-20 bg-gradient-to-b from-white to-white dark:from-gray-950 dark:to-black relative overflow-hidden">
       <div className="absolute inset-0" style={{ opacity: 0.2 }}>
         <img 
           src="images/about_us/1.jpg" 
@@ -15,14 +59,14 @@ export function VisionMission() {
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-lg sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-6 px-4">{t("vision.title")}</h2>
-          <p className="text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed px-4">
+          <h2 className="vision-title text-lg sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-6 px-4">{t("vision.title")}</h2>
+          <p className="vision-subtitle text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed px-4">
             {t("vision.subtitle")}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-12">
-          <div className="noise-grid gradient-border glass rounded-2xl p-4 sm:p-6 lg:p-12 hover-scale transition-transform duration-300 relative overflow-hidden">
+          <div className="vision-card noise-grid gradient-border glass rounded-2xl p-4 sm:p-6 lg:p-12 hover-scale transition-transform duration-300 relative overflow-hidden">
             {/* Moving Vector Elements */}
             <div className="absolute top-6 right-6 w-6 h-6 opacity-20">
               <svg viewBox="0 0 24 24" className="w-full h-full text-current">
@@ -40,7 +84,7 @@ export function VisionMission() {
             </p>
           </div>
 
-          <div className="noise-grid gradient-border glass rounded-2xl p-4 sm:p-6 lg:p-12 hover-scale transition-transform duration-300 relative overflow-hidden">
+          <div className="vision-card noise-grid gradient-border glass rounded-2xl p-4 sm:p-6 lg:p-12 hover-scale transition-transform duration-300 relative overflow-hidden">
             {/* Moving Vector Elements */}
             <div className="absolute top-6 right-6 w-6 h-6 opacity-20">
               <svg viewBox="0 0 24 24" className="w-full h-full text-current">

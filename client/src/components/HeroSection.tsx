@@ -45,51 +45,47 @@ export function HeroSection() {
     return () => clearInterval(interval);
   }, []);
 
-  // GSAP animations for hero content
+  // Optimized GSAP animations for hero content
   useEffect(() => {
-    const timer = setTimeout(() => {
-      try {
-        // Animate hero title
-        if (document.querySelector('.hero-title')) {
-          gsap.fromTo(
-            '.hero-title',
-            { y: 80, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
-          );
-        }
+    // Set initial state immediately to prevent flash
+    gsap.set('.hero-title', { y: 30, opacity: 0 });
+    gsap.set('.hero-subtitle', { y: 20, opacity: 0 });
+    gsap.set('.hero-button', { y: 20, opacity: 0 });
+    gsap.set('.hero-logo', { scale: 0.9, opacity: 0 });
 
-        // Animate hero subtitle
-        if (document.querySelector('.hero-subtitle')) {
-          gsap.fromTo(
-            '.hero-subtitle',
-            { y: 60, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: 'power3.out' }
-          );
-        }
+    const timeline = gsap.timeline({ delay: 0.1 });
 
-        // Animate hero buttons
-        if (document.querySelectorAll('.hero-button').length > 0) {
-          gsap.fromTo(
-            '.hero-button',
-            { y: 40, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.8, delay: 0.6, ease: 'power2.out', stagger: 0.2 }
-          );
-        }
+    // Create smooth, coordinated entrance sequence
+    timeline
+      .to('.hero-logo', {
+        scale: 1,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power2.out'
+      })
+      .to('.hero-title', {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power2.out'
+      }, '-=0.4')
+      .to('.hero-subtitle', {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out'
+      }, '-=0.3')
+      .to('.hero-button', {
+        y: 0,
+        opacity: 1,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: 'power2.out'
+      }, '-=0.2');
 
-        // Animate stats cards
-        if (document.querySelectorAll('.hero-stat').length > 0) {
-          gsap.fromTo(
-            '.hero-stat',
-            { scale: 0.8, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.6, delay: 0.9, ease: 'back.out(1.7)', stagger: 0.1 }
-          );
-        }
-      } catch (error) {
-        console.warn('Hero GSAP animation error:', error);
-      }
-    }, 200);
-
-    return () => clearTimeout(timer);
+    return () => {
+      timeline.kill();
+    };
   }, []);
 
   const scrollToProducts = () => {
@@ -226,13 +222,13 @@ export function HeroSection() {
                 <img 
                   src="/images/logo/CLIFTON-CUT-BLACK.png" 
                   alt="CLIFTON Logo" 
-                  className="h-16 sm:h-24 md:h-28 lg:h-32 xl:h-36 2xl:h-40 w-auto animate-slide-right dark:hidden"
+                  className="hero-logo h-16 sm:h-24 md:h-28 lg:h-32 xl:h-36 2xl:h-40 w-auto dark:hidden"
                 />
                 {/* Logo for dark mode */}
                 <img 
                   src="/images/logo/CLIFTON-CUT-WHITE.png" 
                   alt="CLIFTON Logo" 
-                  className="h-16 sm:h-24 md:h-28 lg:h-32 xl:h-36 2xl:h-40 w-auto animate-slide-right hidden dark:block"
+                  className="hero-logo h-16 sm:h-24 md:h-28 lg:h-32 xl:h-36 2xl:h-40 w-auto hidden dark:block"
                 />
               </div>
             </div>

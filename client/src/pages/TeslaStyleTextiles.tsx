@@ -53,103 +53,101 @@ const TeslaStyleTextiles: React.FC = () => {
   const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Wait for component to mount before animations
-    const timer = setTimeout(() => {
-      try {
-        // Hero section animations with error handling
-        if (document.querySelector('.hero-title')) {
-          gsap.fromTo(
-            '.hero-title',
-            { y: 100, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.5, ease: 'power3.out' }
-          );
-        }
+    // Immediate state setting for smooth performance
+    gsap.set('.hero-title', { y: 40, opacity: 0 });
+    gsap.set('.hero-subtitle', { y: 30, opacity: 0 });
 
-        if (document.querySelector('.hero-subtitle')) {
-          gsap.fromTo(
-            '.hero-subtitle',
-            { y: 50, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.2, delay: 0.3, ease: 'power3.out' }
-          );
-        }
+    // Create master timeline for coordinated animations
+    const masterTimeline = gsap.timeline({ delay: 0.2 });
 
-        // Smooth parallax background effect
-        if (document.querySelector('.hero-bg') && heroRef.current) {
-          gsap.to('.hero-bg', {
-            yPercent: -20,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: heroRef.current,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 1
-            }
+    // Hero entrance sequence - faster and smoother
+    masterTimeline
+      .to('.hero-title', {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power2.out'
+      })
+      .to('.hero-subtitle', {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out'
+      }, '-=0.3');
+
+    // Optimized parallax with reduced impact
+    const parallaxTrigger = ScrollTrigger.create({
+      trigger: heroRef.current,
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 0.5,
+      onUpdate: (self) => {
+        gsap.to('.hero-bg', {
+          yPercent: -10 * self.progress,
+          duration: 0.1,
+          ease: 'none'
+        });
+      }
+    });
+
+    // Efficient section animations with batch processing
+    const sectionRefs = [textileSection1Ref, textileSection2Ref, textileSection3Ref];
+    const sectionTriggers = sectionRefs.map((ref) => {
+      if (!ref.current) return null;
+
+      gsap.set(ref.current, { y: 40, opacity: 0 });
+
+      return ScrollTrigger.create({
+        trigger: ref.current,
+        start: 'top 85%',
+        onEnter: () => {
+          gsap.to(ref.current, {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power2.out'
           });
         }
+      });
+    }).filter(Boolean);
 
-        // Section fade-in animations with intersection observer fallback
-        const sections = [
-          { ref: textileSection1Ref, selector: '.section-1' },
-          { ref: textileSection2Ref, selector: '.section-2' },
-          { ref: textileSection3Ref, selector: '.section-3' }
-        ];
-        
-        sections.forEach(({ ref, selector }) => {
-          if (ref.current) {
-            gsap.fromTo(
-              ref.current,
-              { y: 60, opacity: 0 },
-              {
-                y: 0,
-                opacity: 1,
-                duration: 1,
-                ease: 'power2.out',
-                scrollTrigger: {
-                  trigger: ref.current,
-                  start: 'top 80%',
-                  end: 'bottom 20%',
-                  toggleActions: 'play none none reverse'
-                }
-              }
-            );
-          }
-        });
+    // Optimized stats counter
+    const statsElements = statsRef.current?.querySelectorAll('.stat-number');
+    let statsTrigger = null;
 
-        // Stats counter animation with proper cleanup
-        if (statsRef.current && document.querySelectorAll('.stat-number').length > 0) {
-          const statNumbers = document.querySelectorAll('.stat-number');
-          statNumbers.forEach((stat, index) => {
-            const finalValue = [50, 100, 100][index] || 50;
-            gsap.fromTo(
-              stat,
+    if (statsElements && statsElements.length > 0) {
+      statsTrigger = ScrollTrigger.create({
+        trigger: statsRef.current,
+        start: 'top 80%',
+        onEnter: () => {
+          statsElements.forEach((stat, index) => {
+            const finalValues = [50, 100, 100];
+            const suffixes = ['+', 'K', '%'];
+            
+            gsap.fromTo(stat, 
               { innerHTML: 0 },
               {
-                innerHTML: finalValue,
-                duration: 2,
+                innerHTML: finalValues[index],
+                duration: 1.5,
                 ease: 'power2.out',
                 snap: { innerHTML: 1 },
-                scrollTrigger: {
-                  trigger: statsRef.current,
-                  start: 'top 70%',
-                  toggleActions: 'play none none none'
-                },
                 onUpdate: function() {
-                  const suffix = index === 0 ? '+' : index === 1 ? 'K' : '%';
-                  stat.innerHTML = Math.round(this.targets()[0].innerHTML) + suffix;
+                  const currentValue = Math.round(this.targets()[0].innerHTML);
+                  stat.innerHTML = currentValue + suffixes[index];
                 }
               }
             );
           });
         }
-      } catch (error) {
-        console.warn('GSAP animation error:', error);
-      }
-    }, 100);
+      });
+    }
 
     // Cleanup function
     return () => {
-      clearTimeout(timer);
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      masterTimeline.kill();
+      parallaxTrigger.kill();
+      sectionTriggers.forEach(trigger => trigger?.kill());
+      statsTrigger?.kill();
     };
   }, []);
 

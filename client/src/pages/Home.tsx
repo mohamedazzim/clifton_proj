@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { gsap } from 'gsap';
+import { initializeGSAP } from '@/utils/gsapConfig';
 import { Navigation } from "@/components/Navigation";
 import { ThreeBackground } from "@/components/ThreeBackground";
 import { MovingVectors } from "@/components/MovingVectors";
@@ -17,6 +19,11 @@ import { LoadingScreen } from "@/components/LoadingScreen";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+
+  // Initialize GSAP configuration
+  useEffect(() => {
+    initializeGSAP();
+  }, []);
 
   useEffect(() => {
     // Wait for all images to load
@@ -49,8 +56,13 @@ export default function Home() {
   }, []);
 
   // Handle hash scrolling after component loads
+  // Page entrance animation
   useEffect(() => {
     if (!isLoading) {
+      // Set initial opacity for smooth page entrance
+      gsap.set('body', { opacity: 0 });
+      gsap.to('body', { opacity: 1, duration: 0.5, ease: 'power2.out' });
+
       const hash = window.location.hash;
       if (hash) {
         // Small delay to ensure DOM is ready

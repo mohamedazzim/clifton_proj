@@ -83,75 +83,52 @@ export function Products() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
-  // GSAP animations
+  // Optimized GSAP scroll animations
   useEffect(() => {
-    const timer = setTimeout(() => {
-      try {
-        // Section title animation
-        if (document.querySelector('.products-title')) {
-          gsap.fromTo(
-            '.products-title',
-            { y: 60, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 1,
-              ease: 'power3.out',
-              scrollTrigger: {
-                trigger: sectionRef.current,
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-              }
-            }
-          );
-        }
+    // Set initial states for smooth performance
+    gsap.set('.products-title', { y: 40, opacity: 0 });
+    gsap.set('.products-subtitle', { y: 30, opacity: 0 });
+    gsap.set('.product-card', { y: 60, opacity: 0 });
 
-        // Section subtitle animation
-        if (document.querySelector('.products-subtitle')) {
-          gsap.fromTo(
-            '.products-subtitle',
-            { y: 40, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.8,
-              delay: 0.2,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: sectionRef.current,
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-              }
-            }
-          );
-        }
-
-        // Product cards stagger animation
-        if (document.querySelectorAll('.product-card').length > 0) {
-          gsap.fromTo(
-            '.product-card',
-            { y: 80, opacity: 0, scale: 0.9 },
-            {
-              y: 0,
-              opacity: 1,
-              scale: 1,
-              duration: 0.8,
-              ease: 'power2.out',
-              stagger: 0.2,
-              scrollTrigger: {
-                trigger: cardsRef.current,
-                start: 'top 85%',
-                toggleActions: 'play none none reverse'
-              }
-            }
-          );
-        }
-      } catch (error) {
-        console.warn('Products GSAP animation error:', error);
+    // Optimized scroll triggers with better performance
+    const titleTrigger = ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: 'top 85%',
+      onEnter: () => {
+        gsap.to('.products-title', {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out'
+        });
+        gsap.to('.products-subtitle', {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          delay: 0.2,
+          ease: 'power2.out'
+        });
       }
-    }, 100);
+    });
 
-    return () => clearTimeout(timer);
+    const cardsTrigger = ScrollTrigger.create({
+      trigger: cardsRef.current,
+      start: 'top 90%',
+      onEnter: () => {
+        gsap.to('.product-card', {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: 'power2.out'
+        });
+      }
+    });
+
+    return () => {
+      titleTrigger.kill();
+      cardsTrigger.kill();
+    };
   }, []);
   
   const { data: products, isLoading, error } = useQuery<Product[]>({
