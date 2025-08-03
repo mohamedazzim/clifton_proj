@@ -126,36 +126,36 @@ const TeslaStyleTextiles: React.FC = () => {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: teslaStyles }} />
-      <div className="min-h-screen bg-black text-white overflow-x-hidden scroll-smooth tesla-font">
+      <div className="min-h-screen bg-white text-black overflow-x-hidden scroll-smooth tesla-font">
         <Navigation />
       
       {/* Hero Section - Tesla Style */}
-      <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
         {/* Background Video/Image */}
         <div className="hero-bg absolute inset-0 w-full h-[120%] -top-[10%]">
           <img 
             src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
             alt="Premium Textiles Manufacturing"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="absolute inset-0 bg-white/80"></div>
         </div>
         
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4">
-          <h1 className="hero-title text-6xl md:text-8xl tesla-title mb-6 text-white">
+          <h1 className="hero-title text-6xl md:text-8xl tesla-title mb-6 text-gray-900">
             Premium Textiles
           </h1>
-          <p className="hero-subtitle text-xl md:text-2xl tesla-subtitle max-w-3xl mx-auto leading-relaxed text-white/90">
+          <p className="hero-subtitle text-xl md:text-2xl tesla-subtitle max-w-3xl mx-auto leading-relaxed text-gray-700">
             Crafting the future of fashion with sustainable, innovative textile solutions
           </p>
           
           {/* Tesla-style CTA */}
           <div className="mt-16 space-y-4">
-            <button className="tesla-button bg-white text-black px-16 py-4 text-lg font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+            <button className="tesla-button bg-gray-900 text-white px-16 py-4 text-lg font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
               Explore Collection
             </button>
-            <button className="tesla-button block mx-auto bg-transparent border-2 border-white text-white px-16 py-4 text-lg font-medium hover:bg-white hover:text-black transition-all duration-300">
+            <button className="tesla-button block mx-auto bg-transparent border-2 border-gray-900 text-gray-900 px-16 py-4 text-lg font-medium hover:bg-gray-900 hover:text-white transition-all duration-300">
               Learn More
             </button>
           </div>
@@ -163,8 +163,8 @@ const TeslaStyleTextiles: React.FC = () => {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+          <div className="w-6 h-10 border-2 border-gray-900 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-gray-900 rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </section>
@@ -242,28 +242,28 @@ const TeslaStyleTextiles: React.FC = () => {
       </section>
 
       {/* Synthetic Fibers Section */}
-      <section ref={textileSection3Ref} className="tesla-section h-screen flex items-center bg-black text-white">
+      <section ref={textileSection3Ref} className="tesla-section h-screen flex items-center bg-gray-50 text-black">
         <div className="w-full max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
           <div>
-            <h2 className="text-5xl md:text-6xl tesla-title mb-8 text-white">
-              Synthetic Innovation
+            <h2 className="text-5xl md:text-6xl tesla-title mb-8 text-gray-900">
+              Textile Innovation
             </h2>
-            <p className="text-xl tesla-subtitle leading-relaxed mb-12 text-gray-300">
+            <p className="text-xl tesla-subtitle leading-relaxed mb-12 text-gray-700">
               Performance-enhanced synthetic textiles utilizing cutting-edge technology. 
               Designed for durability, functionality, and environmental responsibility.
             </p>
             <div className="space-y-6 text-lg tesla-font">
-              <div className="flex justify-between border-b border-gray-700 pb-4">
-                <span className="text-gray-400">Trade Volume</span>
-                <span className="font-medium text-white">100-1,000 MT</span>
+              <div className="flex justify-between border-b border-gray-300 pb-4">
+                <span className="text-gray-600">Trade Volume</span>
+                <span className="font-medium text-gray-900">100-1,000 MT</span>
               </div>
-              <div className="flex justify-between border-b border-gray-700 pb-4">
-                <span className="text-gray-400">Minimum Order</span>
-                <span className="font-medium text-white">10 MT</span>
+              <div className="flex justify-between border-b border-gray-300 pb-4">
+                <span className="text-gray-600">Minimum Order</span>
+                <span className="font-medium text-gray-900">10 MT</span>
               </div>
-              <div className="flex justify-between border-b border-gray-700 pb-4">
-                <span className="text-gray-400">Enhancement</span>
-                <span className="font-medium text-white">Performance</span>
+              <div className="flex justify-between border-b border-gray-300 pb-4">
+                <span className="text-gray-600">Enhancement</span>
+                <span className="font-medium text-gray-900">Performance</span>
               </div>
             </div>
           </div>
@@ -307,24 +307,24 @@ const TeslaStyleTextiles: React.FC = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="tesla-section h-screen flex items-center justify-center bg-gray-900 text-white relative overflow-hidden">
+      <section className="tesla-section h-screen flex items-center justify-center bg-gray-100 text-black relative overflow-hidden">
         <div className="absolute inset-0">
           <img 
             src="https://images.unsplash.com/photo-1567378711934-f5d68e2e5dd4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
             alt="Textile Innovation"
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-20"
           />
         </div>
         <div className="text-center px-8 relative z-10">
-          <h2 className="text-5xl md:text-6xl tesla-title mb-12 text-white">
+          <h2 className="text-5xl md:text-6xl tesla-title mb-12 text-gray-900">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-xl tesla-subtitle mb-16 max-w-3xl mx-auto text-gray-300">
+          <p className="text-xl tesla-subtitle mb-16 max-w-3xl mx-auto text-gray-700">
             Partner with CLIFTON for premium textile solutions that drive your business forward
           </p>
           <button 
             onClick={() => window.location.href = '/#contact'}
-            className="tesla-button bg-white text-black px-20 py-6 text-lg font-medium hover:bg-gray-100 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
+            className="tesla-button bg-gray-900 text-white px-20 py-6 text-lg font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
           >
             Start Your Journey
           </button>
