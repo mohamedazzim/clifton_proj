@@ -6,6 +6,7 @@ import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
 import { ProductsThreeBackground } from '../components/ProductsThreeBackground';
 import { LoadingScreen } from '../components/LoadingScreen';
+import { BackToTopButton } from '../components/BackToTopButton';
 
 const Products = () => {
   const { t } = useLanguage();
@@ -363,6 +364,7 @@ const Products = () => {
       </section>
 
       <Footer />
+      <BackToTopButton />
     </div>
   );
 };

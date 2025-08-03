@@ -16,6 +16,7 @@ import { OurClients } from "@/components/OurClients";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { LoadingScreen } from "@/components/LoadingScreen";
+import { BackToTopButton } from "@/components/BackToTopButton";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -96,6 +97,7 @@ export default function Home() {
       <VisionMission />
       <Contact />
       <Footer />
+      <BackToTopButton />
     </div>
   );
 }

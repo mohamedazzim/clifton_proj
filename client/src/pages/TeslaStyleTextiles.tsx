@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
+import { BackToTopButton } from '@/components/BackToTopButton';
 
 // Tesla-style custom CSS
 const teslaStyles = `
@@ -360,6 +361,7 @@ const TeslaStyleTextiles: React.FC = () => {
       </section>
 
       <Footer />
+      <BackToTopButton />
       </div>
     </>
   );

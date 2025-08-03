@@ -6,6 +6,7 @@ import { Navigation } from '../components/Navigation';
 import { Footer } from '../components/Footer';
 import { ProductsThreeBackground } from '../components/ProductsThreeBackground';
 import { LoadingScreen } from '../components/LoadingScreen';
+import { BackToTopButton } from '../components/BackToTopButton';
 
 interface ProductCategoryProps {
   category: string;
@@ -221,6 +222,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
         </section>
 
         <Footer />
+        <BackToTopButton />
       </div>
     );
   }
@@ -237,6 +239,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
           </h1>
         </div>
         <Footer />
+        <BackToTopButton />
       </div>
     );
   }
@@ -385,6 +388,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
 
 
       <Footer />
+      <BackToTopButton />
     </div>
   );
 };
