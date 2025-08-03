@@ -1,7 +1,7 @@
 # CLIFTON - Premium Import Export Business Website
 
 ## Overview
-CLIFTON is a modern, full-stack web application for a premium import-export business based in Spain. It showcases company information, product catalogs, and project portfolios, enabling contact management. The project aims to provide a comprehensive and visually appealing online presence for international trade, combining a robust technical foundation with a sophisticated user experience to attract and engage global clients.
+CLIFTON is a modern, full-stack web application for a premium import-export business based in Spain. It aims to provide a comprehensive and visually appealing online presence for international trade, showcasing company information, product catalogs, and project portfolios, and enabling contact management. The project combines a robust technical foundation with a sophisticated user experience to attract and engage global clients.
 
 ## User Preferences
 Preferred communication style: Simple, everyday language.
@@ -9,178 +9,23 @@ Preferred communication style: Simple, everyday language.
 ## System Architecture
 
 ### UI/UX Decisions
-The application features a modern UI with a glass morphism design, incorporating noise textures and gradients. It includes a complete theming system with dark mode support and custom CSS variables for consistent branding. Design principles emphasize responsiveness with a mobile-first approach, interactive 3D graphics for background animations, and an intuitive user experience.
+The application features a modern UI with a glass morphism design, incorporating noise textures and gradients. It includes a complete theming system with dark mode support and custom CSS variables. Design principles emphasize responsiveness with a mobile-first approach, interactive 3D graphics for background animations, and an intuitive user experience. The design prioritizes a clean, premium look with subtle shadows and professional spacing, including a Tesla-style white theme across the application for enhanced logo visibility and a unified aesthetic. The transparent glass morphism header design has been restored.
 
 ### Technical Implementations
-The frontend is built with React 18 and TypeScript, using Vite for fast development and optimized builds. shadcn/ui components, based on Radix UI, are styled with Tailwind CSS. Wouter handles client-side routing, TanStack Query manages server state, and React Hook Form with Zod provides robust form handling.
+The frontend is built with React 18 and TypeScript, using Vite. shadcn/ui components, based on Radix UI, are styled with Tailwind CSS. Wouter handles client-side routing, TanStack Query manages server state, and React Hook Form with Zod provides robust form handling.
 
 The backend uses Node.js with Express.js and TypeScript, designed with RESTful API endpoints. Data persistence is managed by PostgreSQL via Drizzle ORM, with Neon Database for serverless deployment. The system features end-to-end TypeScript for type safety and a monorepo structure for shared types and schemas. Internationalization is supported for English and Portuguese.
 
 ### Feature Specifications
-- **Founders Section**: Displays company leadership profiles with images and bios.
-- **Products Section**: Showcases product catalogs with categories, descriptions, and filtering capabilities. Includes a carousel for product navigation and dedicated product category pages.
-- **Projects Section**: Presents a portfolio of completed projects (note: currently removed from main navigation).
+- **Founders Section**: Displays company leadership profiles.
+- **Products Section**: Showcases product catalogs with categories, descriptions, and filtering capabilities, including a carousel for navigation and dedicated product category pages.
+- **Projects Section**: Presents a portfolio of completed projects.
 - **Contact Management**: Features a contact form for inquiries, with submissions stored in the database.
 - **Dynamic Content**: Data for founders, products, projects, and contacts is served via RESTful API endpoints.
 - **Interactive Elements**: Includes interactive 3D particle system backgrounds and enhanced hover effects on UI components.
 
 ### System Design Choices
-The architecture follows a monorepo structure, ensuring shared types and schemas across the frontend and backend for improved development efficiency and type safety. Performance is prioritized through optimized images, lazy loading, and code splitting. The application is configured for autoscale deployment on Replit, with internal and external port mapping and environment variable management for database connections.
-
-## Recent Changes (August 2, 2025)
-
-### Migration to Replit Environment & UI Improvements
-- **Successfully migrated project from Replit Agent to standard Replit environment**
-- **Fixed header overlap issue**: Updated all page sections with proper top padding (pt-40) to account for fixed navigation bar
-- **Enhanced Textile Products section with real images**:
-  * Replaced placeholder images with high-quality Unsplash textile images
-  * Added professional organic cotton farming image for "Organic Cotton" section
-  * Integrated luxury silk fabric image for "Luxury Silk" section  
-  * Updated "Textile Innovation" section with modern textile technology image
-- **Improved "Textile Innovation" card styling**:
-  * Applied professional blue gradient background (from-blue-50 to-blue-100)
-  * Enhanced with blue-toned shadows and borders for cohesive design
-  * Maintained visual consistency with other product cards
-- **Updated product descriptions and titles** for more professional presentation
-- **Fixed syntax errors** and ensured proper JSX structure
-- All dependencies properly installed and functioning on Replit environment
-- Server running successfully on port 5000 with proper host binding (0.0.0.0)
-
-## Previous Changes (August 1, 2025)
-
-### Product Page Button Improvements
-- **Removed "Request Quote" and "Download Specifications" buttons** from all product pages as requested
-- **Updated "Contact Sales Team" button** to redirect to homepage contact section (/#contact)
-- **Removed breadcrumb navigation** from product detail pages for cleaner appearance
-- **Simplified call-to-action section** with cleaner "Ready to Order?" messaging and single contact button
-- **Added complete textile product data** to ProductDetail component:
-  * Premium Cotton Fabrics - GOTS certified, 50-500 MT trade volume, 5 MT minimum order
-  * Luxury Silk Products - Grade A+ quality, 10-100 MT trade volume, 1 MT minimum order  
-  * Synthetic Fiber Textiles - Performance enhanced, 100-1,000 MT trade volume, 10 MT minimum order
-  * Fashion Accessories - Mixed materials, 5-50 MT trade volume, 500 kg minimum order
-- All textile products now have complete specifications, origins, certifications, and detailed descriptions
-- Both agricultural and textile product pages now use unified button structure focusing on contact conversion
-
-### Vercel Deployment Preparation
-- **Added Vercel configuration files for deployment**:
-  * Created `vercel.json` with proper routing for API and static files
-  * Added `README_VERCEL_DEPLOYMENT.md` with complete deployment instructions
-  * Configured build settings for Vercel compatibility
-  * Prepared environment variable requirements for production deployment
-- User requested Vercel deployment over Replit's built-in deployment system
-
-### Complete Portuguese Translation & Textile Products Implementation
-- **Completed comprehensive Portuguese translation system**:
-  * Fixed all remaining hardcoded English text across all components
-  * Updated Hero section: Import/Export/Delivery text now properly translates
-  * Added HeroSection, ModernProducts, Testimonials, OurClients, and Founders translation namespaces
-  * Enhanced Benefits section with "Global Reach" translations
-  * Fixed translation key consistency issues (e.g., "whatClientssay" → "whatClientsSay")
-  * Ensured complete end-to-end Portuguese language support across entire application
-
-- **Completed Textile Products page with real product data**:
-  * Added 4 textile products: Premium Cotton Fabrics, Luxury Silk Products, Synthetic Fiber Textiles, Fashion Accessories
-  * Each product includes real descriptions, trade volumes, and minimum orders
-  * Updated ProductCategory component to show textile products instead of "coming soon" message
-  * Textile page now matches Agriculture page structure and quality
-
-### UI Layout & Previous Updates
-- **Moved "About Us" section before "Contact Us" section** on main landing page as requested
-- **Removed "Request Quote" button from agriculture_product endpoint** product cards for cleaner appearance  
-- **Updated individual product pages with specific minimum order requirements**:
-  * Coffee: Min 50 MT (changed from 25 MT)
-  * Sugar: Min 12500 MT (changed from 100 MT) 
-  * Corn: Min 12500 MT (changed from 100 MT)
-  * Soybeans: Min 5000 MT (changed from 75 MT)
-- **Improved product card layout** by removing trade volume/min order sections for cleaner appearance
-- Product cards now focus on product description and call-to-action buttons only
-- Individual product detail pages retain all comprehensive information including the updated minimum orders
-
-## Previous Changes (August 1, 2025)
-
-<<<<<<< HEAD
-### Hero Section Enhancement & Content Cleanup
-- **Removed "cringy icons"** from hero section Import/Export/Delivery text as requested
-- Enhanced hero typography with professional fonts and better spacing
-- Improved "CLIFTON" brand styling with advanced typography effects
-- Made Import/Export/Delivery text more professional and catchy
-- Updated founder bio: Joseph Ebenezer emphasizes "TRADING, IMPORT and EXPORT" experience
-- Products section title confirmed as "Our Services" with focused messaging
-
-=======
->>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
-### Phone Number Format Update
-- Updated all phone numbers from +55 format to 0055 format as requested
-- Changed +55 11 4559-3029 → 0055 11 4559-3029
-- Changed +55 11 99734-5464 → 0055 11 99734-5464  
-- Changed +55 11 96488-9444 → 0055 11 96488-9444
-- Applied changes across Footer and Contact components
-
-### Complete Portuguese Translation Implementation
-- Expanded translation system for comprehensive end-to-end Portuguese coverage
-- Added Portuguese translations for all product categories and descriptions
-- Translated Footer services section including "Coffee Trading & Export", "Premium Salt Supply", etc.
-- Implemented ProductDetail page translations for specifications, origins, certifications
-- Added benefits section translations (Quality Certified, Fast Delivery, Competitive Pricing)
-- Updated social media section translation ("Follow Us" → "Siga-nos")
-- Ensured all hardcoded English text now uses translation keys for complete PT language support
-
-<<<<<<< HEAD
-### Migration to Replit Environment Completed
-- Successfully migrated from Replit Agent to standard Replit environment
-- Fixed server host binding from 127.0.0.1 to 0.0.0.0 for Replit compatibility
-- Verified all API endpoints working correctly (founders, products, contacts)
-- Confirmed client-server communication is functioning properly
-- All required packages already installed and working
-- Application running successfully on port 5000
-
-### UI/UX Header Restoration & Content Updates
-- **REVERSED PREVIOUS CHANGE**: Restored transparent glass morphism header design as requested
-- Changed from solid milk-white background back to glass effect with backdrop blur
-- Updated navigation styling: `glass glass-enhanced backdrop-blur-xl shadow-2xl border border-white/20`
-- Removed solid background (`bg-stone-50`) and restored modern translucent appearance
-- Header now features the original transparent, blurry view with glass morphism effect
-- Enhanced brand styling: "CLIFTON" font with professional typography, letter spacing, and text shadow
-- Updated products section title/subtitle: "Our Services" with focused messaging
-- Moved "Meet Our Founders" section above Contact Form in main landing page
-- Updated founder titles: Benson Clement (CEO), Joseph Ebenezer (COO)
-- Added "trading, import and export" experience to Joseph Ebenezer's bio
-- Applied changes to both English and Portuguese translations
-=======
-### UI/UX Improvements
-- Fixed navbar background to solid milk-white color for better visibility
-- Removed all transparency effects from navigation bar
-- Updated main page backgrounds to consistent milk-white tone across all pages
-- Ensured navbar text remains dark and visible against any background
-- Applied changes to Home, Products, ProductCategory, and ProductDetail pages
-- Updated carousel background images to use milk-white theme with improved visibility
-- Added navigation dots to hero section carousel for better user interaction
-- Enhanced image filters to maintain professional appearance while keeping light theme
->>>>>>> d19fab30f0fcfcef29b28e81a6288730e829b8c1
-
-### Migration to Replit Environment Completed
-- Successfully migrated from Replit Agent to standard Replit environment
-- Fixed server host binding from 127.0.0.1 to 0.0.0.0 for Replit compatibility
-- Verified all API endpoints working correctly (founders, products, contacts)
-- Confirmed client-server communication is functioning properly
-- All required packages already installed and working
-- Application running successfully on port 5000
-
-## Previous Changes (July 31, 2025)
-
-### Contact Information Update
-- Updated all contact information throughout the application with real CLIFTON TRADERS details
-- Company: CLIFTON TRADERS, São Paulo, Brazil
-- Address: Rua Mathias Maciel de Almeida, 55, Centro - 06.730-482, Vargem Grande Paulista
-- Phone numbers: +55 11 4559-3029, +55 11 99734-5464, +55 11 96488-9444
-- CNPJ: 60.290.109/0001-32
-- Updated Footer and Contact components with authentic company information
-
-### Translation System Removal
-- Removed OpenAI-powered translation system as requested by user
-- Cleaned up translation-related files: translationService, translation routes, LanguageSelector
-- Simplified ProductDetail pages to use original English content
-- Maintained existing UI/UX design without translation features
+The architecture follows a monorepo structure, ensuring shared types and schemas across the frontend and backend for improved development efficiency and type safety. Performance is prioritized through optimized images, lazy loading, and code splitting. The application is configured for autoscale deployment on Replit, with internal and external port mapping and environment variable management for database connections. All phone numbers are formatted as 0055.
 
 ## External Dependencies
 

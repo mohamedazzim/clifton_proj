@@ -174,7 +174,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
     
     const pageTitle = categoryTitles[category as keyof typeof categoryTitles] || 'Product Category';
     return (
-      <div className="min-h-screen bg-stone-50 dark:bg-gray-900 relative overflow-hidden">
+      <div className="min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
         <ProductsThreeBackground />
         <Navigation />
         
@@ -228,7 +228,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
   // Only agriculture_product will reach this point and show full content
   if (!currentCategory) {
     return (
-      <div className="min-h-screen bg-stone-50 dark:bg-gray-900 relative overflow-hidden">
+      <div className="min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
         <ProductsThreeBackground />
         <Navigation />
         <div className="pt-48 text-center">
@@ -242,7 +242,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
   }
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-gray-900 relative overflow-hidden">
+    <div className="min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
       <ProductsThreeBackground />
       <Navigation />
       
@@ -253,27 +253,27 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
           <div 
             className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-in-out ${fadeClass} ${slideDirection}`}
             style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${currentCategory.backgroundImages[currentImageIndex]})`
+              backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.90)), url(${currentCategory.backgroundImages[currentImageIndex]})`
             }}
           />
           
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/10 to-white/20 z-10"></div>
         </div>
 
         {/* Content */}
         <div className="max-w-7xl mx-auto text-center relative z-20 w-full">
           <div className="animate-slide-up">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 md:mb-8 text-white drop-shadow-2xl px-4 sm:px-0">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 md:mb-8 text-gray-900 drop-shadow-sm px-4 sm:px-0">
               {currentCategory.title}
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-4xl mx-auto mb-8 md:mb-12 leading-relaxed drop-shadow-lg px-4 sm:px-0">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto mb-8 md:mb-12 leading-relaxed px-4 sm:px-0">
               {currentCategory.subtitle}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center px-4 sm:px-0">
-              <button className="group bg-white text-black px-6 md:px-8 py-3 md:py-4 rounded-xl hover-scale transition-all duration-500 font-semibold text-base md:text-lg border-2 border-transparent hover:border-white/20 relative overflow-hidden">
+              <button className="group bg-gray-900 text-white px-6 md:px-8 py-3 md:py-4 rounded-xl hover-scale transition-all duration-500 font-semibold text-base md:text-lg border-2 border-transparent hover:border-gray-700 relative overflow-hidden">
                 <span className="relative z-10">{t("productCategory.viewCatalog")}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-gray-100 to-gray-200 transform skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-700 transform skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
               </button>
             </div>
           </div>
@@ -287,8 +287,8 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
               onClick={() => setCurrentImageIndex(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 index === currentImageIndex 
-                  ? 'bg-white scale-125' 
-                  : 'bg-white/50 hover:bg-white/70'
+                  ? 'bg-gray-900 scale-125' 
+                  : 'bg-gray-400 hover:bg-gray-600'
               }`}
             />
           ))}
@@ -296,7 +296,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
       </section>
 
       {/* Products Grid */}
-      <section className="relative py-20 px-5 sm:px-8 lg:px-10">
+      <section className="relative py-20 px-5 sm:px-8 lg:px-10 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 md:mb-16 px-4 sm:px-0">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
@@ -312,21 +312,21 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
               // Special styling for Textile Innovation section
               const isTextileInnovation = product.name === 'Textile Innovation';
               const cardBgClass = isTextileInnovation 
-                ? 'bg-gradient-to-br from-blue-50/80 to-blue-100/80 dark:from-blue-900/30 dark:to-blue-800/30' 
-                : 'bg-white/20 dark:bg-gray-800/20';
+                ? 'bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30' 
+                : 'bg-white dark:bg-gray-800/20';
               const borderClass = isTextileInnovation
-                ? 'border-blue-300/40 dark:border-blue-600/40'
-                : 'border-gray-200/30 dark:border-gray-600/30';
+                ? 'border-blue-200 dark:border-blue-600/40'
+                : 'border-gray-200 dark:border-gray-600/30';
               
               return (
               <div
                 key={product.name}
-                className={`group relative noise-grid gradient-border glass rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-2 hover:scale-[1.02] ${cardBgClass} backdrop-blur-md border ${borderClass}`}
+                className={`group relative rounded-3xl shadow-md hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 hover:scale-[1.02] ${cardBgClass} border ${borderClass}`}
                 style={{ 
                   animationDelay: `${index * 150}ms`,
                   boxShadow: isTextileInnovation 
-                    ? '0 15px 35px rgba(59, 130, 246, 0.12), 0 8px 15px rgba(59, 130, 246, 0.08)'
-                    : '0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.05)'
+                    ? '0 8px 25px rgba(59, 130, 246, 0.08), 0 4px 10px rgba(59, 130, 246, 0.05)'
+                    : '0 4px 15px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04)'
                 }}
               >
                 {/* Gradient Overlay */}
