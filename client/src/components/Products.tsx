@@ -1,5 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useRef } from "react";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from "./LanguageProvider";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 interface Product {
   id: number;
@@ -74,6 +80,79 @@ const getServiceIcon = (name: string) => {
 
 export function Products() {
   const { t } = useLanguage();
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  // GSAP animations
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      try {
+        // Section title animation
+        if (document.querySelector('.products-title')) {
+          gsap.fromTo(
+            '.products-title',
+            { y: 60, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+              }
+            }
+          );
+        }
+
+        // Section subtitle animation
+        if (document.querySelector('.products-subtitle')) {
+          gsap.fromTo(
+            '.products-subtitle',
+            { y: 40, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              delay: 0.2,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+              }
+            }
+          );
+        }
+
+        // Product cards stagger animation
+        if (document.querySelectorAll('.product-card').length > 0) {
+          gsap.fromTo(
+            '.product-card',
+            { y: 80, opacity: 0, scale: 0.9 },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 0.8,
+              ease: 'power2.out',
+              stagger: 0.2,
+              scrollTrigger: {
+                trigger: cardsRef.current,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse'
+              }
+            }
+          );
+        }
+      } catch (error) {
+        console.warn('Products GSAP animation error:', error);
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
   
   const { data: products, isLoading, error } = useQuery<Product[]>({
     queryKey: ["products"],
@@ -127,21 +206,21 @@ export function Products() {
   }
 
   return (
-    <section id="products" className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-black relative overflow-hidden">
+    <section ref={sectionRef} id="products" className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-black relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-lg sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">{t("products.title")}</h2>
-          <p className="text-sm sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <h2 className="products-title text-lg sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">{t("products.title")}</h2>
+          <p className="products-subtitle text-sm sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
             {t("products.subtitle")}
           </p>
         </div>
 
         {/* Desktop and Tablet Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8">
+        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8">
           {products?.slice(0, 3).map((product, index) => (
             <div
               key={product.id}
-              className="noise-grid gradient-border glass rounded-2xl p-4 sm:p-6 lg:p-8 hover-scale transition-all duration-500 group relative overflow-hidden"
+              className="product-card noise-grid gradient-border glass rounded-2xl p-4 sm:p-6 lg:p-8 hover-scale transition-all duration-500 group relative overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Moving Vector Elements */}

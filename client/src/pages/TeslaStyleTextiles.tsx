@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 
@@ -40,7 +42,116 @@ const teslaStyles = `
   }
 `;
 
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
 const TeslaStyleTextiles: React.FC = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const textileSection1Ref = useRef<HTMLDivElement>(null);
+  const textileSection2Ref = useRef<HTMLDivElement>(null);
+  const textileSection3Ref = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Wait for component to mount before animations
+    const timer = setTimeout(() => {
+      try {
+        // Hero section animations with error handling
+        if (document.querySelector('.hero-title')) {
+          gsap.fromTo(
+            '.hero-title',
+            { y: 100, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1.5, ease: 'power3.out' }
+          );
+        }
+
+        if (document.querySelector('.hero-subtitle')) {
+          gsap.fromTo(
+            '.hero-subtitle',
+            { y: 50, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1.2, delay: 0.3, ease: 'power3.out' }
+          );
+        }
+
+        // Smooth parallax background effect
+        if (document.querySelector('.hero-bg') && heroRef.current) {
+          gsap.to('.hero-bg', {
+            yPercent: -20,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: heroRef.current,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1
+            }
+          });
+        }
+
+        // Section fade-in animations with intersection observer fallback
+        const sections = [
+          { ref: textileSection1Ref, selector: '.section-1' },
+          { ref: textileSection2Ref, selector: '.section-2' },
+          { ref: textileSection3Ref, selector: '.section-3' }
+        ];
+        
+        sections.forEach(({ ref, selector }) => {
+          if (ref.current) {
+            gsap.fromTo(
+              ref.current,
+              { y: 60, opacity: 0 },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: ref.current,
+                  start: 'top 80%',
+                  end: 'bottom 20%',
+                  toggleActions: 'play none none reverse'
+                }
+              }
+            );
+          }
+        });
+
+        // Stats counter animation with proper cleanup
+        if (statsRef.current && document.querySelectorAll('.stat-number').length > 0) {
+          const statNumbers = document.querySelectorAll('.stat-number');
+          statNumbers.forEach((stat, index) => {
+            const finalValue = [50, 100, 100][index] || 50;
+            gsap.fromTo(
+              stat,
+              { innerHTML: 0 },
+              {
+                innerHTML: finalValue,
+                duration: 2,
+                ease: 'power2.out',
+                snap: { innerHTML: 1 },
+                scrollTrigger: {
+                  trigger: statsRef.current,
+                  start: 'top 70%',
+                  toggleActions: 'play none none none'
+                },
+                onUpdate: function() {
+                  const suffix = index === 0 ? '+' : index === 1 ? 'K' : '%';
+                  stat.innerHTML = Math.round(this.targets()[0].innerHTML) + suffix;
+                }
+              }
+            );
+          });
+        }
+      } catch (error) {
+        console.warn('GSAP animation error:', error);
+      }
+    }, 100);
+
+    // Cleanup function
+    return () => {
+      clearTimeout(timer);
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
 
   return (
     <>
@@ -49,13 +160,13 @@ const TeslaStyleTextiles: React.FC = () => {
         <Navigation />
       
       {/* Hero Section - Tesla Style */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
+      <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
         {/* Background Video/Image */}
         <div className="hero-bg absolute inset-0 w-full h-[120%] -top-[10%]">
           <img 
-            src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
-            alt="Premium Textiles Manufacturing"
-            className="w-full h-full object-cover opacity-20"
+            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+            alt="Premium Textile Factory with Modern Equipment"
+            className="w-full h-full object-cover opacity-25"
           />
           <div className="absolute inset-0 bg-white/80"></div>
         </div>
@@ -89,7 +200,7 @@ const TeslaStyleTextiles: React.FC = () => {
       </section>
 
       {/* Cotton Fabrics Section */}
-      <section className="tesla-section h-screen flex items-center bg-white text-black">
+      <section ref={textileSection1Ref} className="section-1 tesla-section h-screen flex items-center bg-white text-black">
         <div className="w-full max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
           <div>
             <h2 className="text-5xl md:text-6xl tesla-title mb-8 text-black">
@@ -116,8 +227,8 @@ const TeslaStyleTextiles: React.FC = () => {
           </div>
           <div className="relative h-96 overflow-hidden">
             <img 
-              src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
-              alt="Organic Cotton Manufacturing"
+              src="https://images.unsplash.com/photo-1559181567-c3190ca9959b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+              alt="Organic Cotton Fields and Processing"
               className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
             />
           </div>
@@ -125,12 +236,12 @@ const TeslaStyleTextiles: React.FC = () => {
       </section>
 
       {/* Silk Products Section */}
-      <section className="tesla-section h-screen flex items-center bg-gray-100">
+      <section ref={textileSection2Ref} className="section-2 tesla-section h-screen flex items-center bg-gray-100">
         <div className="w-full max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
           <div className="relative h-96 overflow-hidden order-2 md:order-1">
             <img 
-              src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
-              alt="Luxury Silk Production"
+              src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+              alt="Luxury Silk Weaving and Production Process"
               className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
             />
           </div>
@@ -161,7 +272,7 @@ const TeslaStyleTextiles: React.FC = () => {
       </section>
 
       {/* Synthetic Fibers Section */}
-      <section className="tesla-section h-screen flex items-center bg-gray-50 text-black">
+      <section ref={textileSection3Ref} className="section-3 tesla-section h-screen flex items-center bg-gray-50 text-black">
         <div className="w-full max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
           <div>
             <h2 className="text-5xl md:text-6xl tesla-title mb-8 text-gray-900">
@@ -188,8 +299,8 @@ const TeslaStyleTextiles: React.FC = () => {
           </div>
           <div className="relative h-96 overflow-hidden">
             <img 
-              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
-              alt="Synthetic Fiber Technology"
+              src="https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+              alt="Advanced Synthetic Textile Innovation Lab"
               className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
             />
           </div>
@@ -197,7 +308,7 @@ const TeslaStyleTextiles: React.FC = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="tesla-section h-screen flex items-center bg-white">
+      <section ref={statsRef} className="tesla-section h-screen flex items-center bg-white">
         <div className="w-full max-w-7xl mx-auto px-8 text-center">
           <h2 className="text-5xl md:text-6xl tesla-title mb-20 text-black">
             Global Impact
@@ -205,19 +316,19 @@ const TeslaStyleTextiles: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-20">
             <div className="group">
               <div className="text-6xl md:text-7xl tesla-title mb-6 text-black group-hover:text-blue-600 transition-colors duration-300">
-                50+
+                <span className="stat-number">0</span>+
               </div>
               <p className="text-xl tesla-subtitle text-gray-600">Countries Served</p>
             </div>
             <div className="group">
               <div className="text-6xl md:text-7xl tesla-title mb-6 text-black group-hover:text-blue-600 transition-colors duration-300">
-                100K
+                <span className="stat-number">0</span>K
               </div>
               <p className="text-xl tesla-subtitle text-gray-600">Tons Traded</p>
             </div>
             <div className="group">
               <div className="text-6xl md:text-7xl tesla-title mb-6 text-black group-hover:text-blue-600 transition-colors duration-300">
-                100%
+                <span className="stat-number">0</span>%
               </div>
               <p className="text-xl tesla-subtitle text-gray-600">Sustainable</p>
             </div>
@@ -229,8 +340,8 @@ const TeslaStyleTextiles: React.FC = () => {
       <section className="tesla-section h-screen flex items-center justify-center bg-gray-100 text-black relative overflow-hidden">
         <div className="absolute inset-0">
           <img 
-            src="https://images.unsplash.com/photo-1567378711934-f5d68e2e5dd4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
-            alt="Textile Innovation"
+            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+            alt="Global Textile Trade and Business Partnership"
             className="w-full h-full object-cover opacity-20"
           />
         </div>
