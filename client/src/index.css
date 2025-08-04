@@ -629,3 +629,5 @@ button.back-to-top-button {
   align-items: center !important;
   justify-content: center !important;
 }
+/* Force Products title visibility */
+h2:contains('Our Products') { display: block !important; visibility: visible !important; opacity: 1 !important; }
