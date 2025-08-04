@@ -126,14 +126,14 @@ export function Products() {
   }
 
   return (
-    <section ref={sectionRef} id="products" className="py-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-black relative overflow-x-hidden">
+    <section ref={sectionRef} id="products" className="pt-2 pb-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-black relative overflow-x-hidden">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Desktop and Tablet Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 lg:gap-8 mb-8">
           {products?.slice(0, 3).map((product, index) => (
             <div
               key={product.id}
-              className="product-card noise-grid gradient-border glass rounded-2xl p-4 sm:p-6 lg:p-8 hover:scale-105 transition-all duration-500 group relative overflow-hidden animate-fade-up"
+              className="product-card noise-grid gradient-border glass rounded-2xl p-4 sm:p-6 lg:p-8 hover:scale-105 transition-all duration-500 group relative overflow-hidden animate-fade-up w-full"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Glow effect for hover */}
