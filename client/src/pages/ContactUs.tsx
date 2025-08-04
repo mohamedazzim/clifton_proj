@@ -17,12 +17,7 @@ import {
   Phone, 
   Mail, 
   Clock, 
-  MessageSquare, 
-  Send,
-  Globe,
-  FileText,
-  Truck,
-  Users
+  Send
 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -165,36 +160,7 @@ export default function ContactUs() {
     }
   ];
 
-  const departments = [
-    {
-      icon: Users,
-      title: t('contactUs.salesDepartment'),
-      email: 'sales@cliftontraders.com',
-      phone: '0055 11 4559-3029',
-      description: t('contactUs.salesDesc')
-    },
-    {
-      icon: Truck,
-      title: t('contactUs.operations'),
-      email: 'operations@cliftontraders.com',
-      phone: '0055 11 99734-5464',
-      description: t('contactUs.operationsDesc')
-    },
-    {
-      icon: FileText,
-      title: t('contactUs.compliance'),
-      email: 'compliance@cliftontraders.com',
-      phone: '0055 11 96488-9444',
-      description: t('contactUs.complianceDesc')
-    },
-    {
-      icon: MessageSquare,
-      title: t('contactUs.customerSupport'),
-      email: 'support@cliftontraders.com',
-      phone: '0055 11 4559-3029',
-      description: t('contactUs.customerSupportDesc')
-    }
-  ];
+
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
@@ -238,13 +204,13 @@ export default function ContactUs() {
             })}
           </div>
 
-          {/* Main Contact Section */}
-          <div className="grid lg:grid-cols-2 gap-12">
+          {/* Centered Main Contact Section */}
+          <div className="flex justify-center">
             {/* Contact Form */}
-            <div className="contact-form">
-              <Card className="bg-white/10 dark:bg-gray-800/50 backdrop-blur-sm border-white/20 dark:border-gray-700/50">
-                <CardContent className="p-8">
-                  <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+            <div className="contact-form w-full max-w-2xl">
+              <Card className="bg-white/10 dark:bg-gray-800/50 backdrop-blur-sm border-white/20 dark:border-gray-700/50 shadow-2xl">
+                <CardContent className="p-8 lg:p-12">
+                  <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">
                     {t('contactUs.sendMessage')}
                   </h2>
                   <form onSubmit={handleSubmit} className="space-y-6">
@@ -282,7 +248,7 @@ export default function ContactUs() {
                           {t('contactUs.company')}
                         </label>
                         <Input
-                          placeholder={t('contactUs.yourCompanyName')}
+                          placeholder={t('contactUs.companyName')}
                           value={formData.company}
                           onChange={(e) => handleInputChange('company', e.target.value)}
                           className="bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600"
@@ -293,7 +259,7 @@ export default function ContactUs() {
                           {t('contactUs.phoneNumber')}
                         </label>
                         <Input
-                          placeholder="+34 XXX XXX XXX"
+                          placeholder="+55 11 XXXXX-XXXX"
                           value={formData.phone}
                           onChange={(e) => handleInputChange('phone', e.target.value)}
                           className="bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600"
@@ -370,94 +336,6 @@ export default function ContactUs() {
                 </CardContent>
               </Card>
             </div>
-
-            {/* Department Contacts */}
-            <div>
-              <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
-                {t('contactUs.departmentContacts')}
-              </h2>
-              <div className="grid gap-6">
-                {departments.map((dept, index) => {
-                  const IconComponent = dept.icon;
-                  return (
-                    <Card key={index} className="bg-white/10 dark:bg-gray-800/50 backdrop-blur-sm border-white/20 dark:border-gray-700/50 hover:bg-white/20 dark:hover:bg-gray-800/70 transition-all duration-300">
-                      <CardContent className="p-6">
-                        <div className="flex items-start space-x-4">
-                          <IconComponent className="w-8 h-8 text-blue-600 dark:text-blue-400 mt-1" />
-                          <div className="flex-1">
-                            <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">
-                              {dept.title}
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300 text-sm mb-3">
-                              {dept.description}
-                            </p>
-                            <div className="space-y-1 text-sm">
-                              <div className="flex items-center space-x-2">
-                                <Mail className="w-4 h-4 text-gray-500" />
-                                <a href={`mailto:${dept.email}`} className="text-blue-600 dark:text-blue-400 hover:underline">
-                                  {dept.email}
-                                </a>
-                              </div>
-                              <div className="flex items-center space-x-2">
-                                <Phone className="w-4 h-4 text-gray-500" />
-                                <a href={`tel:${dept.phone}`} className="text-blue-600 dark:text-blue-400 hover:underline">
-                                  {dept.phone}
-                                </a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* Map Section */}
-          <div className="mt-20">
-            <h2 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">
-              {t('contactUs.findOurOffice')}
-            </h2>
-            <Card className="bg-white/10 dark:bg-gray-800/50 backdrop-blur-sm border-white/20 dark:border-gray-700/50">
-              <CardContent className="p-0">
-                <div className="relative h-96 rounded-lg overflow-hidden">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.7912928248436!2d-3.6945275!3d40.4202343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228e7a80e0b7b%3A0x24b4b5c2cbd5c17e!2sCalle%20de%20Alcal%C3%A1%2C%20123%2C%2028014%20Madrid%2C%20Spain!5e0!3m2!1sen!2ses!4v1652345678901!5m2!1sen!2ses"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="rounded-lg"
-                  />
-                  <div className="absolute inset-0 bg-black/10 pointer-events-none rounded-lg"></div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Social Media & Additional Info */}
-          <div className="mt-20 text-center">
-            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
-              {t('contactUs.stayConnected')}
-            </h2>
-            <div className="flex justify-center space-x-6 mb-8">
-              <a href="#" className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors">
-                <Globe className="w-8 h-8" />
-              </a>
-              <a href="mailto:info@cliftontraders.com" className="text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 transition-colors">
-                <Mail className="w-8 h-8" />
-              </a>
-              <a href="tel:+34911234567" className="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition-colors">
-                <Phone className="w-8 h-8" />
-              </a>
-            </div>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              {t('contactUs.emergencyInfo')}
-            </p>
           </div>
         </div>
       </section>
