@@ -28,6 +28,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
       image: '/images/products/agricultural/coffee.jpg',
       gradient: 'from-amber-600 to-amber-800',
       description: 'Premium quality coffee beans sourced from the finest farms worldwide',
+      coffeeSpecialStyle: true,
       detailedDescription: 'Coffee beans are one of the world\'s most cherished commodities, connecting continents and cultures through a shared love for a perfect cup. As a leading import and export trading company, we specialize in the global trade of high-quality coffee beans, sourcing from renowned coffee-growing regions renowned for their distinct flavors and exceptional quality.\n\nOur company partners with trusted farmers and cooperatives to ensure that every bean meets rigorous standards for freshness, origin authenticity, and sustainability. We offer a diverse range of coffee beans, including Arabica and Robusta varieties, each with unique profiles suited to diverse markets and brewing preferences.\n\nWith a robust logistics network and commitment to transparency, we facilitate seamless movement of goods from farms to markets worldwide. Our focus on quality control and sustainable sourcing helps our clients deliver premium coffee experiences to their customers while supporting environmentally and socially responsible practices.\n\nWhether you are looking for organic, specialty, or bulk coffee beans, our tailored solutions and extensive industry expertise enable us to meet your sourcing needs efficiently and reliably. Partner with us for your coffee trading needs and enjoy a seamless supply chain backed by professionalism and integrity.',
       specifications: ['Grade A arabica beans', 'Moisture content: 8-12%', 'Screen size: 15-18', 'Processing: Washed and natural'],
       origins: ['Ethiopia', 'Colombia', 'Brazil', 'Guatemala'],
@@ -163,12 +164,45 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
     return null;
   }
 
+  // Special coffee styling
+  const isCoffeeProduct = productName === 'coffee';
+  const coffeeStyles = `
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+    
+    .coffee-title {
+      font-family: 'Dancing Script', cursive;
+      background: linear-gradient(135deg, #8B4513, #D2691E, #CD853F);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.3);
+      filter: drop-shadow(1px 1px 2px rgba(139, 69, 19, 0.2));
+    }
+    
+    .coffee-bg {
+      background: linear-gradient(135deg, #FFF8DC, #F5DEB3, #DEB887);
+    }
+    
+    .coffee-card {
+      background: linear-gradient(135deg, rgba(255, 248, 220, 0.9), rgba(245, 222, 179, 0.9));
+      border: 2px solid rgba(210, 105, 30, 0.2);
+      box-shadow: 0 8px 32px rgba(139, 69, 19, 0.15);
+    }
+    
+    .coffee-accent {
+      color: #8B4513;
+      font-weight: 600;
+    }
+  `;
+
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-gray-900">
-      <ProductsThreeBackground />
-      <Navigation />
-      
-      {/* Hero Section */}
+    <>
+      {isCoffeeProduct && <style dangerouslySetInnerHTML={{ __html: coffeeStyles }} />}
+      <div className={`min-h-screen ${isCoffeeProduct ? 'coffee-bg' : 'bg-stone-50 dark:bg-gray-900'}`}>
+        <ProductsThreeBackground />
+        <Navigation />
+        
+        {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-5 sm:px-8 lg:px-10 min-h-[70vh] flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
@@ -186,7 +220,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
           <div className="animate-slide-up">
 
             
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 text-white drop-shadow-2xl">
+            <h1 className={`text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 text-white drop-shadow-2xl ${isCoffeeProduct ? 'coffee-title' : ''}`}>
               {product.title}
             </h1>
             <p className="text-xl sm:text-2xl text-white/90 max-w-4xl mx-auto mb-12 leading-relaxed drop-shadow-lg">
@@ -308,9 +342,10 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
         </div>
       </section>
 
-      <Footer />
-      <BackToTopButton />
-    </div>
+        <Footer />
+        <BackToTopButton />
+      </div>
+    </>
   );
 };
 

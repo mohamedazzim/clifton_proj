@@ -73,8 +73,8 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
   // Product category configurations
   const categoryConfig = {
     agriculture_product: {
-      title: 'Agricultural Products',
-      subtitle: 'Premium quality agricultural commodities sourced from trusted global suppliers',
+      title: 'Premium Agricultural Products',
+      subtitle: 'Discover our comprehensive range of high-quality products with competitive pricing and reliable supply chains.',
       backgroundImages: [
         '/images/products/agricultural/soye.jpg',
         '/images/products/agricultural/salt.jpeg',
@@ -552,14 +552,21 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
             {currentCategory.products.map((product, index) => {
-              // Special styling for Textile Innovation section
+              // Special styling for Coffee and Textile Innovation sections
+              const isCoffee = product.name === 'Coffee';
               const isTextileInnovation = product.name === 'Textile Innovation';
-              const cardBgClass = isTextileInnovation 
-                ? 'bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30' 
-                : 'bg-white dark:bg-gray-800/20';
-              const borderClass = isTextileInnovation
-                ? 'border-blue-200 dark:border-blue-600/40'
-                : 'border-gray-200 dark:border-gray-600/30';
+              
+              const cardBgClass = isCoffee 
+                ? 'bg-gradient-to-br from-amber-50 to-orange-100 dark:from-amber-900/30 dark:to-orange-800/30' 
+                : isTextileInnovation 
+                  ? 'bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/30' 
+                  : 'bg-white dark:bg-gray-800/20';
+              
+              const borderClass = isCoffee
+                ? 'border-amber-200 dark:border-amber-600/40'
+                : isTextileInnovation
+                  ? 'border-blue-200 dark:border-blue-600/40'
+                  : 'border-gray-200 dark:border-gray-600/30';
               
               return (
               <div
