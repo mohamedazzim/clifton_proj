@@ -115,12 +115,12 @@ export default function AboutUs() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 pt-20">
-        <div className="max-w-4xl mx-auto text-center z-10">
-          <h1 className="about-hero-title text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-gray-300 dark:to-white bg-clip-text text-transparent">
+      <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-x-hidden">
+        <div className="w-full max-w-4xl mx-auto text-center z-10">
+          <h1 className="about-hero-title text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-gray-300 dark:to-white bg-clip-text text-transparent px-4">
             {t('aboutUs.title')}
           </h1>
-          <p className="about-hero-subtitle text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="about-hero-subtitle text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 w-full max-w-3xl mx-auto leading-relaxed px-4">
             {t('vision.subtitle')}
           </p>
         </div>

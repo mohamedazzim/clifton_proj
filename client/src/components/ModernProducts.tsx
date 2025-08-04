@@ -43,26 +43,24 @@ export function ModernProducts() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-
-
-      <div className="container mx-auto px-6">
+    <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-x-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <div className="inline-block bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-6 py-2 rounded-full font-medium mb-6 backdrop-blur-sm border border-blue-200/50 dark:border-blue-700/50 text-[18px]">
+          <div className="inline-block bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 sm:px-6 py-2 rounded-full font-medium mb-6 backdrop-blur-sm border border-blue-200/50 dark:border-blue-700/50 text-base sm:text-lg">
             {t('products.title')}
           </div>
-          <h2 className="text-lg sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 px-4">
             <span className="text-gray-900 dark:text-white">{t("modernProducts.premiumCommodities")}</span>
           </h2>
-          <p className="text-sm sm:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed px-4">
             {t('products.subtitle')}
           </p>
         </div>
 
         {/* Products Grid - Responsive 2 Column Layout */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 justify-items-center max-w-4xl mx-auto">
+        <div className="w-full max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 justify-items-center px-4">
             {products.map((product, index) => (
               <div 
                 key={index}

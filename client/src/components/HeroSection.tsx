@@ -103,7 +103,7 @@ export function HeroSection() {
   };
 
   return (
-    <section id="home" className="min-h-screen hero-bg relative overflow-hidden">
+    <section id="home" className="min-h-screen hero-bg relative overflow-hidden max-w-full">
       {/* Auto-sliding Background Images with Smooth Transitions */}
       <div className="absolute inset-0 z-0">
         {heroImages.map((image, index) => (
@@ -214,7 +214,7 @@ export function HeroSection() {
         </div>
       </div>
       <div className="relative z-10 flex items-center min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center mt-[50px]">
             <div className="mb-6">
               <div className="flex justify-center items-center mb-4">
