@@ -9,7 +9,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { VisionMission } from "@/components/VisionMission";
 import { Founders } from "@/components/Founders";
 import { Products } from "@/components/Products";
-
+import { ModernProducts } from "@/components/ModernProducts";
 import { Projects } from "@/components/Projects";
 import { Testimonials } from "@/components/Testimonials";
 import { OurClients } from "@/components/OurClients";
@@ -89,6 +89,7 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <Products />
+      <ModernProducts />
       <Projects />
       <Testimonials />
       <OurClients />
