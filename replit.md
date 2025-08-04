@@ -21,6 +21,9 @@ The backend uses Node.js with Express.js and TypeScript, designed with RESTful A
 - **Products Section**: Showcases product catalogs with categories, descriptions, and filtering capabilities, including a carousel for navigation and dedicated product category pages.
 - **Projects Section**: Presents a portfolio of completed projects.
 - **Contact Management**: Features a contact form for inquiries, with submissions stored in the database.
+- **About Us Page**: Comprehensive company information including story, mission, vision, statistics, unique features, and core values with professional animations.
+- **Contact Us Page**: Advanced contact page with multiple contact methods, department-specific contacts, interactive form with inquiry types, Google Maps integration, and business hours.
+- **Navigation Enhancement**: Updated navigation system to support dedicated About Us and Contact Us pages with proper routing.
 - **Dynamic Content**: Data for founders, products, projects, and contacts is served via RESTful API endpoints.
 - **Interactive Elements**: Includes interactive 3D particle system backgrounds and enhanced hover effects on UI components.
 - **Tesla-Style Textiles**: The textiles_fashion category features a Tesla-inspired design with smooth animations, clean typography, and premium presentation.

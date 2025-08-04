@@ -42,6 +42,22 @@ export function Navigation() {
     }, 100);
   };
 
+  const navigateToAbout = () => {
+    setLocation('/about');
+    setIsMobileMenuOpen(false);
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  };
+
+  const navigateToContact = () => {
+    setLocation('/contact');
+    setIsMobileMenuOpen(false);
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
+  };
+
   return (
     <nav className="sticky top-0 w-full z-50 px-5 sm:px-8 lg:px-10 pt-5 sm:pt-8" style={{ position: 'sticky', top: '0', zIndex: 50 }}>
       <div className="max-w-7xl mx-auto">
@@ -67,7 +83,7 @@ export function Navigation() {
                 {t("nav.home")}
               </button>
               <button 
-                onClick={() => scrollToSection('about')}
+                onClick={navigateToAbout}
                 className="text-gray-900 font-bold hover:text-gray-600 transition-colors"
               >
                 {t("nav.about")}
@@ -80,7 +96,7 @@ export function Navigation() {
               </button>
 
               <button 
-                onClick={() => scrollToSection('contact')}
+                onClick={navigateToContact}
                 className="text-gray-900 font-bold hover:text-gray-600 transition-colors"
               >
                 {t("nav.contact")}
@@ -154,7 +170,7 @@ export function Navigation() {
                   {t("nav.home")}
                 </button>
                 <button 
-                  onClick={() => scrollToSection('about')}
+                  onClick={navigateToAbout}
                   className="py-2 text-left text-gray-900 font-bold hover:text-gray-600 transition-colors"
                 >
                   {t("nav.about")}
@@ -167,7 +183,7 @@ export function Navigation() {
                 </button>
 
                 <button 
-                  onClick={() => scrollToSection('contact')}
+                  onClick={navigateToContact}
                   className="py-2 text-left text-gray-900 font-bold hover:text-gray-600 transition-colors"
                 >
                   {t("nav.contact")}
