@@ -75,7 +75,7 @@ export class MemStorage implements IStorage {
         name: "Joseph Ebenezer",
         position: "COO",
         bio: "B.Sc (Physics), MBA (HR & Marketing). With 10 years of experience in TRADING, IMPORT and EXPORT, sales & marketing in IT & Non-IT sector services, drives technical strategy and market expansion.",
-        imageUrl: "/images/founders/joseph-ebenezer.jpg",
+        imageUrl: "/images/founders/benson-clement.jpg",
         email: "joseph@cliftontraders.com",
         linkedin: "https://linkedin.com/in/joseph-ebenezer-clifton",
         twitter: "https://twitter.com/josephebenezer_td",

@@ -223,7 +223,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
             <h1 className={`text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 text-white drop-shadow-2xl ${isCoffeeProduct ? 'coffee-title' : ''}`}>
               {product.title}
             </h1>
-            <p className="text-xl sm:text-2xl text-white/90 max-w-4xl mx-auto mb-12 leading-relaxed drop-shadow-lg">
+            <p className={`text-xl sm:text-2xl text-white/90 max-w-4xl mx-auto mb-12 leading-relaxed drop-shadow-lg ${isCoffeeProduct ? 'coffee-title' : ''}`}>
               {product.description}
             </p>
             

@@ -543,7 +543,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 md:mb-16 px-4 sm:px-0">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
-              {t("productCategory.ourProducts").replace("{category}", currentCategory.title)}
+              Our Products
             </h2>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
               {t("productCategory.discoverRange")}
