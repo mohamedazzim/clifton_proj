@@ -30,6 +30,10 @@ The backend uses Node.js with Express.js and TypeScript, designed with RESTful A
 - **Fixed CSS Issues**: Resolved malformed dark mode keyframes syntax errors that were causing build warnings.
 - **Fixed React Hooks**: Corrected hooks ordering in ProductCategory component to prevent runtime errors.
 - **UI/UX Fixes**: Added proper product headings on landing page and category pages, reused founder images consistently across CEO and COO profiles, and fixed coffee product font styling for visual consistency.
+- **Project Migration**: Successfully migrated from Replit Agent to Replit environment with proper workflow configuration.
+- **Founder Images**: Updated both CEO and COO positions to use the real owner's professional photograph.
+- **Products Section**: Fixed invisible heading issue by removing problematic GSAP animation that was setting opacity to 0.
+- **Heading Conflicts**: Resolved "productCategory.ourProducts" display issue on agriculture_product page.
 
 ### System Design Choices
 The architecture follows a monorepo structure, ensuring shared types and schemas across the frontend and backend for improved development efficiency and type safety. Performance is prioritized through optimized images, lazy loading, and code splitting. The application is configured for autoscale deployment on Replit, with internal and external port mapping and environment variable management for database connections. All phone numbers are formatted as 0055.

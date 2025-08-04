@@ -86,12 +86,10 @@ export function Products() {
   // Tesla/Apple-style premium GSAP animations
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Set initial states with more sophisticated positioning
-      gsap.set('.products-title', { y: 80, opacity: 0, scale: 0.9 });
-      gsap.set('.products-subtitle', { y: 40, opacity: 0 });
+      // Set initial states for cards only (keep title visible)
       gsap.set('.product-card', { y: 120, opacity: 0, scale: 0.8, rotateX: 25 });
 
-      // Premium entrance animation with ScrollTrigger
+      // Premium entrance animation with ScrollTrigger for cards only
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -101,20 +99,7 @@ export function Products() {
         }
       });
 
-      tl.to('.products-title', {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 1.2,
-        ease: 'power3.out'
-      })
-      .to('.products-subtitle', {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: 'power2.out'
-      }, '-=0.6')
-      .to('.product-card', {
+      tl.to('.product-card', {
         y: 0,
         opacity: 1,
         scale: 1,
@@ -122,7 +107,7 @@ export function Products() {
         duration: 1,
         stagger: 0.2,
         ease: 'power3.out'
-      }, '-=0.4');
+      });
 
       // Advanced hover effects for cards
       gsap.utils.toArray('.product-card').forEach((card: any) => {
@@ -216,8 +201,8 @@ export function Products() {
     <section ref={sectionRef} id="products" className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-black relative overflow-x-hidden">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="products-title text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white" style={{zIndex: 50, position: 'relative'}}>Our Products & Services</h2>
-          <p className="products-subtitle text-sm sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <h2 className="products-title text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white" style={{zIndex: 50, position: 'relative', opacity: 1}}>Our Products & Services</h2>
+          <p className="products-subtitle text-sm sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed" style={{opacity: 1}}>
             {t("products.subtitle")}
           </p>
         </div>
