@@ -1,11 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
-import { useEffect, useRef } from "react";
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useLanguage } from "./LanguageProvider";
-
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
+import React, { useRef } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { useLanguage } from './LanguageProvider';
 
 interface Product {
   id: number;
@@ -81,77 +76,13 @@ const getServiceIcon = (name: string) => {
 export function Products() {
   const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
 
-  // Tesla/Apple-style premium GSAP animations
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Set initial states for cards only (keep title visible)
-      gsap.set('.product-card', { y: 120, opacity: 0, scale: 0.8, rotateX: 25 });
-
-      // Premium entrance animation with ScrollTrigger for cards only
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 75%',
-          end: 'bottom 25%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-      tl.to('.product-card', {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        rotateX: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: 'power3.out'
-      });
-
-      // Advanced hover effects for cards
-      gsap.utils.toArray('.product-card').forEach((card: any) => {
-        const hoverTl = gsap.timeline({ paused: true });
-        
-        hoverTl.to(card, {
-          y: -15,
-          scale: 1.03,
-          duration: 0.4,
-          ease: 'power2.out'
-        })
-        .to(card.querySelector('.service-icon'), {
-          scale: 1.1,
-          rotateY: 10,
-          duration: 0.4,
-          ease: 'power2.out'
-        }, 0);
-
-        card.addEventListener('mouseenter', () => hoverTl.play());
-        card.addEventListener('mouseleave', () => hoverTl.reverse());
-      });
-
-      // Continuous subtle floating animation
-      gsap.utils.toArray('.product-card').forEach((card: any, index) => {
-        gsap.to(card, {
-          y: '+=8',
-          duration: 3 + (index * 0.5),
-          ease: 'sine.inOut',
-          yoyo: true,
-          repeat: -1,
-          delay: index * 0.2
-        });
-      });
-    });
-
-    return () => ctx.revert();
-  }, []);
-  
   const { data: products, isLoading, error } = useQuery<Product[]>({
-    queryKey: ["products"],
+    queryKey: ['products'],
     queryFn: async () => {
-      const response = await fetch("/api/products");
+      const response = await fetch('/api/products');
       if (!response.ok) {
-        throw new Error("Failed to fetch products");
+        throw new Error('Failed to fetch products');
       }
       return response.json();
     },
@@ -162,16 +93,13 @@ export function Products() {
       <section id="products" className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="animate-pulse">
-              <div className="h-12 bg-gray-300 dark:bg-gray-700 rounded w-64 mx-auto mb-6"></div>
-              <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded w-96 mx-auto"></div>
-            </div>
+            <div className="h-8 bg-gray-300 dark:bg-gray-700 rounded w-1/2 mx-auto mb-4"></div>
+            <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4 mx-auto"></div>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="noise-grid gradient-border glass rounded-2xl p-8 animate-pulse">
-                <div className="w-20 h-20 bg-gray-300 dark:bg-gray-700 rounded-3xl mb-6"></div>
-                <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded mb-4"></div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[...Array(3)].map((_, index) => (
+              <div key={index} className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm">
+                <div className="w-16 h-16 bg-gray-300 dark:bg-gray-700 rounded-lg mb-4"></div>
                 <div className="space-y-2 mb-6">
                   <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded"></div>
                   <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
@@ -201,18 +129,20 @@ export function Products() {
     <section ref={sectionRef} id="products" className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-black relative overflow-x-hidden">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="products-title text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white" style={{zIndex: 50, position: 'relative', opacity: 1}}>Our Products & Services</h2>
-          <p className="products-subtitle text-sm sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed" style={{opacity: 1}}>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
+            Our Products & Services
+          </h2>
+          <p className="text-sm sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
             {t("products.subtitle")}
           </p>
         </div>
 
         {/* Desktop and Tablet Grid Layout */}
-        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8">
           {products?.slice(0, 3).map((product, index) => (
             <div
               key={product.id}
-              className="product-card noise-grid gradient-border glass rounded-2xl p-4 sm:p-6 lg:p-8 hover-scale transition-all duration-500 group relative overflow-hidden"
+              className="product-card noise-grid gradient-border glass rounded-2xl p-4 sm:p-6 lg:p-8 hover:scale-105 transition-all duration-500 group relative overflow-hidden animate-fade-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Glow effect for hover */}
@@ -252,7 +182,7 @@ export function Products() {
             {products.slice(3).map((product, index) => (
               <div
                 key={product.id}
-                className="noise-grid gradient-border glass rounded-2xl p-4 sm:p-6 lg:p-8 hover-scale transition-all duration-500 group relative overflow-hidden"
+                className="noise-grid gradient-border glass rounded-2xl p-4 sm:p-6 lg:p-8 hover:scale-105 transition-all duration-500 group relative overflow-hidden animate-fade-up"
                 style={{ animationDelay: `${(index + 3) * 0.1}s` }}
               >
                 {/* Moving Vector Elements */}
@@ -267,7 +197,9 @@ export function Products() {
                   </svg>
                 </div>
                 
-                {getServiceIcon(product.name)}
+                <div className="service-icon">
+                  {getServiceIcon(product.name)}
+                </div>
                 
                 <div className="space-y-3 sm:space-y-4 lg:space-y-6">
                   <span className="inline-block px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-semibold bg-gradient-to-r from-black/10 to-black/5 dark:from-white/10 dark:to-white/5 rounded-full border border-black/10 dark:border-white/10 text-gray-700 dark:text-gray-300">
