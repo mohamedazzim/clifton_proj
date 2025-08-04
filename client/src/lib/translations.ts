@@ -4,7 +4,7 @@ export const translations = {
       brand: "CLIFTON",
       home: "Home",
       about: "About Us",
-      products: "Products",
+      products: "Services",
       projects: "Projects",
       contact: "Contact"
     },
@@ -13,7 +13,7 @@ export const translations = {
       subtitle: "Connecting continents through seamless trade solutions From Europe to global markets, we bridge opportunities with excellence",
       description: "Professional import and export solutions connecting businesses globally with excellence and reliability.",
       cta: {
-        primary: "Explore Our Products",
+        primary: "Explore Our Services",
         secondary: "Contact Us Today",
         services: "Our Services",
         contact: "Get in Touch"
@@ -138,7 +138,7 @@ export const translations = {
       contactTeam: "Contact Sales Team"
     },
     products: {
-      title: "Our Products",
+      title: "Our Services",
       subtitle: "Comprehensive import and export solutions connecting global markets with precision and reliability",
       agricultural: {
         title: "Agricultural Products",
@@ -177,7 +177,7 @@ export const translations = {
       preparingContent: "Our team is preparing comprehensive content including product specifications, pricing information, and trade volumes.",
       notifyMe: "Notify Me When Available",
       getNotified: "Get notified when this product category becomes available",
-      ourProducts: "Our {category}",
+      ourServices: "Our {category}",
       discoverRange: "Discover our comprehensive range of high-quality products with competitive pricing and reliable supply chains."
     },
     heroSection: {
@@ -268,7 +268,7 @@ export const translations = {
       brand: "CLIFTON",
       home: "Início",
       about: "Sobre Nós",
-      products: "Produtos",
+      products: "Serviços",
       projects: "Projetos",
       contact: "Contato"
     },
@@ -277,7 +277,7 @@ export const translations = {
       subtitle: "Conectando continentes através de soluções comerciais perfeitas Da Europa aos mercados globais, unimos oportunidades com excelência",
       description: "Soluções profissionais de importação e exportação conectando negócios globalmente com excelência e confiabilidade.",
       cta: {
-        primary: "Explore Nossos Produtos",
+        primary: "Explore Nossos Serviços",
         secondary: "Entre em Contato Hoje",
         services: "Nossos Serviços",
         contact: "Entre em Contato"
@@ -407,7 +407,7 @@ export const translations = {
       contactTeam: "Equipe de Vendas"
     },
     products: {
-      title: "Nossos Produtos",
+      title: "Nossos Serviços",
       subtitle: "Soluções abrangentes de importação e exportação conectando mercados globais com precisão e confiabilidade",
       agricultural: {
         title: "Produtos Agrícolas",
@@ -446,7 +446,7 @@ export const translations = {
       preparingContent: "Nossa equipe está preparando conteúdo abrangente incluindo especificações de produtos, informações de preços e volumes de comércio.",
       notifyMe: "Notifique-me Quando Disponível",
       getNotified: "Seja notificado quando esta categoria de produtos estiver disponível",
-      ourProducts: "Nossos {category}",
+      ourServices: "Nossos {category}",
       discoverRange: "Descubra nossa gama abrangente de produtos de alta qualidade com preços competitivos e cadeias de suprimentos confiáveis."
     },
     heroSection: {
