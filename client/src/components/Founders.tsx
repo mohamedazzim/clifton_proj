@@ -3,78 +3,138 @@ import { useEffect, useRef } from "react";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from "./LanguageProvider";
-import { Mail, Linkedin, Twitter, Instagram, Facebook } from "lucide-react";
-import type { Founder } from "@shared/schema";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-import prof from "@assets/prof.jpg";
+interface Founder {
+  id: number;
+  name: string;
+  position: string;
+  bio: string;
+  imageUrl: string;
+  experience: string;
+  linkedinUrl: string;
+  order: number;
+}
 
 export function Founders() {
   const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
 
-  // Optimized GSAP animations
+  // Premium GSAP animations for Founders section
   useEffect(() => {
-    gsap.set('.founders-title', { y: 40, opacity: 0 });
-    gsap.set('.founders-subtitle', { y: 30, opacity: 0 });
-    gsap.set('.founder-card', { y: 60, opacity: 0, scale: 0.95 });
+    const ctx = gsap.context(() => {
+      // Set initial states
+      gsap.set('.founders-title', { y: 60, opacity: 0, scale: 0.95 });
+      gsap.set('.founders-subtitle', { y: 40, opacity: 0 });
+      gsap.set('.founder-card', { y: 100, opacity: 0, scale: 0.9, rotateY: 20 });
 
-    const trigger = ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: 'top 85%',
-      onEnter: () => {
-        const tl = gsap.timeline();
-        tl.to('.founders-title', {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
+      // Main animation timeline
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 70%',
+          end: 'bottom 30%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      tl.to('.founders-title', {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: 'power3.out'
+      })
+      .to('.founders-subtitle', {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power2.out'
+      }, '-=0.5')
+      .to('.founder-card', {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        rotateY: 0,
+        duration: 0.8,
+        stagger: 0.3,
+        ease: 'power3.out'
+      }, '-=0.3');
+
+      // Advanced hover effects
+      gsap.utils.toArray('.founder-card').forEach((card: any) => {
+        const hoverTl = gsap.timeline({ paused: true });
+        
+        hoverTl.to(card, {
+          y: -20,
+          scale: 1.05,
+          duration: 0.4,
           ease: 'power2.out'
         })
-        .to('.founders-subtitle', {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
+        .to(card.querySelector('.founder-image'), {
+          scale: 1.1,
+          duration: 0.4,
           ease: 'power2.out'
-        }, '-=0.3')
-        .to('.founder-card', {
-          y: 0,
+        }, 0)
+        .to(card.querySelector('.founder-glow'), {
           opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.2,
+          duration: 0.4,
           ease: 'power2.out'
-        }, '-=0.2');
-      }
+        }, 0);
+
+        card.addEventListener('mouseenter', () => hoverTl.play());
+        card.addEventListener('mouseleave', () => hoverTl.reverse());
+      });
+
+      // Subtle continuous animations
+      gsap.utils.toArray('.founder-card').forEach((card: any, index) => {
+        gsap.to(card, {
+          y: '+=5',
+          duration: 2.5 + (index * 0.3),
+          ease: 'sine.inOut',
+          yoyo: true,
+          repeat: -1,
+          delay: index * 0.4
+        });
+      });
     });
 
-    return () => trigger.kill();
+    return () => ctx.revert();
   }, []);
-  
-  const { data: founders, isLoading } = useQuery<Founder[]>({
-    queryKey: ["/api/founders"],
+
+  const { data: founders, isLoading, error } = useQuery<Founder[]>({
+    queryKey: ["founders"],
+    queryFn: async () => {
+      const response = await fetch("/api/founders");
+      if (!response.ok) {
+        throw new Error("Failed to fetch founders");
+      }
+      return response.json();
+    },
   });
 
   if (isLoading) {
     return (
-      <section className="py-20 bg-white dark:bg-black">
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">{t("founders.title")}</h2>
+            <div className="animate-pulse">
+              <div className="h-12 bg-gray-300 dark:bg-gray-700 rounded w-64 mx-auto mb-6"></div>
+              <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded w-96 mx-auto"></div>
+            </div>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid md:grid-cols-2 gap-8">
             {[1, 2].map((i) => (
-              <div key={i} className="text-center">
-                <div className="noise-grid gradient-border glass rounded-2xl p-8 animate-pulse bg-gray-100/90 dark:bg-gray-800/90 backdrop-blur-sm transform-gpu shadow-lg">
-                  <div className="w-32 h-32 bg-gray-300 dark:bg-gray-700 rounded-full mx-auto mb-6"></div>
-                  <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded mb-2"></div>
-                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded mb-4 w-1/2 mx-auto"></div>
-                  <div className="space-y-2">
-                    <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded"></div>
-                    <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded"></div>
-                    <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4 mx-auto"></div>
-                  </div>
+              <div key={i} className="noise-grid gradient-border glass rounded-2xl p-8 animate-pulse">
+                <div className="w-24 h-24 bg-gray-300 dark:bg-gray-700 rounded-full mb-6 mx-auto"></div>
+                <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded mb-4"></div>
+                <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded mb-6"></div>
+                <div className="space-y-2">
+                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded"></div>
+                  <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4"></div>
                 </div>
               </div>
             ))}
@@ -84,94 +144,94 @@ export function Founders() {
     );
   }
 
+  if (error) {
+    return (
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-red-600 dark:text-red-400">Error loading founders: {error.message}</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (!founders || founders.length === 0) {
+    return (
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-gray-600 dark:text-gray-400">No founders data available.</p>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section ref={sectionRef} className="py-20 bg-white dark:bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="founders-title text-lg sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-6 px-4">{t("founders.title")}</h2>
-          <p className="founders-subtitle text-sm sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto px-4">
+    <section ref={sectionRef} id="founders" className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-950 relative overflow-x-hidden">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="founders-title text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
+            {t("founders.title")}
+          </h2>
+          <p className="founders-subtitle text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
             {t("founders.subtitle")}
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
-          {founders?.map((founder) => (
-            <div key={founder.id} className="founder-card text-center">
-              <div className="noise-grid gradient-border glass rounded-2xl p-6 sm:p-8 hover-scale transition-all duration-500 bg-gray-100/90 dark:bg-gray-800/90 backdrop-blur-sm transform-gpu hover:rotate-y-3 hover:shadow-2xl hover:shadow-black/20 dark:hover:shadow-white/10 perspective-1000 hover:-translate-y-2">
-                <div className="relative mb-4 sm:mb-6 transform-gpu transition-transform duration-300 hover:scale-110">
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full mx-auto relative overflow-hidden shadow-2xl ring-4 ring-white/20 dark:ring-gray-700/50">
-                    <img 
-                      src={prof} 
-                      alt={founder.name} 
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                </div>
-                <div className="transform-gpu transition-all duration-300 hover:translate-z-4">
-                  <h3 className="text-base sm:text-xl md:text-2xl font-bold mb-2 text-gray-900 dark:text-gray-100">{founder.name}</h3>
-                  <p className="text-xs sm:text-base text-gray-700 dark:text-gray-300 mb-2 sm:mb-4 font-medium">{founder.position}</p>
-                  <p className="text-xs sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-3 sm:mb-6">
-                    {founder.bio}
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          {founders.map((founder, index) => (
+            <div
+              key={founder.id}
+              className="founder-card noise-grid gradient-border glass rounded-2xl p-6 sm:p-8 text-center hover-scale transition-all duration-500 group relative overflow-hidden"
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              {/* Glow effect */}
+              <div className="founder-glow absolute inset-0 rounded-2xl opacity-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-xl transition-opacity duration-500"></div>
+              
+              {/* Profile Image */}
+              <div className="founder-image relative w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-white/20 dark:ring-gray-700/50 shadow-xl">
+                <img
+                  src={founder.imageUrl}
+                  alt={founder.name}
+                  className="w-full h-full object-cover transition-transform duration-300"
+                />
+              </div>
+
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                    {founder.name}
+                  </h3>
+                  <p className="text-blue-600 dark:text-blue-400 font-semibold text-base sm:text-lg">
+                    {founder.position}
                   </p>
                 </div>
-                
-                {/* Social Media Icons */}
-                <div className="flex justify-center space-x-4 transform-gpu transition-all duration-300 hover:scale-105">
-                  {founder.email && (
-                    <a 
-                      href={`mailto:${founder.email}`}
-                      className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900 transition-all duration-300 group transform hover:scale-110 hover:shadow-lg hover:-translate-y-1"
-                      title="Send Email"
-                    >
-                      <Mail className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
-                    </a>
-                  )}
-                  {founder.linkedin && (
-                    <a 
-                      href={founder.linkedin}
+
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {founder.bio}
+                </p>
+
+                {founder.experience && (
+                  <div className="pt-4 border-t border-gray-200/50 dark:border-gray-700/50">
+                    <p className="text-sm text-gray-500 dark:text-gray-500 font-medium">
+                      {founder.experience}
+                    </p>
+                  </div>
+                )}
+
+                {founder.linkedinUrl && (
+                  <div className="pt-2">
+                    <a
+                      href={founder.linkedinUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900 transition-all duration-300 group transform hover:scale-110 hover:shadow-lg hover:-translate-y-1"
-                      title="LinkedIn Profile"
+                      className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors duration-300 text-sm"
                     >
-                      <Linkedin className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
+                      <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                      </svg>
+                      LinkedIn
                     </a>
-                  )}
-                  {founder.twitter && (
-                    <a 
-                      href={founder.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-sky-100 dark:hover:bg-sky-900 transition-all duration-300 group transform hover:scale-110 hover:shadow-lg hover:-translate-y-1"
-                      title="Twitter Profile"
-                    >
-                      <Twitter className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-sky-600 dark:group-hover:text-sky-400" />
-                    </a>
-                  )}
-                  {founder.instagram && (
-                    <a 
-                      href={founder.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-pink-100 dark:hover:bg-pink-900 transition-all duration-300 group transform hover:scale-110 hover:shadow-lg hover:-translate-y-1"
-                      title="Instagram Profile"
-                    >
-                      <Instagram className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-pink-600 dark:group-hover:text-pink-400" />
-                    </a>
-                  )}
-                  {founder.facebook && (
-                    <a 
-                      href={founder.facebook}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900 transition-all duration-300 group transform hover:scale-110 hover:shadow-lg hover:-translate-y-1"
-                      title="Facebook Profile"
-                    >
-                      <Facebook className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
-                    </a>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
             </div>
           ))}

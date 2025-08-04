@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useLocation } from "wouter";
 import { useLanguage } from "./LanguageProvider";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 interface ProductItem {
   name: string;
@@ -14,6 +19,86 @@ interface ProductItem {
 export function ModernProducts() {
   const { t } = useLanguage();
   const [, setLocation] = useLocation();
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  // Advanced GSAP animations for ModernProducts
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Set initial states
+      gsap.set('.modern-header', { y: 60, opacity: 0 });
+      gsap.set('.modern-badge', { scale: 0, opacity: 0 });
+      gsap.set('.modern-title', { y: 40, opacity: 0 });
+      gsap.set('.modern-subtitle', { y: 30, opacity: 0 });
+      gsap.set('.modern-card', { y: 100, opacity: 0, rotateY: 15, scale: 0.9 });
+
+      // Entrance animations triggered by scroll
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      tl.to('.modern-badge', {
+        scale: 1,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'back.out(1.7)'
+      })
+      .to('.modern-title', {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power3.out'
+      }, '-=0.3')
+      .to('.modern-subtitle', {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out'
+      }, '-=0.4')
+      .to('.modern-card', {
+        y: 0,
+        opacity: 1,
+        rotateY: 0,
+        scale: 1,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power3.out'
+      }, '-=0.2');
+
+      // Hover animations for cards
+      gsap.utils.toArray('.modern-card').forEach((card: any) => {
+        const tl = gsap.timeline({ paused: true });
+        
+        tl.to(card, {
+          y: -10,
+          scale: 1.05,
+          duration: 0.3,
+          ease: 'power2.out'
+        })
+        .to(card.querySelector('.card-image'), {
+          scale: 1.1,
+          duration: 0.3,
+          ease: 'power2.out'
+        }, 0)
+        .to(card.querySelector('.card-content'), {
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          duration: 0.3,
+          ease: 'power2.out'
+        }, 0);
+
+        card.addEventListener('mouseenter', () => tl.play());
+        card.addEventListener('mouseleave', () => tl.reverse());
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   const products: ProductItem[] = [
     {
@@ -43,24 +128,24 @@ export function ModernProducts() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-x-hidden">
+    <section ref={sectionRef} className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 sm:px-6 py-2 rounded-full font-medium mb-6 backdrop-blur-sm border border-blue-200/50 dark:border-blue-700/50 text-base sm:text-lg">
+        <div ref={headerRef} className="modern-header text-center mb-16">
+          <div className="modern-badge inline-block bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 sm:px-6 py-2 rounded-full font-medium mb-6 backdrop-blur-sm border border-blue-200/50 dark:border-blue-700/50 text-base sm:text-lg">
             {t('products.title')}
           </div>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 px-4">
+          <h2 className="modern-title text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 px-4">
             <span className="text-gray-900 dark:text-white">{t("modernProducts.premiumCommodities")}</span>
           </h2>
-          <p className="text-sm sm:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed px-4">
+          <p className="modern-subtitle text-sm sm:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed px-4">
             {t('products.subtitle')}
           </p>
         </div>
 
         {/* Products Grid - Responsive 2 Column Layout */}
         <div className="w-full max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 justify-items-center px-4">
+          <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 justify-items-center px-4">
             {products.map((product, index) => (
               <div 
                 key={index}
@@ -68,20 +153,20 @@ export function ModernProducts() {
                   e.preventDefault();
                   handleProductClick(product.slug);
                 }}
-                className="w-full max-w-md noise-grid gradient-border glass rounded-xl shadow-lg bg-white/30 dark:bg-gray-800/30 backdrop-blur-md border border-white/20 dark:border-gray-600/20 hover:shadow-xl transition-all duration-300 hover:bg-white/40 dark:hover:bg-gray-800/40 cursor-pointer hover:scale-105"
+                className="modern-card w-full max-w-md noise-grid gradient-border glass rounded-xl shadow-lg bg-white/30 dark:bg-gray-800/30 backdrop-blur-md border border-white/20 dark:border-gray-600/20 hover:shadow-xl transition-all duration-300 hover:bg-white/40 dark:hover:bg-gray-800/40 cursor-pointer"
                 style={{ pointerEvents: 'auto' }}
               >
                 {/* Product Image */}
-                <div className="relative h-48 sm:h-56 overflow-hidden rounded-lg m-3 mb-0">
+                <div className="card-image relative h-48 sm:h-56 overflow-hidden rounded-lg m-3 mb-0">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover rounded-lg transition-transform duration-300 hover:scale-105"
+                    className="w-full h-full object-cover rounded-lg transition-transform duration-300"
                   />
                 </div>
                 
                 {/* Product Content */}
-                <div className="p-4 pt-3">
+                <div className="card-content p-4 pt-3">
                   <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-3">
                     {product.name}
                   </h3>

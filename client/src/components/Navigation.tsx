@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "wouter";
 import { useTheme } from "./ThemeProvider";
 import { useLanguage } from "./LanguageProvider";
+import { gsap } from 'gsap';
 
 
 
@@ -10,6 +11,52 @@ export function Navigation() {
   const [location, setLocation] = useLocation();
   const { theme, toggleTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
+  const navRef = useRef<HTMLElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
+  const menuItemsRef = useRef<HTMLDivElement>(null);
+
+  // GSAP Navigation entrance animation
+  useEffect(() => {
+    const tl = gsap.timeline({ delay: 0.2 });
+    
+    // Set initial states
+    gsap.set('.nav-container', { y: -100, opacity: 0 });
+    gsap.set('.nav-logo', { scale: 0.8, opacity: 0, rotateY: -90 });
+    gsap.set('.nav-item', { y: -30, opacity: 0 });
+    gsap.set('.nav-controls', { x: 50, opacity: 0 });
+
+    // Animate navigation entrance
+    tl.to('.nav-container', {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: 'power3.out'
+    })
+    .to('.nav-logo', {
+      scale: 1,
+      opacity: 1,
+      rotateY: 0,
+      duration: 0.6,
+      ease: 'back.out(1.7)'
+    }, '-=0.4')
+    .to('.nav-item', {
+      y: 0,
+      opacity: 1,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: 'power2.out'
+    }, '-=0.3')
+    .to('.nav-controls', {
+      x: 0,
+      opacity: 1,
+      duration: 0.5,
+      ease: 'power2.out'
+    }, '-=0.2');
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -59,52 +106,56 @@ export function Navigation() {
   };
 
   return (
-    <nav className="sticky top-0 w-full z-50 px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6" style={{ position: 'sticky', top: '0', zIndex: 50 }}>
+    <nav ref={navRef} className="sticky top-0 w-full z-50 px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6" style={{ position: 'sticky', top: '0', zIndex: 50 }}>
       <div className="max-w-7xl mx-auto">
-        <div className="rounded-2xl px-4 sm:px-6 lg:px-8 py-3 sm:py-4 glass glass-enhanced backdrop-blur-xl shadow-2xl border border-white/20">
+        <div className="nav-container rounded-2xl px-4 sm:px-6 lg:px-8 py-3 sm:py-4 glass glass-enhanced backdrop-blur-xl shadow-2xl border border-white/20">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="w-16 h-16 flex items-center justify-center">
+              <div ref={logoRef} className="nav-logo w-16 h-16 flex items-center justify-center">
                 <img 
                   src="/images/logo/CLIFTON-BLACK.png"
                   alt="CLIFTON Logo" 
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain hover:scale-110 transition-transform duration-300"
                 />
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div ref={menuItemsRef} className="hidden md:flex items-center space-x-8">
               <button 
                 onClick={() => scrollToSection('home')}
-                className="text-gray-900 font-bold hover:text-gray-600 transition-colors"
+                className="nav-item text-gray-900 font-bold hover:text-gray-600 transition-all duration-300 relative group"
               >
                 {t("nav.home")}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-300 group-hover:w-full"></span>
               </button>
               <button 
                 onClick={navigateToAbout}
-                className="text-gray-900 font-bold hover:text-gray-600 transition-colors"
+                className="nav-item text-gray-900 font-bold hover:text-gray-600 transition-all duration-300 relative group"
               >
                 {t("nav.about")}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-300 group-hover:w-full"></span>
               </button>
               <button 
                 onClick={navigateToProducts}
-                className="text-gray-900 font-bold hover:text-gray-600 transition-colors"
+                className="nav-item text-gray-900 font-bold hover:text-gray-600 transition-all duration-300 relative group"
               >
                 {t("nav.products")}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-300 group-hover:w-full"></span>
               </button>
 
               <button 
                 onClick={navigateToContact}
-                className="text-gray-900 font-bold hover:text-gray-600 transition-colors"
+                className="nav-item text-gray-900 font-bold hover:text-gray-600 transition-all duration-300 relative group"
               >
                 {t("nav.contact")}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-300 group-hover:w-full"></span>
               </button>
             </div>
 
             {/* Language & Theme Toggle */}
-            <div className="flex items-center space-x-4">
+            <div className="nav-controls flex items-center space-x-4">
               <div className="hidden sm:flex items-center space-x-2 text-sm">
                 <button 
                   onClick={() => setLanguage('en')}

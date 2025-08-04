@@ -83,52 +83,82 @@ export function Products() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
 
-  // Optimized GSAP scroll animations
+  // Tesla/Apple-style premium GSAP animations
   useEffect(() => {
-    // Set initial states for smooth performance
-    gsap.set('.products-title', { y: 40, opacity: 0 });
-    gsap.set('.products-subtitle', { y: 30, opacity: 0 });
-    gsap.set('.product-card', { y: 60, opacity: 0 });
+    const ctx = gsap.context(() => {
+      // Set initial states with more sophisticated positioning
+      gsap.set('.products-title', { y: 80, opacity: 0, scale: 0.9 });
+      gsap.set('.products-subtitle', { y: 40, opacity: 0 });
+      gsap.set('.product-card', { y: 120, opacity: 0, scale: 0.8, rotateX: 25 });
 
-    // Optimized scroll triggers with better performance
-    const titleTrigger = ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: 'top 85%',
-      onEnter: () => {
-        gsap.to('.products-title', {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
+      // Premium entrance animation with ScrollTrigger
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+          end: 'bottom 25%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+
+      tl.to('.products-title', {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 1.2,
+        ease: 'power3.out'
+      })
+      .to('.products-subtitle', {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power2.out'
+      }, '-=0.6')
+      .to('.product-card', {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        rotateX: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: 'power3.out'
+      }, '-=0.4');
+
+      // Advanced hover effects for cards
+      gsap.utils.toArray('.product-card').forEach((card: any) => {
+        const hoverTl = gsap.timeline({ paused: true });
+        
+        hoverTl.to(card, {
+          y: -15,
+          scale: 1.03,
+          duration: 0.4,
           ease: 'power2.out'
-        });
-        gsap.to('.products-subtitle', {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          delay: 0.2,
+        })
+        .to(card.querySelector('.service-icon'), {
+          scale: 1.1,
+          rotateY: 10,
+          duration: 0.4,
           ease: 'power2.out'
+        }, 0);
+
+        card.addEventListener('mouseenter', () => hoverTl.play());
+        card.addEventListener('mouseleave', () => hoverTl.reverse());
+      });
+
+      // Continuous subtle floating animation
+      gsap.utils.toArray('.product-card').forEach((card: any, index) => {
+        gsap.to(card, {
+          y: '+=8',
+          duration: 3 + (index * 0.5),
+          ease: 'sine.inOut',
+          yoyo: true,
+          repeat: -1,
+          delay: index * 0.2
         });
-      }
+      });
     });
 
-    const cardsTrigger = ScrollTrigger.create({
-      trigger: cardsRef.current,
-      start: 'top 90%',
-      onEnter: () => {
-        gsap.to('.product-card', {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.15,
-          ease: 'power2.out'
-        });
-      }
-    });
-
-    return () => {
-      titleTrigger.kill();
-      cardsTrigger.kill();
-    };
+    return () => ctx.revert();
   }, []);
   
   const { data: products, isLoading, error } = useQuery<Product[]>({
@@ -200,6 +230,9 @@ export function Products() {
               className="product-card noise-grid gradient-border glass rounded-2xl p-4 sm:p-6 lg:p-8 hover-scale transition-all duration-500 group relative overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
+              {/* Glow effect for hover */}
+              <div className="card-glow absolute inset-0 rounded-2xl opacity-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-xl transition-opacity duration-500"></div>
+              
               {/* Moving Vector Elements */}
               <div className="absolute top-6 right-6 w-8 h-8 opacity-10 group-hover:opacity-20 transition-all duration-300">
                 <svg viewBox="0 0 24 24" className="w-full h-full text-current">
@@ -209,7 +242,9 @@ export function Products() {
                 </svg>
               </div>
               
-              {getServiceIcon(product.name)}
+              <div className="service-icon">
+                {getServiceIcon(product.name)}
+              </div>
               
               <div className="space-y-3 sm:space-y-4 lg:space-y-6">
                 <span className="inline-block px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-semibold bg-gradient-to-r from-black/10 to-black/5 dark:from-white/10 dark:to-white/5 rounded-full border border-black/10 dark:border-white/10 text-gray-700 dark:text-gray-300">
