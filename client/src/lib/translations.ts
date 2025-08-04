@@ -97,8 +97,8 @@ export const translations = {
       },
       info: {
         title: "Get in touch",
-        address: "Calle de Alcalá 123, 28014 Madrid, Spain",
-        location: "Madrid, Spain"
+        address: "Rua Mathias Maciel de Almeida, 55, Centro - 06.730-482",
+        location: "Vargem Grande Paulista, São Paulo, Brasil"
       },
       hours: {
         title: "Business Hours",

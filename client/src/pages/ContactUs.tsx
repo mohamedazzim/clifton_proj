@@ -145,8 +145,8 @@ export default function ContactUs() {
     {
       icon: Phone,
       title: t('contactUs.phoneNumbers'),
-      content: '+34 91 123 4567',
-      secondary: `${t('contactUs.emergency')}: +34 900 123 456`,
+      content: '0055 11 4559-3029',
+      secondary: '0055 11 99734-5464 | 0055 11 96488-9444',
       color: 'text-green-600 dark:text-green-400'
     },
     {
@@ -170,28 +170,28 @@ export default function ContactUs() {
       icon: Users,
       title: t('contactUs.salesDepartment'),
       email: 'sales@cliftontraders.com',
-      phone: '+34 91 123 4567',
+      phone: '0055 11 4559-3029',
       description: t('contactUs.salesDesc')
     },
     {
       icon: Truck,
       title: t('contactUs.operations'),
       email: 'operations@cliftontraders.com',
-      phone: '+34 91 123 4568',
+      phone: '0055 11 99734-5464',
       description: t('contactUs.operationsDesc')
     },
     {
       icon: FileText,
       title: t('contactUs.compliance'),
       email: 'compliance@cliftontraders.com',
-      phone: '+34 91 123 4569',
+      phone: '0055 11 96488-9444',
       description: t('contactUs.complianceDesc')
     },
     {
       icon: MessageSquare,
       title: t('contactUs.customerSupport'),
       email: 'support@cliftontraders.com',
-      phone: '+34 91 123 4570',
+      phone: '0055 11 4559-3029',
       description: t('contactUs.customerSupportDesc')
     }
   ];

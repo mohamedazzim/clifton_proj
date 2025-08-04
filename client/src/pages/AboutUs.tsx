@@ -137,10 +137,10 @@ export default function AboutUs() {
                   {t('aboutUs.ourStory')}
                 </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  {t('aboutUs.storyDescription')}
+                  {t('vision.subtitle')}
                 </p>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {t('aboutUs.storyDescription2')}
+                  {t('founders.connectingMarkets')} {t('founders.licensedTrader')}
                 </p>
               </div>
               <div className="relative">
@@ -152,7 +152,7 @@ export default function AboutUs() {
                     </h3>
                     <p className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">2009</p>
                     <p className="text-gray-600 dark:text-gray-300">
-                      Madrid, Spain
+                      São Paulo, Brasil
                     </p>
                   </div>
                 </div>
@@ -216,28 +216,28 @@ export default function AboutUs() {
               <div className="text-center p-6 rounded-xl bg-white/10 dark:bg-gray-800/50 backdrop-blur-sm border border-white/20 dark:border-gray-700/50">
                 <Globe className="w-12 h-12 mx-auto mb-4 text-blue-600 dark:text-blue-400" />
                 <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                  Global Network
+                  {t('projects.benefits.network.title')}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Strategic partnerships across 50+ countries enable us to source the best products at competitive prices while ensuring quality and compliance.
+                  {t('projects.benefits.network.description')}
                 </p>
               </div>
               <div className="text-center p-6 rounded-xl bg-white/10 dark:bg-gray-800/50 backdrop-blur-sm border border-white/20 dark:border-gray-700/50">
                 <Award className="w-12 h-12 mx-auto mb-4 text-green-600 dark:text-green-400" />
                 <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                  Certified Excellence
+                  {t('projects.benefits.expertise.title')}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  ISO 9001:2015 certified with full compliance to international trade regulations and quality management systems.
+                  {t('projects.benefits.expertise.description')}
                 </p>
               </div>
               <div className="text-center p-6 rounded-xl bg-white/10 dark:bg-gray-800/50 backdrop-blur-sm border border-white/20 dark:border-gray-700/50">
                 <Users className="w-12 h-12 mx-auto mb-4 text-purple-600 dark:text-purple-400" />
                 <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                  Expert Team
+                  {t('projects.benefits.customerCentric.title')}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Our experienced professionals bring deep expertise in international trade, customs regulations, and market intelligence.
+                  {t('projects.benefits.customerCentric.description')}
                 </p>
               </div>
             </div>
