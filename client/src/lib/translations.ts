@@ -131,7 +131,7 @@ export const translations = {
       country: "São Paulo, Brasil",
       cnpj: "CNPJ: 60.290.109/0001-32",
       tradeRegulations: "Trade Regulations",
-      licensedTrader: "Licensed commodity trader | Certified by Spanish Trade Authority | ISO 9001:2015 Quality Management"
+      certifications: "Licensed commodity trader | Certified by Spanish Trade Authority | ISO 9001:2015 Quality Management"
     },
     productDetail: {
       aboutProduct: "About This Product",
@@ -186,7 +186,39 @@ export const translations = {
       notifyMe: "Notify Me When Available",
       getNotified: "Get notified when this product category becomes available",
       ourServices: "Our {category}",
-      discoverRange: "Discover our comprehensive range of high-quality products with competitive pricing and reliable supply chains."
+      discoverRange: "Discover our comprehensive range of high-quality products with competitive pricing and reliable supply chains.",
+      agriculture: {
+        title: "Premium Agricultural Products",
+        subtitle: "Discover our comprehensive range of high-quality products with competitive pricing and reliable supply chains.",
+        coffee: {
+          name: "Coffee",
+          description: "Premium quality coffee beans sourced from the finest farms worldwide"
+        },
+        salt: {
+          name: "Salt",
+          description: "High-grade industrial and food-grade salt for various applications"
+        },
+        sugar: {
+          name: "Sugar",
+          description: "Refined and raw sugar varieties meeting international quality standards"
+        },
+        soybeans: {
+          name: "Soybeans",
+          description: "Sustainable soybean products for food and industrial applications"
+        }
+      },
+      textiles: {
+        title: "Premium Textiles & Fashion",
+        subtitle: "Discover our comprehensive range of high-quality textile products with competitive pricing and reliable supply chains."
+      },
+      labels: {
+        tradeVolume: "Trade Volume",
+        minOrder: "Min Order",
+        getQuote: "Get Quote",
+        backToProducts: "Back to Products",
+        loading: "Loading...",
+        notifyWhenAvailable: "Notify When Available"
+      }
     },
     heroSection: {
       import: "Import",
@@ -300,7 +332,8 @@ export const translations = {
       successMessage: "Your message has been sent successfully.",
       error: "Error",
       errorMessage: "Something went wrong. Please try again later.",
-      send: "Send"
+      send: "Send",
+      linkedin: "LinkedIn"
     },
     visionMission: {
       title: "Our Vision & Mission",
@@ -444,7 +477,7 @@ export const translations = {
       country: "São Paulo, Brasil",
       cnpj: "CNPJ: 60.290.109/0001-32",
       tradeRegulations: "Regulamentações Comerciais",
-      licensedTrader: "Comerciante de commodities licenciado | Certificado pela Autoridade de Comércio Espanhola | Gestão de Qualidade ISO 9001:2015"
+      certifications: "Comerciante licenciado de commodities | Certificado pela Autoridade Comercial Espanhola | Gestão da Qualidade ISO 9001:2015"
     },
     productDetail: {
       aboutProduct: "Sobre Este Produto",
@@ -499,7 +532,39 @@ export const translations = {
       notifyMe: "Notifique-me Quando Disponível",
       getNotified: "Seja notificado quando esta categoria de produtos estiver disponível",
       ourServices: "Nossos {category}",
-      discoverRange: "Descubra nossa gama abrangente de produtos de alta qualidade com preços competitivos e cadeias de suprimentos confiáveis."
+      discoverRange: "Descubra nossa gama abrangente de produtos de alta qualidade com preços competitivos e cadeias de suprimentos confiáveis.",
+      agriculture: {
+        title: "Produtos Agrícolas Premium",
+        subtitle: "Descubra nossa gama abrangente de produtos de alta qualidade com preços competitivos e cadeias de suprimento confiáveis.",
+        coffee: {
+          name: "Café",
+          description: "Grãos de café de qualidade premium obtidos das melhores fazendas mundiais"
+        },
+        salt: {
+          name: "Sal",
+          description: "Sal industrial e alimentício de alta qualidade para diversas aplicações"
+        },
+        sugar: {
+          name: "Açúcar",
+          description: "Variedades de açúcar refinado e bruto atendendo padrões internacionais de qualidade"
+        },
+        soybeans: {
+          name: "Soja",
+          description: "Produtos de soja sustentáveis para aplicações alimentícias e industriais"
+        }
+      },
+      textiles: {
+        title: "Têxteis e Moda Premium",
+        subtitle: "Descubra nossa gama abrangente de produtos têxteis de alta qualidade com preços competitivos e cadeias de suprimento confiáveis."
+      },
+      labels: {
+        tradeVolume: "Volume de Comércio",
+        minOrder: "Pedido Mínimo",
+        getQuote: "Obter Cotação",
+        backToProducts: "Voltar aos Produtos",
+        loading: "Carregando...",
+        notifyWhenAvailable: "Notificar Quando Disponível"
+      }
     },
     heroSection: {
       import: "Importação",
@@ -613,7 +678,8 @@ export const translations = {
       successMessage: "Sua mensagem foi enviada com sucesso.",
       error: "Erro",
       errorMessage: "Algo deu errado. Tente novamente mais tarde.",
-      send: "Enviar"
+      send: "Enviar",
+      linkedin: "LinkedIn"
     },
     visionMission: {
       title: "Nossa Visão e Missão",

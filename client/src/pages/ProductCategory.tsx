@@ -64,8 +64,8 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
   // Product category configurations
   const categoryConfig = {
     agriculture_product: {
-      title: 'Premium Agricultural Products',
-      subtitle: 'Discover our comprehensive range of high-quality products with competitive pricing and reliable supply chains.',
+      title: t("productCategory.agriculture.title"),
+      subtitle: t("productCategory.agriculture.subtitle"),
       backgroundImages: [
         '/images/products/agricultural/soye.jpg',
         '/images/products/agricultural/salt.jpeg',
@@ -73,34 +73,34 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
       ],
       products: [
         {
-          name: 'Coffee',
+          name: t("productCategory.agriculture.coffee.name"),
           image: '/images/products/agricultural/coffee.jpg',
           gradient: 'from-amber-600 to-amber-800',
-          description: 'Premium quality coffee beans sourced from the finest farms worldwide',
+          description: t("productCategory.agriculture.coffee.description"),
           tradeVolume: '500-5,000 MT',
           minOrder: '25 MT'
         },
         {
-          name: 'Salt',
+          name: t("productCategory.agriculture.salt.name"),
           image: '/images/products/agricultural/salt.jpeg',
           gradient: 'from-blue-600 to-blue-800',
-          description: 'High-grade industrial and food-grade salt for various applications',
+          description: t("productCategory.agriculture.salt.description"),
           tradeVolume: '1,000-10,000 MT',
           minOrder: '50 MT'
         },
         {
-          name: 'Sugar',
+          name: t("productCategory.agriculture.sugar.name"),
           image: '/images/products/agricultural/sugar.jpg',
           gradient: 'from-pink-600 to-pink-800',
-          description: 'Refined and raw sugar varieties meeting international quality standards',
+          description: t("productCategory.agriculture.sugar.description"),
           tradeVolume: '2,000-25,000 MT',
           minOrder: '100 MT'
         },
         {
-          name: 'Soybeans',
+          name: t("productCategory.agriculture.soybeans.name"),
           image: '/images/products/agricultural/soye.jpg',
           gradient: 'from-green-600 to-green-800',
-          description: 'Sustainable soybean products for food and industrial applications',
+          description: t("productCategory.agriculture.soybeans.description"),
           tradeVolume: '1,500-15,000 MT',
           minOrder: '75 MT'
         },
@@ -115,8 +115,8 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
       ]
     },
     textiles_fashion: {
-      title: 'Premium Textiles',
-      subtitle: 'Crafting the future of fashion with sustainable, innovative textile solutions',
+      title: t("productCategory.textiles.title"),
+      subtitle: t("productCategory.textiles.subtitle"),
       backgroundImages: [
         'https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
         'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80',
@@ -232,19 +232,19 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
             {/* Hero Content */}
             <div className="relative z-10 text-center px-4">
               <h1 className="hero-title text-6xl md:text-8xl tesla-title mb-6 text-gray-900">
-                Premium Textiles
+                {t("productCategory.textiles.title")}
               </h1>
               <p className="hero-subtitle text-xl md:text-2xl tesla-subtitle max-w-3xl mx-auto leading-relaxed text-gray-700">
-                Crafting the future of fashion with sustainable, innovative textile solutions
+                {t("productCategory.textiles.subtitle")}
               </p>
               
               {/* Tesla-style CTA */}
               <div className="mt-16 space-y-4">
                 <button className="tesla-button bg-gray-900 text-white px-16 py-4 text-lg font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
-                  Explore Collection
+                  {t("productCategory.labels.viewDetails")}
                 </button>
                 <button className="tesla-button block mx-auto bg-transparent border-2 border-gray-900 text-gray-900 px-16 py-4 text-lg font-medium hover:bg-gray-900 hover:text-white transition-all duration-300">
-                  Learn More
+                  {t("modernProducts.learnMore")}
                 </button>
               </div>
             </div>
@@ -270,11 +270,11 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
                 </p>
                 <div className="space-y-6 text-lg tesla-font">
                   <div className="flex justify-between border-b border-gray-200 pb-4">
-                    <span className="text-gray-600">Trade Volume</span>
+                    <span className="text-gray-600">{t("productCategory.labels.tradeVolume")}</span>
                     <span className="font-medium text-black">50-500 MT</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-200 pb-4">
-                    <span className="text-gray-600">Minimum Order</span>
+                    <span className="text-gray-600">{t("productCategory.labels.minOrder")}</span>
                     <span className="font-medium text-black">5 MT</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-200 pb-4">
@@ -313,11 +313,11 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
                 </p>
                 <div className="space-y-6 text-lg tesla-font">
                   <div className="flex justify-between border-b border-gray-300 pb-4">
-                    <span className="text-gray-600">Trade Volume</span>
+                    <span className="text-gray-600">{t("productCategory.labels.tradeVolume")}</span>
                     <span className="font-medium text-black">10-100 MT</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-300 pb-4">
-                    <span className="text-gray-600">Minimum Order</span>
+                    <span className="text-gray-600">{t("productCategory.labels.minOrder")}</span>
                     <span className="font-medium text-black">1 MT</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-300 pb-4">
@@ -341,11 +341,11 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
                 </p>
                 <div className="space-y-6 text-lg tesla-font">
                   <div className="flex justify-between border-b border-gray-200 pb-4">
-                    <span className="text-gray-600">Trade Volume</span>
+                    <span className="text-gray-600">{t("productCategory.labels.tradeVolume")}</span>
                     <span className="font-medium text-black">25-250 MT</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-200 pb-4">
-                    <span className="text-gray-600">Minimum Order</span>
+                    <span className="text-gray-600">{t("productCategory.labels.minOrder")}</span>
                     <span className="font-medium text-black">2 MT</span>
                   </div>
                   <div className="flex justify-between border-b border-gray-200 pb-4">
@@ -507,7 +507,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 md:mb-16 px-4 sm:px-0">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-gray-900 dark:text-white">
-              Our Products
+              {t("productCategory.ourServices", { category: t("products.title") })}
             </h2>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
               {t("productCategory.discoverRange")}

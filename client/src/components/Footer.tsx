@@ -167,13 +167,13 @@ export function Footer() {
                 {t("footer.terms")}
               </a>
               <a href="#" className="text-gray-400 dark:text-gray-600 hover:text-white dark:hover:text-black transition-colors text-xs sm:text-sm whitespace-nowrap">
-                Trade Regulations
+                {t("footer.tradeRegulations")}
               </a>
             </div>
           </div>
           <div className="text-center">
             <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-500 leading-relaxed px-4 sm:px-0">
-              Licensed commodity trader | Certified by Spanish Trade Authority | ISO 9001:2015 Quality Management
+              {t("footer.certifications")}
             </p>
           </div>
         </div>
