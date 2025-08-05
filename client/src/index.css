@@ -580,8 +580,7 @@
 
 /* Force sticky navigation on all pages */
 nav {
-  position: sticky !important;
-  top: 0 !important;
+  position: relative !important;
   z-index: 50 !important;
 }
 
