@@ -1,6 +1,3 @@
-import { useEffect } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { BackToTopButton } from '@/components/BackToTopButton';
@@ -8,76 +5,10 @@ import { ThreeBackground } from '@/components/ThreeBackground';
 import { useLanguage } from '@/components/LanguageProvider';
 import { Building2, Globe, Users, Award, Target, Eye, Heart, Zap } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function AboutUs() {
   const { t } = useLanguage();
 
-  useEffect(() => {
-    // Hero section animation
-    gsap.fromTo('.about-hero-title', 
-      { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out' }
-    );
 
-    gsap.fromTo('.about-hero-subtitle', 
-      { y: 80, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: 'power3.out' }
-    );
-
-    // Stagger animation for content sections
-    gsap.fromTo('.about-section', 
-      { y: 60, opacity: 0 },
-      { 
-        y: 0, 
-        opacity: 1, 
-        duration: 0.8, 
-        stagger: 0.2,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.about-content',
-          start: 'top 80%',
-          end: 'bottom 20%',
-        }
-      }
-    );
-
-    // Stats animation
-    gsap.fromTo('.stat-item', 
-      { scale: 0.8, opacity: 0 },
-      { 
-        scale: 1, 
-        opacity: 1, 
-        duration: 0.6,
-        stagger: 0.15,
-        ease: 'back.out(1.7)',
-        scrollTrigger: {
-          trigger: '.stats-section',
-          start: 'top 85%',
-        }
-      }
-    );
-
-    // Values animation
-    gsap.fromTo('.value-card', 
-      { y: 40, opacity: 0 },
-      { 
-        y: 0, 
-        opacity: 1, 
-        duration: 0.7,
-        stagger: 0.1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.values-section',
-          start: 'top 80%',
-        }
-      }
-    );
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
 
   const stats = [
     { number: '15+', label: 'Years Experience', icon: Award },
@@ -117,10 +48,10 @@ export default function AboutUs() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-x-hidden">
         <div className="w-full max-w-4xl mx-auto text-center z-10">
-          <h1 className="about-hero-title text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-gray-300 dark:to-white bg-clip-text text-transparent px-4">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-gray-300 dark:to-white bg-clip-text text-transparent px-4">
             {t('aboutUs.title')}
           </h1>
-          <p className="about-hero-subtitle text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 w-full max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 w-full max-w-3xl mx-auto leading-relaxed px-4">
             {t('vision.subtitle')}
           </p>
         </div>
@@ -161,7 +92,7 @@ export default function AboutUs() {
           </div>
 
           {/* Mission & Vision */}
-          <div className="about-section mb-20">
+          <div className="mb-20">
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-gradient-to-br from-green-50 to-emerald-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 shadow-xl">
                 <Eye className="w-12 h-12 mb-4 text-green-600 dark:text-green-400" />
@@ -185,7 +116,7 @@ export default function AboutUs() {
           </div>
 
           {/* Statistics */}
-          <div className="stats-section about-section mb-20">
+          <div className="mb-20">
             <h2 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
               {t('aboutUs.ourImpact')}
             </h2>
@@ -193,7 +124,7 @@ export default function AboutUs() {
               {stats.map((stat, index) => {
                 const IconComponent = stat.icon;
                 return (
-                  <div key={index} className="stat-item text-center p-6 rounded-xl bg-white/10 dark:bg-gray-800/50 backdrop-blur-sm border border-white/20 dark:border-gray-700/50">
+                  <div key={index} className="text-center p-6 rounded-xl bg-white/10 dark:bg-gray-800/50 backdrop-blur-sm border border-white/20 dark:border-gray-700/50">
                     <IconComponent className="w-12 h-12 mx-auto mb-4 text-blue-600 dark:text-blue-400" />
                     <div className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
                       {stat.number}
@@ -208,7 +139,7 @@ export default function AboutUs() {
           </div>
 
           {/* What Makes Us Unique */}
-          <div className="about-section mb-20">
+          <div className="mb-20">
             <h2 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
               {t('aboutUs.whatMakesUsUnique')}
             </h2>
@@ -244,7 +175,7 @@ export default function AboutUs() {
           </div>
 
           {/* Core Values */}
-          <div className="values-section about-section">
+          <div className="">
             <h2 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
               {t('aboutUs.coreValues')}
             </h2>
@@ -252,7 +183,7 @@ export default function AboutUs() {
               {values.map((value, index) => {
                 const IconComponent = value.icon;
                 return (
-                  <div key={index} className="value-card p-6 rounded-xl bg-white/10 dark:bg-gray-800/50 backdrop-blur-sm border border-white/20 dark:border-gray-700/50 hover:bg-white/20 dark:hover:bg-gray-800/70 transition-all duration-300">
+                  <div key={index} className="p-6 rounded-xl bg-white/10 dark:bg-gray-800/50 backdrop-blur-sm border border-white/20 dark:border-gray-700/50 hover:bg-white/20 dark:hover:bg-gray-800/70 transition-all duration-300">
                     <IconComponent className="w-10 h-10 mb-4 text-blue-600 dark:text-blue-400" />
                     <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">
                       {value.title}

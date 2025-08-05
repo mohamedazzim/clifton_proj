@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { useLanguage } from '../components/LanguageProvider';
 import { useTheme } from '../components/ThemeProvider';
@@ -7,8 +7,6 @@ import { Footer } from '../components/Footer';
 import { ProductsThreeBackground } from '../components/ProductsThreeBackground';
 import { LoadingScreen } from '../components/LoadingScreen';
 import { BackToTopButton } from '../components/BackToTopButton';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Tesla-style custom CSS
 const teslaStyles = `
@@ -48,8 +46,7 @@ const teslaStyles = `
   }
 `;
 
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
+
 
 interface ProductCategoryProps {
   category: string;
@@ -63,12 +60,6 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
   const [fadeClass, setFadeClass] = useState('opacity-100');
   const [slideDirection, setSlideDirection] = useState('translate-x-0');
   const [, setLocation] = useLocation();
-  
-  // Tesla animation refs
-  const heroRef = useRef<HTMLDivElement>(null);
-  const textileSection1Ref = useRef<HTMLDivElement>(null);
-  const textileSection2Ref = useRef<HTMLDivElement>(null);
-  const textileSection3Ref = useRef<HTMLDivElement>(null);
 
   // Product category configurations
   const categoryConfig = {
@@ -211,34 +202,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
     }
   }, [category, currentCategory?.backgroundImages.length]);
 
-  // Tesla animations for textiles_fashion - moved before conditional returns
-  useEffect(() => {
-    if (category === 'textiles_fashion' && !isLoading) {
-      // Tesla-style animations
-      gsap.set('.hero-title', { y: 40, opacity: 0 });
-      gsap.set('.hero-subtitle', { y: 30, opacity: 0 });
 
-      const masterTimeline = gsap.timeline({ delay: 0.2 });
-
-      masterTimeline
-        .to('.hero-title', {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out'
-        })
-        .to('.hero-subtitle', {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          ease: 'power2.out'
-        }, '-=0.4');
-
-      return () => {
-        masterTimeline.kill();
-      };
-    }
-  }, [category, isLoading]);
 
   // Show loading screen first
   if (isLoading) {
@@ -254,7 +218,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
           <Navigation />
         
           {/* Hero Section - Tesla Style */}
-          <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-white pt-20">
+          <section className="relative h-screen flex items-center justify-center overflow-hidden bg-white pt-20">
             {/* Background Image */}
             <div className="hero-bg absolute inset-0 w-full h-[120%] -top-[10%]">
               <img 
@@ -294,7 +258,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
           </section>
 
           {/* Cotton Fabrics Section */}
-          <section ref={textileSection1Ref} className="section-1 tesla-section h-screen flex items-center bg-white text-black">
+          <section className="section-1 tesla-section h-screen flex items-center bg-white text-black">
             <div className="w-full max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
               <div>
                 <h2 className="text-5xl md:text-6xl tesla-title mb-8 text-black">
@@ -330,7 +294,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
           </section>
 
           {/* Silk Products Section */}
-          <section ref={textileSection2Ref} className="section-2 tesla-section h-screen flex items-center bg-gray-100">
+          <section className="section-2 tesla-section h-screen flex items-center bg-gray-100">
             <div className="w-full max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
               <div className="relative h-96 overflow-hidden order-2 md:order-1">
                 <img 
@@ -366,7 +330,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
           </section>
 
           {/* Synthetic Fibers Section */}
-          <section ref={textileSection3Ref} className="section-3 tesla-section h-screen flex items-center bg-gray-50 text-black">
+          <section className="section-3 tesla-section h-screen flex items-center bg-gray-50 text-black">
             <div className="w-full max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
               <div>
                 <h2 className="text-5xl md:text-6xl tesla-title mb-8 text-black">

@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from "react";
-import { gsap } from 'gsap';
+import { useState, useEffect } from "react";
 import { useLanguage } from "./LanguageProvider";
 
 const heroImages = [
@@ -33,7 +32,6 @@ const animations = [
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentAnimation, setCurrentAnimation] = useState(0);
-  const heroContentRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
 
   useEffect(() => {
@@ -45,48 +43,7 @@ export function HeroSection() {
     return () => clearInterval(interval);
   }, []);
 
-  // Optimized GSAP animations for hero content
-  useEffect(() => {
-    // Set initial state immediately to prevent flash
-    gsap.set('.hero-title', { y: 30, opacity: 0 });
-    gsap.set('.hero-subtitle', { y: 20, opacity: 0 });
-    gsap.set('.hero-button', { y: 20, opacity: 0 });
-    gsap.set('.hero-logo', { scale: 0.9, opacity: 0 });
 
-    const timeline = gsap.timeline({ delay: 0.1 });
-
-    // Create smooth, coordinated entrance sequence
-    timeline
-      .to('.hero-logo', {
-        scale: 1,
-        opacity: 1,
-        duration: 0.8,
-        ease: 'power2.out'
-      })
-      .to('.hero-title', {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: 'power2.out'
-      }, '-=0.4')
-      .to('.hero-subtitle', {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: 'power2.out'
-      }, '-=0.3')
-      .to('.hero-button', {
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-        stagger: 0.1,
-        ease: 'power2.out'
-      }, '-=0.2');
-
-    return () => {
-      timeline.kill();
-    };
-  }, []);
 
   const scrollToProducts = () => {
     const element = document.getElementById('products');
@@ -222,20 +179,20 @@ export function HeroSection() {
                 <img 
                   src="/images/logo/CLIFTON-CUT-BLACK.png" 
                   alt="CLIFTON Logo" 
-                  className="hero-logo h-16 sm:h-24 md:h-28 lg:h-32 xl:h-36 2xl:h-40 w-auto dark:hidden"
+                  className="h-16 sm:h-24 md:h-28 lg:h-32 xl:h-36 2xl:h-40 w-auto dark:hidden"
                 />
                 {/* Logo for dark mode */}
                 <img 
                   src="/images/logo/CLIFTON-CUT-WHITE.png" 
                   alt="CLIFTON Logo" 
-                  className="hero-logo h-16 sm:h-24 md:h-28 lg:h-32 xl:h-36 2xl:h-40 w-auto hidden dark:block"
+                  className="h-16 sm:h-24 md:h-28 lg:h-32 xl:h-36 2xl:h-40 w-auto hidden dark:block"
                 />
               </div>
             </div>
 
             {/* Professional Hero Text */}
             <div className="mb-8 text-center">
-              <div className="hero-title flex items-center justify-center gap-3 sm:gap-4 flex-wrap animate-fade-up animation-delay-300">
+              <div className="flex items-center justify-center gap-3 sm:gap-4 flex-wrap animate-fade-up animation-delay-300">
                 <span className="text-xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-black text-gray-900 dark:text-gray-100 tracking-wider leading-none" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '900', letterSpacing: '0.15em', textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>CLIFTON</span>
                 
                 <span className="text-lg sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-gray-100 tracking-wide" style={{ fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif', fontWeight: '700', letterSpacing: '0.1em', textShadow: '1px 1px 3px rgba(0,0,0,0.2)' }}>{t("heroSection.import")}</span>
@@ -251,7 +208,7 @@ export function HeroSection() {
             </div>
             
             <div className="relative">
-              <p className="hero-subtitle text-xs sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-10 dark:text-gray-300 animate-fade-up animation-delay-1500 max-w-4xl mx-auto leading-relaxed font-medium text-[#2f3440] px-4">
+              <p className="text-xs sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-6 sm:mb-10 dark:text-gray-300 animate-fade-up animation-delay-1500 max-w-4xl mx-auto leading-relaxed font-medium text-[#2f3440] px-4">
 {t("hero.subtitle")}
               </p>
               
@@ -262,14 +219,14 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center animate-slide-up animation-delay-900 px-4">
               <button 
                 onClick={scrollToProducts}
-                className="hero-button group noise-grid gradient-border glass px-4 sm:px-8 py-2 sm:py-4 rounded-md text-black dark:text-white hover-scale transition-all duration-500 font-semibold text-sm sm:text-lg relative overflow-hidden"
+                className="group noise-grid gradient-border glass px-4 sm:px-8 py-2 sm:py-4 rounded-md text-black dark:text-white hover-scale transition-all duration-500 font-semibold text-sm sm:text-lg relative overflow-hidden"
               >
                 <span className="relative z-10">{t("hero.cta.primary")}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-black/10 to-black/5 dark:from-white/10 dark:to-white/5 transform -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
               </button>
               <button 
                 onClick={scrollToContact}
-                className="hero-button group bg-black dark:bg-white text-white dark:text-black px-4 sm:px-8 py-2 sm:py-4 rounded-md hover-scale transition-all duration-500 font-semibold text-sm sm:text-lg border-2 border-transparent hover:border-black/20 dark:hover:border-white/20 relative overflow-hidden"
+                className="group bg-black dark:bg-white text-white dark:text-black px-4 sm:px-8 py-2 sm:py-4 rounded-md hover-scale transition-all duration-500 font-semibold text-sm sm:text-lg border-2 border-transparent hover:border-black/20 dark:hover:border-white/20 relative overflow-hidden"
               >
                 <span className="relative z-10">{t("hero.cta.secondary")}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 dark:from-black/5 dark:to-black/10 transform skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>

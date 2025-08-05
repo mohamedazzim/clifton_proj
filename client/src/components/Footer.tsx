@@ -1,81 +1,9 @@
 import { useLanguage } from "./LanguageProvider";
-import { useEffect, useRef } from "react";
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
 
 export function Footer() {
   const { t } = useLanguage();
-  const footerRef = useRef<HTMLElement>(null);
-  const linksRef = useRef<HTMLDivElement>(null);
 
-  // Premium footer animations
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Set initial states
-      gsap.set('.footer-content', { y: 50, opacity: 0 });
-      gsap.set('.footer-link', { y: 30, opacity: 0 });
-      gsap.set('.footer-logo', { scale: 0.8, opacity: 0, rotateY: -20 });
-      gsap.set('.footer-social', { scale: 0.8, opacity: 0 });
 
-      // Entrance animation with ScrollTrigger
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: footerRef.current,
-          start: 'top 90%',
-          end: 'bottom 10%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-      tl.to('.footer-logo', {
-        scale: 1,
-        opacity: 1,
-        rotateY: 0,
-        duration: 0.8,
-        ease: 'back.out(1.7)'
-      })
-      .to('.footer-content', {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: 'power2.out'
-      }, '-=0.3')
-      .to('.footer-link', {
-        y: 0,
-        opacity: 1,
-        duration: 0.4,
-        stagger: 0.05,
-        ease: 'power2.out'
-      }, '-=0.2')
-      .to('.footer-social', {
-        scale: 1,
-        opacity: 1,
-        duration: 0.5,
-        stagger: 0.1,
-        ease: 'back.out(1.7)'
-      }, '-=0.3');
-
-      // Hover effects for social icons
-      gsap.utils.toArray('.footer-social').forEach((icon: any) => {
-        const hoverTl = gsap.timeline({ paused: true });
-        
-        hoverTl.to(icon, {
-          scale: 1.2,
-          rotateZ: 10,
-          duration: 0.3,
-          ease: 'power2.out'
-        });
-
-        icon.addEventListener('mouseenter', () => hoverTl.play());
-        icon.addEventListener('mouseleave', () => hoverTl.reverse());
-      });
-    });
-
-    return () => ctx.revert();
-  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);

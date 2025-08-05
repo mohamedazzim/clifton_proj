@@ -1,11 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useRef } from "react";
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from "./LanguageProvider";
-
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
 
 interface Founder {
   id: number;
@@ -20,90 +14,8 @@ interface Founder {
 
 export function Founders() {
   const { t } = useLanguage();
-  const sectionRef = useRef<HTMLElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
 
-  // Premium GSAP animations for Founders section
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Set initial states
-      gsap.set('.founders-title', { y: 60, opacity: 0, scale: 0.95 });
-      gsap.set('.founders-subtitle', { y: 40, opacity: 0 });
-      gsap.set('.founder-card', { y: 100, opacity: 0, scale: 0.9, rotateY: 20 });
 
-      // Main animation timeline
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 70%',
-          end: 'bottom 30%',
-          toggleActions: 'play none none reverse'
-        }
-      });
-
-      tl.to('.founders-title', {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        ease: 'power3.out'
-      })
-      .to('.founders-subtitle', {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: 'power2.out'
-      }, '-=0.5')
-      .to('.founder-card', {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        rotateY: 0,
-        duration: 0.8,
-        stagger: 0.3,
-        ease: 'power3.out'
-      }, '-=0.3');
-
-      // Advanced hover effects
-      gsap.utils.toArray('.founder-card').forEach((card: any) => {
-        const hoverTl = gsap.timeline({ paused: true });
-        
-        hoverTl.to(card, {
-          y: -20,
-          scale: 1.05,
-          duration: 0.4,
-          ease: 'power2.out'
-        })
-        .to(card.querySelector('.founder-image'), {
-          scale: 1.1,
-          duration: 0.4,
-          ease: 'power2.out'
-        }, 0)
-        .to(card.querySelector('.founder-glow'), {
-          opacity: 1,
-          duration: 0.4,
-          ease: 'power2.out'
-        }, 0);
-
-        card.addEventListener('mouseenter', () => hoverTl.play());
-        card.addEventListener('mouseleave', () => hoverTl.reverse());
-      });
-
-      // Subtle continuous animations
-      gsap.utils.toArray('.founder-card').forEach((card: any, index) => {
-        gsap.to(card, {
-          y: '+=5',
-          duration: 2.5 + (index * 0.3),
-          ease: 'sine.inOut',
-          yoyo: true,
-          repeat: -1,
-          delay: index * 0.4
-        });
-      });
-    });
-
-    return () => ctx.revert();
-  }, []);
 
   const { data: founders, isLoading, error } = useQuery<Founder[]>({
     queryKey: ["founders"],
@@ -165,29 +77,29 @@ export function Founders() {
   }
 
   return (
-    <section ref={sectionRef} id="founders" className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-950 relative overflow-x-hidden">
+    <section id="founders" className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-950 relative overflow-x-hidden">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="founders-title text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
             {t("founders.title")}
           </h2>
-          <p className="founders-subtitle text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
             {t("founders.subtitle")}
           </p>
         </div>
 
-        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {founders.map((founder, index) => (
             <div
               key={founder.id}
-              className="founder-card noise-grid gradient-border glass rounded-2xl p-6 sm:p-8 text-center hover-scale transition-all duration-500 group relative overflow-hidden"
+              className="noise-grid gradient-border glass rounded-2xl p-6 sm:p-8 text-center hover-scale transition-all duration-500 group relative overflow-hidden"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               {/* Glow effect */}
-              <div className="founder-glow absolute inset-0 rounded-2xl opacity-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-xl transition-opacity duration-500"></div>
+              <div className="absolute inset-0 rounded-2xl opacity-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-xl transition-opacity duration-500 group-hover:opacity-100"></div>
               
               {/* Profile Image */}
-              <div className="founder-image relative w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-white/20 dark:ring-gray-700/50 shadow-xl">
+              <div className="relative w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-white/20 dark:ring-gray-700/50 shadow-xl">
                 <img
                   src={founder.imageUrl}
                   alt={founder.name}
