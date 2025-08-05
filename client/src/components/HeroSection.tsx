@@ -233,6 +233,24 @@ export function HeroSection() {
               </button>
             </div>
 
+            {/* Carousel Navigation Dots - Moved below buttons */}
+            <div className="flex justify-center mt-8">
+              <div className="flex space-x-3">
+                {heroImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-500 ${
+                      index === currentSlide
+                        ? 'bg-gray-800 dark:bg-gray-200 scale-125'
+                        : 'bg-gray-400/50 dark:bg-gray-600/50 hover:bg-gray-600 dark:hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
             {/* Floating Elements - Symmetrical */}
             <div className="absolute top-1/4 left-10 w-4 h-4 bg-white/20 dark:bg-black/20 rounded-full animate-float animation-delay-1000"></div>
             <div className="absolute top-1/4 right-10 w-4 h-4 bg-white/20 dark:bg-black/20 rounded-full animate-float animation-delay-1000"></div>
@@ -271,21 +289,7 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Carousel Navigation Dots */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex space-x-3">
-        {heroImages.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide 
-                ? 'bg-gray-800 scale-125 shadow-lg' 
-                : 'bg-gray-400 hover:bg-gray-600'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
+
     </section>
   );
 }

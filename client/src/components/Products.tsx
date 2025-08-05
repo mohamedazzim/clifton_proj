@@ -126,8 +126,18 @@ export function Products() {
   }
 
   return (
-    <section ref={sectionRef} id="products" className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-black relative overflow-x-hidden" style={{ marginTop: '0px', paddingTop: '1rem', paddingBottom: '2rem' }}>
+    <section ref={sectionRef} id="products" className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-black relative overflow-x-hidden" style={{ marginTop: '0px', paddingTop: '4rem', paddingBottom: '2rem' }}>
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Our Services Heading */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+            Our Services
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-6"></div>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Comprehensive import-export solutions tailored to your business needs
+          </p>
+        </div>
         {/* Desktop and Tablet Grid Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8" style={{ gap: '1.5rem' }}>
           {products?.slice(0, 3).map((product, index) => (
