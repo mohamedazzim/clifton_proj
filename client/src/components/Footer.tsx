@@ -30,7 +30,7 @@ export function Footer() {
               {t("footer.description")}
             </p>
             <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-500 leading-relaxed">
-              Connecting global markets through premium commodity trading. Trusted by businesses worldwide for reliable import-export solutions.
+              {t("footer.connectingMarkets")}
             </p>
           </div>
 
@@ -101,10 +101,10 @@ export function Footer() {
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                 </svg>
                 <span className="text-xs sm:text-sm">
-                  Rua Mathias Maciel de Almeida, 55<br />
-                  Centro - 06.730-482<br />
-                  Vargem Grande Paulista<br />
-                  São Paulo, Brasil
+                  {t("footer.address")}<br />
+                  {t("footer.centerPostal")}<br />
+                  {t("footer.city")}<br />
+                  {t("footer.country")}
                 </span>
               </li>
               <li className="flex items-start space-x-2 sm:space-x-3">
@@ -121,7 +121,7 @@ export function Footer() {
                 <svg className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 dark:text-gray-600 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                 </svg>
-                <span className="text-xs sm:text-sm">CNPJ: 60.290.109/0001-32</span>
+                <span className="text-xs sm:text-sm">{t("footer.cnpj")}</span>
               </li>
             </ul>
             

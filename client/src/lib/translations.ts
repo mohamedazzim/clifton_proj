@@ -110,6 +110,7 @@ export const translations = {
     },
     footer: {
       description: "Excellence in international trade solutions.",
+      connectingMarkets: "Connecting global markets through premium commodity trading. Trusted by businesses worldwide for reliable import-export solutions.",
       quickLinks: "Quick Links",
       services: {
         title: "Services",
@@ -123,7 +124,14 @@ export const translations = {
       social: "Follow Us",
       copyright: "© 2024 CLIFTON. All rights reserved.",
       privacy: "Privacy Policy",
-      terms: "Terms of Service"
+      terms: "Terms of Service",
+      address: "Rua Mathias Maciel de Almeida, 55",
+      centerPostal: "Centro - 06.730-482",
+      city: "Vargem Grande Paulista",
+      country: "São Paulo, Brasil",
+      cnpj: "CNPJ: 60.290.109/0001-32",
+      tradeRegulations: "Trade Regulations",
+      licensedTrader: "Licensed commodity trader | Certified by Spanish Trade Authority | ISO 9001:2015 Quality Management"
     },
     productDetail: {
       aboutProduct: "About This Product",
@@ -185,13 +193,16 @@ export const translations = {
       export: "Export",
       delivery: "Delivery",
       with: "with",
-      and: "&"
+      and: "&",
+      scrollDown: "Scroll Down"
     },
     modernProducts: {
       learnMore: "Learn More",
       premiumCommodities: "Premium Commodities",
       agriculture: "Agriculture",
-      fashion: "Fashion"
+      fashion: "Fashion",
+      products: "Products",
+      exploreRange: "Explore our diverse range of high-quality products sourced from around the globe."
     },
     testimonials: {
       clientTestimonials: "Client Testimonials",
@@ -261,6 +272,39 @@ export const translations = {
       briefSubject: "Brief subject line",
       yourCompanyName: "Your company name",
       emergency: "Emergency"
+    },
+    contactForm: {
+      contactUs: "Contact Us",
+      getInTouch: "Get in touch with our team to discuss your import and export needs.",
+      yourName: "Your Name",
+      enterName: "Enter your name",
+      yourEmail: "Your Email",
+      enterEmail: "Enter your email address",
+      subject: "Subject",
+      enterSubject: "Enter the subject of your message",
+      yourMessage: "Your Message",
+      enterMessage: "Enter your message here...",
+      sending: "Sending...",
+      sendMessage: "Send Message",
+      messageSuccess: "Message sent successfully!",
+      messageFailed: "Failed to send message. Please try again later.",
+      contactInfo: "Contact Information",
+      businessHours: "Business Hours",
+      weekdays: "Weekdays",
+      workingHours: "9:00 AM - 6:00 PM",
+      saturday: "Saturday",
+      saturdayHours: "10:00 AM - 2:00 PM",
+      sunday: "Sunday",
+      closed: "Closed",
+      success: "Success",
+      successMessage: "Your message has been sent successfully.",
+      error: "Error",
+      errorMessage: "Something went wrong. Please try again later.",
+      send: "Send"
+    },
+    visionMission: {
+      title: "Our Vision & Mission",
+      subtitle: "Driving global trade forward with a clear vision and unwavering mission."
     }
   },
   pt: {
@@ -379,6 +423,7 @@ export const translations = {
     },
     footer: {
       description: "Excelência em soluções de comércio internacional.",
+      connectingMarkets: "Conectando mercados globais através do comércio de commodities premium. Confiado por empresas em todo o mundo para soluções confiáveis de importação-exportação.",
       quickLinks: "Links Rápidos",
       services: {
         title: "Serviços",
@@ -392,7 +437,14 @@ export const translations = {
       social: "Siga-nos",
       copyright: "© 2024 CLIFTON. Todos os direitos reservados.",
       privacy: "Política de Privacidade",
-      terms: "Termos de Serviço"
+      terms: "Termos de Serviço",
+      address: "Rua Mathias Maciel de Almeida, 55",
+      centerPostal: "Centro - 06.730-482",
+      city: "Vargem Grande Paulista",
+      country: "São Paulo, Brasil",
+      cnpj: "CNPJ: 60.290.109/0001-32",
+      tradeRegulations: "Regulamentações Comerciais",
+      licensedTrader: "Comerciante de commodities licenciado | Certificado pela Autoridade de Comércio Espanhola | Gestão de Qualidade ISO 9001:2015"
     },
     productDetail: {
       aboutProduct: "Sobre Este Produto",
@@ -454,13 +506,16 @@ export const translations = {
       export: "Exportação",
       delivery: "Entrega",
       with: "com",
-      and: "e"
+      and: "e",
+      scrollDown: "Rolar para Baixo"
     },
     modernProducts: {
       learnMore: "Saiba Mais",
       premiumCommodities: "Commodities Premium",
       agriculture: "Agricultura",
-      fashion: "Moda"
+      fashion: "Moda",
+      products: "Produtos",
+      exploreRange: "Explore nossa gama diversificada de produtos de alta qualidade obtidos de todo o mundo."
     },
     testimonials: {
       clientTestimonials: "Depoimentos de Clientes",
@@ -530,6 +585,39 @@ export const translations = {
       briefSubject: "Linha de assunto breve",
       yourCompanyName: "Nome da sua empresa",
       emergency: "Emergência"
+    },
+    contactForm: {
+      contactUs: "Entre em Contato",
+      getInTouch: "Entre em contato com nossa equipe para discutir suas necessidades de importação e exportação.",
+      yourName: "Seu Nome",
+      enterName: "Digite seu nome",
+      yourEmail: "Seu Email",
+      enterEmail: "Digite seu endereço de email",
+      subject: "Assunto",
+      enterSubject: "Digite o assunto da sua mensagem",
+      yourMessage: "Sua Mensagem",
+      enterMessage: "Digite sua mensagem aqui...",
+      sending: "Enviando...",
+      sendMessage: "Enviar Mensagem",
+      messageSuccess: "Mensagem enviada com sucesso!",
+      messageFailed: "Falha ao enviar mensagem. Tente novamente mais tarde.",
+      contactInfo: "Informações de Contato",
+      businessHours: "Horário Comercial",
+      weekdays: "Dias da Semana",
+      workingHours: "9:00 - 18:00",
+      saturday: "Sábado",
+      saturdayHours: "10:00 - 14:00",
+      sunday: "Domingo",
+      closed: "Fechado",
+      success: "Sucesso",
+      successMessage: "Sua mensagem foi enviada com sucesso.",
+      error: "Erro",
+      errorMessage: "Algo deu errado. Tente novamente mais tarde.",
+      send: "Enviar"
+    },
+    visionMission: {
+      title: "Nossa Visão e Missão",
+      subtitle: "Impulsionando o comércio global com uma visão clara e missão inabalável."
     }
   }
 };

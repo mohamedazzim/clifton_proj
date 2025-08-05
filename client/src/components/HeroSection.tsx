@@ -284,7 +284,7 @@ export function HeroSection() {
           </div>
           {/* Scroll Down Text */}
           <span className="text-xs text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors duration-300 font-medium">
-            Scroll Down
+            {t("heroSection.scrollDown")}
           </span>
         </div>
       </div>
