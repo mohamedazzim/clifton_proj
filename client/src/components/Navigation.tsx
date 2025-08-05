@@ -106,7 +106,7 @@ export function Navigation() {
   };
 
   return (
-    <nav ref={navRef} className="w-full px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6" style={{ position: 'relative' }}>
+    <nav ref={navRef} className="w-full px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6" style={{ position: 'static' }}>
       <div className="max-w-7xl mx-auto">
         <div className="nav-container rounded-2xl px-4 sm:px-6 lg:px-8 py-3 sm:py-4 glass glass-enhanced backdrop-blur-xl shadow-2xl border border-white/20">
           <div className="flex items-center justify-between">
