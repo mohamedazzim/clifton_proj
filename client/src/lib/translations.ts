@@ -267,7 +267,14 @@ export const translations = {
       innovation: "Innovation",
       innovationDesc: "We leverage cutting-edge technology and modern solutions to streamline global trade.",
       globalPerspective: "Global Perspective",
-      globalPerspectiveDesc: "Our worldwide network enables us to understand and serve diverse international markets."
+      globalPerspectiveDesc: "Our worldwide network enables us to understand and serve diverse international markets.",
+      stats: {
+        yearsExperience: "Years Experience",
+        countriesServed: "Countries Served",
+        happyClients: "Happy Clients",
+        projectsCompleted: "Projects Completed"
+      },
+      established: "Established"
     },
     contactUs: {
       title: "Contact Us",
@@ -613,7 +620,14 @@ export const translations = {
       innovation: "Inovação",
       innovationDesc: "Aproveitamos tecnologia de ponta e soluções modernas para otimizar o comércio global.",
       globalPerspective: "Perspectiva Global",
-      globalPerspectiveDesc: "Nossa rede mundial nos permite compreender e servir diversos mercados internacionais."
+      globalPerspectiveDesc: "Nossa rede mundial nos permite compreender e servir diversos mercados internacionais.",
+      stats: {
+        yearsExperience: "Anos de Experiência",
+        countriesServed: "Países Atendidos",
+        happyClients: "Clientes Satisfeitos",
+        projectsCompleted: "Projetos Concluídos"
+      },
+      established: "Estabelecida"
     },
     contactUs: {
       title: "Entre em Contato",

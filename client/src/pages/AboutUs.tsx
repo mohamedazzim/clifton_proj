@@ -11,32 +11,32 @@ export default function AboutUs() {
 
 
   const stats = [
-    { number: '15+', label: 'Years Experience', icon: Award },
-    { number: '50+', label: 'Countries Served', icon: Globe },
-    { number: '500+', label: 'Happy Clients', icon: Users },
-    { number: '1000+', label: 'Projects Completed', icon: Building2 }
+    { number: '15+', label: t('aboutUs.stats.yearsExperience'), icon: Award },
+    { number: '50+', label: t('aboutUs.stats.countriesServed'), icon: Globe },
+    { number: '500+', label: t('aboutUs.stats.happyClients'), icon: Users },
+    { number: '1000+', label: t('aboutUs.stats.projectsCompleted'), icon: Building2 }
   ];
 
   const values = [
     {
       icon: Target,
-      title: 'Excellence',
-      description: 'We maintain the highest standards in every aspect of our international trade operations.'
+      title: t('aboutUs.excellence'),
+      description: t('aboutUs.excellenceDesc')
     },
     {
       icon: Heart,
-      title: 'Integrity',
-      description: 'Trust and transparency form the foundation of all our business relationships.'
+      title: t('aboutUs.integrity'),
+      description: t('aboutUs.integrityDesc')
     },
     {
       icon: Zap,
-      title: 'Innovation',
-      description: 'We leverage cutting-edge technology and modern solutions to streamline global trade.'
+      title: t('aboutUs.innovation'),
+      description: t('aboutUs.innovationDesc')
     },
     {
       icon: Globe,
-      title: 'Global Perspective',
-      description: 'Our worldwide network enables us to understand and serve diverse international markets.'
+      title: t('aboutUs.globalPerspective'),
+      description: t('aboutUs.globalPerspectiveDesc')
     }
   ];
 
@@ -79,11 +79,11 @@ export default function AboutUs() {
                   <div className="text-center">
                     <Building2 className="w-16 h-16 mx-auto mb-4 text-blue-600 dark:text-blue-400" />
                     <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
-                      Established
+                      {t('aboutUs.established')}
                     </h3>
                     <p className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">2009</p>
                     <p className="text-gray-600 dark:text-gray-300">
-                      São Paulo, Brasil
+                      {t('footer.city')}, {t('footer.country')}
                     </p>
                   </div>
                 </div>
