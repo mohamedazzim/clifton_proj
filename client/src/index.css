@@ -578,7 +578,7 @@
   animation-delay: 0.4s;
 }
 
-/* Force sticky navigation on all pages */
+/* Ensure navigation scrolls naturally with content */
 nav {
   position: relative !important;
   z-index: 50 !important;
