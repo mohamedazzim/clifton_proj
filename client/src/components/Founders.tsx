@@ -7,8 +7,11 @@ interface Founder {
   position: string;
   bio: string;
   imageUrl: string;
-  experience: string;
-  linkedinUrl: string;
+  email: string | null;
+  linkedin: string | null;
+  twitter: string | null;
+  instagram: string | null;
+  facebook: string | null;
   order: number;
 }
 
@@ -121,29 +124,47 @@ export function Founders() {
                   {founder.bio}
                 </p>
 
-                {founder.experience && (
-                  <div className="pt-4 border-t border-gray-200/50 dark:border-gray-700/50">
-                    <p className="text-sm text-gray-500 dark:text-gray-500 font-medium">
-                      {founder.experience}
-                    </p>
-                  </div>
-                )}
-
-                {founder.linkedinUrl && (
-                  <div className="pt-2">
+                {/* Social Links */}
+                <div className="flex justify-center space-x-3 pt-4">
+                  {founder.linkedin && (
                     <a
-                      href={founder.linkedinUrl}
+                      href={founder.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors duration-300 text-sm"
+                      className="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-300"
                     >
-                      <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                       </svg>
-                      {t("footer.linkedin")}
                     </a>
-                  </div>
-                )}
+                  )}
+                  {founder.twitter && (
+                    <a
+                      href={founder.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 bg-black hover:bg-gray-800 text-white rounded-lg transition-colors duration-300"
+                    >
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                      </svg>
+                    </a>
+                  )}
+                  {founder.instagram && (
+                    <a
+                      href={founder.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white rounded-lg transition-colors duration-300"
+                    >
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.618 5.367 11.986 11.988 11.986s11.987-5.368 11.987-11.986C24.014 5.367 18.635.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.366C4.25 14.747 3.76 13.596 3.76 12.3c0-1.297.49-2.448 1.366-3.323C5.999 8.101 7.15 7.611 8.447 7.611c1.297 0 2.448.49 3.323 1.366.875.875 1.366 2.026 1.366 3.323 0 1.297-.49 2.448-1.366 3.323-.875.876-2.026 1.365-3.321 1.365zm7.44 1.09a.96.96 0 110-1.92.96.96 0 010 1.92z"/>
+                      </svg>
+                    </a>
+                  )}
+                </div>
+
+
               </div>
             </div>
           ))}
