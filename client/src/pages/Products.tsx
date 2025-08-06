@@ -122,7 +122,7 @@ const Products = () => {
       <Navigation />
       
       {/* Hero Section with Sliding Background */}
-      <section className="relative pt-8 pb-20 px-5 sm:px-8 lg:px-10 min-h-screen flex items-center overflow-hidden">
+      <section className="relative pb-20 px-5 sm:px-8 lg:px-10 min-h-screen flex items-center overflow-hidden">
         {/* Animated Background Images */}
         <div className="absolute inset-0 z-0">
           <div 

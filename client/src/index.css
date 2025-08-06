@@ -578,32 +578,10 @@
   animation-delay: 0.4s;
 }
 
-/* Ensure navigation is visible and scrolls naturally with content */
+/* Ensure navigation scrolls naturally with content */
 nav {
   position: relative !important;
-  z-index: 9999 !important;
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  width: 100% !important;
-  top: 0 !important;
-  left: 0 !important;
-}
-
-/* Force visibility of navigation container */
-.nav-container {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-/* Force visibility of navigation items */
-.nav-item, .nav-logo, .nav-controls {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  transform: none !important;
+  z-index: 50 !important;
 }
 
 /* Ensure back-to-top button is always floating */

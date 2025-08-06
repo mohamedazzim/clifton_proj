@@ -17,20 +17,41 @@ export function Navigation() {
 
   // GSAP Navigation entrance animation
   useEffect(() => {
-    const tl = gsap.timeline({ delay: 0.1 });
+    const tl = gsap.timeline({ delay: 0.2 });
     
-    // Set initial states but ensure visibility
-    gsap.set('.nav-container', { y: 0, opacity: 1, visibility: 'visible' });
-    gsap.set('.nav-logo', { scale: 1, opacity: 1, rotateY: 0, visibility: 'visible' });
-    gsap.set('.nav-item', { y: 0, opacity: 1, visibility: 'visible' });
-    gsap.set('.nav-controls', { x: 0, opacity: 1, visibility: 'visible' });
+    // Set initial states
+    gsap.set('.nav-container', { y: -100, opacity: 0 });
+    gsap.set('.nav-logo', { scale: 0.8, opacity: 0, rotateY: -90 });
+    gsap.set('.nav-item', { y: -30, opacity: 0 });
+    gsap.set('.nav-controls', { x: 50, opacity: 0 });
 
-    // Simple fade-in animation to ensure visibility
-    tl.from('.nav-container', {
-      opacity: 0.8,
-      duration: 0.3,
+    // Animate navigation entrance
+    tl.to('.nav-container', {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: 'power3.out'
+    })
+    .to('.nav-logo', {
+      scale: 1,
+      opacity: 1,
+      rotateY: 0,
+      duration: 0.6,
+      ease: 'back.out(1.7)'
+    }, '-=0.4')
+    .to('.nav-item', {
+      y: 0,
+      opacity: 1,
+      duration: 0.5,
+      stagger: 0.1,
       ease: 'power2.out'
-    });
+    }, '-=0.3')
+    .to('.nav-controls', {
+      x: 0,
+      opacity: 1,
+      duration: 0.5,
+      ease: 'power2.out'
+    }, '-=0.2');
 
     return () => {
       tl.kill();
@@ -90,7 +111,7 @@ export function Navigation() {
   };
 
   return (
-    <nav ref={navRef} className="w-full px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 relative z-50" style={{ position: 'static', display: 'block', visibility: 'visible', opacity: 1 }}>
+    <nav ref={navRef} className="w-full px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6" style={{ position: 'static' }}>
       <div className="max-w-7xl mx-auto">
         <div className="nav-container rounded-2xl px-4 sm:px-6 lg:px-8 py-3 sm:py-4 glass glass-enhanced backdrop-blur-xl shadow-2xl border border-white/20">
           <div className="flex items-center justify-between">
