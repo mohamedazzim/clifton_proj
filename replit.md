@@ -34,6 +34,7 @@ The backend uses Node.js with Express.js and TypeScript, designed with RESTful A
 - **Project Migration**: Successfully migrated from Replit Agent to Replit environment with proper workflow configuration and verified API endpoints.
 - **Favicon Setup**: Added CLIFTON logo as favicon with proper HTML meta tags for better branding.
 - **Render Deployment Fix**: Fixed deployment issues for Render hosting including port configuration, missing API endpoints, CORS setup, and build optimization. Updated render.yaml to use standard build process with proper directory structure.
+- **Debug Endpoints Added**: Added `/api/health` health check endpoint and `/api/debug/routes` for troubleshooting Render deployment issues. Confirmed code works locally but APIs return 404 on Render - issue is deployment configuration, not code.
 - **Navigation Enhancement**: Updated header navigation to scroll with user content instead of being fixed at the top, improving user experience.
 - **Founder Images**: Updated both CEO and COO positions to use the real owner's professional photograph.
 - **Products Section**: Fixed invisible heading issue by removing problematic GSAP animation that was setting opacity to 0.

@@ -22,6 +22,8 @@ dist/
 ```
 
 ### API Endpoints Available:
+- `GET /api/health` - **NEW**: Server health check and status
+- `GET /api/debug/routes` - **NEW**: List all registered routes  
 - `GET /api/founders` - Company founders data
 - `GET /api/products` - Services/products data  
 - `GET /api/projects` - Project portfolio

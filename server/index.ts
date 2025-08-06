@@ -1,4 +1,5 @@
 import express, { type Request, Response, NextFunction } from "express";
+import path from "path";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
@@ -51,7 +52,13 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  // Log environment and configuration
+  log(`Starting server in ${process.env.NODE_ENV || 'development'} mode`);
+  
   const server = await registerRoutes(app);
+  
+  // Log registered routes
+  log("Registered API routes:");
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
@@ -69,6 +76,21 @@ app.use((req, res, next) => {
   } else {
     serveStatic(app);
   }
+
+  // Add a catch-all route to handle any unmatched routes
+  app.use('*', (req, res) => {
+    if (req.originalUrl.startsWith('/api/')) {
+      res.status(404).json({ 
+        error: 'API endpoint not found',
+        path: req.originalUrl,
+        method: req.method,
+        availableEndpoints: ['/api/health', '/api/founders', '/api/products', '/api/projects', '/api/contacts']
+      });
+    } else {
+      // Serve the main index.html for SPA routes
+      res.sendFile(path.join(process.cwd(), 'dist/public/index.html'));
+    }
+  });
 
   // Use PORT environment variable for cloud deployment (Render, etc.)
   // Fallback to 5000 for local development

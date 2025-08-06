@@ -44,8 +44,16 @@ Visit your deployed site's `/api-test.html` page to verify APIs work
 ## 🎯 Expected Success Signs:
 - Render build logs show successful build
 - Service status shows "Live"
+- **NEW**: Health check endpoint `/api/health` returns server status
+- **NEW**: Debug routes endpoint `/api/debug/routes` lists all registered routes
 - API test page shows green checkmarks instead of red X's
 - Main website loads with founders and products data
+
+## 🔧 New Debugging Features Added:
+1. **Health Check**: Visit `/api/health` to verify server is running
+2. **Route Debug**: Visit `/api/debug/routes` to see all registered endpoints
+3. **Enhanced Error Messages**: 404 errors now show available endpoints
+4. **Production Test Script**: Run `node test-production.js` to test live deployment
 
 ## 🆘 If Still Not Working:
 The issue might be:

@@ -5,6 +5,30 @@ import { insertContactSchema } from "@shared/schema";
 
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Health check endpoint
+  app.get("/api/health", (req, res) => {
+    res.json({ 
+      status: "ok", 
+      timestamp: new Date().toISOString(),
+      env: process.env.NODE_ENV,
+      endpoints: ["/api/founders", "/api/products", "/api/projects", "/api/contacts"]
+    });
+  });
+
+  // Debug endpoint to list all registered routes
+  app.get("/api/debug/routes", (req, res) => {
+    const routes: any[] = [];
+    app._router.stack.forEach((middleware: any) => {
+      if (middleware.route) {
+        routes.push({
+          path: middleware.route.path,
+          methods: Object.keys(middleware.route.methods)
+        });
+      }
+    });
+    res.json({ routes, totalRoutes: routes.length });
+  });
+
   // Founders routes
   app.get("/api/founders", async (req, res) => {
     try {

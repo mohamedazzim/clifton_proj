@@ -1,5 +1,6 @@
 // server/index.ts
 import express2 from "express";
+import path3 from "path";
 
 // server/routes.ts
 import { createServer } from "http";
@@ -266,6 +267,26 @@ var insertContactSchema = createInsertSchema(contacts).omit({
 
 // server/routes.ts
 async function registerRoutes(app2) {
+  app2.get("/api/health", (req, res) => {
+    res.json({
+      status: "ok",
+      timestamp: (/* @__PURE__ */ new Date()).toISOString(),
+      env: process.env.NODE_ENV,
+      endpoints: ["/api/founders", "/api/products", "/api/projects", "/api/contacts"]
+    });
+  });
+  app2.get("/api/debug/routes", (req, res) => {
+    const routes = [];
+    app2._router.stack.forEach((middleware) => {
+      if (middleware.route) {
+        routes.push({
+          path: middleware.route.path,
+          methods: Object.keys(middleware.route.methods)
+        });
+      }
+    });
+    res.json({ routes, totalRoutes: routes.length });
+  });
   app2.get("/api/founders", async (req, res) => {
     try {
       const founders2 = await storage.getFounders();
@@ -460,7 +481,7 @@ app.use(express2.json());
 app.use(express2.urlencoded({ extended: false }));
 app.use((req, res, next) => {
   const start = Date.now();
-  const path3 = req.path;
+  const path4 = req.path;
   let capturedJsonResponse = void 0;
   const originalResJson = res.json;
   res.json = function(bodyJson, ...args) {
@@ -469,8 +490,8 @@ app.use((req, res, next) => {
   };
   res.on("finish", () => {
     const duration = Date.now() - start;
-    if (path3.startsWith("/api")) {
-      let logLine = `${req.method} ${path3} ${res.statusCode} in ${duration}ms`;
+    if (path4.startsWith("/api")) {
+      let logLine = `${req.method} ${path4} ${res.statusCode} in ${duration}ms`;
       if (capturedJsonResponse) {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       }
@@ -483,7 +504,9 @@ app.use((req, res, next) => {
   next();
 });
 (async () => {
+  log(`Starting server in ${process.env.NODE_ENV || "development"} mode`);
   const server = await registerRoutes(app);
+  log("Registered API routes:");
   app.use((err, _req, res, _next) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
@@ -495,6 +518,18 @@ app.use((req, res, next) => {
   } else {
     serveStatic(app);
   }
+  app.use("*", (req, res) => {
+    if (req.originalUrl.startsWith("/api/")) {
+      res.status(404).json({
+        error: "API endpoint not found",
+        path: req.originalUrl,
+        method: req.method,
+        availableEndpoints: ["/api/health", "/api/founders", "/api/products", "/api/projects", "/api/contacts"]
+      });
+    } else {
+      res.sendFile(path3.join(process.cwd(), "dist/public/index.html"));
+    }
+  });
   const port = process.env.PORT ? parseInt(process.env.PORT) : 5e3;
   server.listen({
     port,
