@@ -42,9 +42,28 @@ dist/
 3. Deploy
 
 ## Troubleshooting:
-- If APIs return 404: Check that `dist/public/` directory exists after build
-- If pages don't load: Verify `dist/index.js` server file exists
-- Clear browser cache if seeing old production URLs
+
+### ✅ Confirmed Working Locally:
+- Production build tested: APIs respond correctly (200 OK)
+- All endpoints return proper data: `/api/founders`, `/api/products`, `/api/projects`
+- CORS headers correctly configured
+- Static files served properly
+
+### 🔍 Render Deployment Issues:
+If you're getting 404 errors on Render but APIs work locally, try:
+
+1. **Check Render Build Logs**: Verify build completes without errors
+2. **Verify Environment Variables**: Ensure `NODE_ENV=production` is set
+3. **Check Render Service Status**: Make sure service is running and healthy
+4. **Force Redeploy**: Sometimes Render needs a fresh deployment
+5. **Check Port Configuration**: Render should auto-assign PORT environment variable
+
+### 🚨 If Still Getting 404s on Render:
+The issue may be Render-specific configuration. Try these steps:
+- In Render dashboard, check if the service started successfully
+- Look at the Render deployment logs for error messages
+- Ensure the start command is exactly: `NODE_ENV=production node dist/index.js`
+- Verify no build errors in the Render build logs
 
 ## Local Testing:
 - Development: `npm run dev` (port 5000)
