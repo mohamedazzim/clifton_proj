@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test - CLIFTON</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        button { background: #007cba; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; margin: 10px; }
+        button:hover { background: #005a8a; }
+        .result { margin-top: 20px; padding: 15px; background: #f8f9fa; border-left: 4px solid #007cba; white-space: pre-wrap; }
+        .error { border-left-color: #dc3545; background: #fff5f5; }
+        .success { border-left-color: #28a745; background: #f5fff5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 CLIFTON API Test Page</h1>
+        <p>This page tests the API endpoints to ensure they're working correctly.</p>
+        
+        <button onclick="testFounders()">Test Founders API</button>
+        <button onclick="testProducts()">Test Products API</button>
+        <button onclick="testProjects()">Test Projects API</button>
+        <button onclick="clearCache()">Clear Cache & Reload</button>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function showResult(content, isError = false) {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = `result ${isError ? 'error' : 'success'}`;
+            div.textContent = content;
+            results.appendChild(div);
+        }
+
+        async function testFounders() {
+            try {
+                const response = await fetch('/api/founders');
+                if (response.ok) {
+                    const data = await response.json();
+                    showResult(`✅ Founders API working!\n${JSON.stringify(data, null, 2)}`);
+                } else {
+                    showResult(`❌ Founders API error: ${response.status} ${response.statusText}`, true);
+                }
+            } catch (error) {
+                showResult(`❌ Founders API error: ${error.message}`, true);
+            }
+        }
+
+        async function testProducts() {
+            try {
+                const response = await fetch('/api/products');
+                if (response.ok) {
+                    const data = await response.json();
+                    showResult(`✅ Products API working!\n${JSON.stringify(data, null, 2)}`);
+                } else {
+                    showResult(`❌ Products API error: ${response.status} ${response.statusText}`, true);
+                }
+            } catch (error) {
+                showResult(`❌ Products API error: ${error.message}`, true);
+            }
+        }
+
+        async function testProjects() {
+            try {
+                const response = await fetch('/api/projects');
+                if (response.ok) {
+                    const data = await response.json();
+                    showResult(`✅ Projects API working!\n${JSON.stringify(data, null, 2)}`);
+                } else {
+                    showResult(`❌ Projects API error: ${response.status} ${response.statusText}`, true);
+                }
+            } catch (error) {
+                showResult(`❌ Projects API error: ${error.message}`, true);
+            }
+        }
+
+        function clearCache() {
+            // Clear various cache types
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(registrations => {
+                    registrations.forEach(registration => registration.unregister());
+                });
+            }
+            
+            // Clear localStorage and sessionStorage
+            localStorage.clear();
+            sessionStorage.clear();
+            
+            showResult('🧹 Cache cleared! Reloading page...');
+            
+            // Force reload from server
+            setTimeout(() => {
+                window.location.reload(true);
+            }, 1000);
+        }
+
+        // Auto-test on page load
+        window.onload = () => {
+            showResult('🚀 API Test page loaded. Server should be running on port 5000.');
+            testFounders();
+            testProducts();
+        };
+    </script>
+</body>
+</html>
