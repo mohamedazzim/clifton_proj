@@ -69,7 +69,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-
+  // Add the missing /api/contact endpoint that the ContactForm component expects
+  app.post("/api/contact", async (req, res) => {
+    try {
+      const validatedData = insertContactSchema.parse(req.body);
+      const contact = await storage.createContact(validatedData);
+      res.status(201).json({ message: "Contact form submitted successfully", contact });
+    } catch (error) {
+      if (error instanceof Error && error.name === "ZodError") {
+        res.status(400).json({ message: "Invalid contact data", errors: error });
+      } else {
+        res.status(500).json({ message: "Failed to submit contact form" });
+      }
+    }
+  });
 
   const httpServer = createServer(app);
   return httpServer;
