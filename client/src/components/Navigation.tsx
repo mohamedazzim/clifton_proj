@@ -101,8 +101,13 @@ export function Navigation() {
     setLocation('/contact');
     setIsMobileMenuOpen(false);
     setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 100);
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 200);
   };
 
   return (

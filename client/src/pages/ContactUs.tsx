@@ -207,7 +207,7 @@ export default function ContactUs() {
           {/* Centered Main Contact Section */}
           <div className="flex justify-center">
             {/* Contact Form */}
-            <div className="contact-form w-full max-w-2xl">
+            <div id="contact-form" className="contact-form w-full max-w-2xl">
               <Card className="bg-white/10 dark:bg-gray-800/50 backdrop-blur-sm border-white/20 dark:border-gray-700/50 shadow-2xl">
                 <CardContent className="p-8 lg:p-12">
                   <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">

@@ -234,17 +234,14 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
 
   // Premium soybeans styling
   const soybeansStyles = `
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
     
     .soybeans-title {
-      font-family: 'Playfair Display', serif;
-      background: linear-gradient(135deg, #1f2937, #374151, #4b5563);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-family: 'Dancing Script', cursive;
+      color: white !important;
       font-weight: 700;
-      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      letter-spacing: -0.02em;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: 0.02em;
     }
     
     .soybeans-card {
@@ -494,8 +491,8 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
               <div className="flex justify-center">
                 <button 
                   onClick={() => {
-                    // Navigate to homepage with contact hash
-                    window.location.href = '/#contact';
+                    // Navigate to contact page form section
+                    window.location.href = '/contact#contact-form';
                   }}
                   className="bg-gradient-to-r from-gray-600 to-gray-800 text-white py-4 px-8 rounded-xl font-semibold text-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
