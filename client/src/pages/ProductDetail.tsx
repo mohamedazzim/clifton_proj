@@ -64,16 +64,51 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
     },
     'soybeans': {
       name: 'Soybeans',
-      title: 'Sustainable Soybeans',
+      title: 'Premium Sustainable Soybeans',
       image: '/images/products/agricultural/soye.jpg',
-      gradient: 'from-green-600 to-green-800',
-      description: 'Sustainable soybean products for food and industrial applications',
-      detailedDescription: 'At Clifton, we specialize in the global export of high-quality soy products, serving as a trusted link between producers and markets worldwide. With extensive industry experience and a comprehensive understanding of international trade regulations, we ensure a seamless and efficient supply chain.\n\nOur soy offerings include soybeans, soymeal, soy oil, and other derivatives, sourced from reputable growers committed to sustainable farming practices. We prioritize quality, consistency, and timely delivery, supporting our clients\' needs across agriculture, nutrition, and industrial sectors.\n\nAs a forward-thinking trading company, we stay abreast of market trends and global demand, allowing us to provide competitive pricing and customized solutions. Our dedicated team is committed to building long-term partnerships grounded in integrity, transparency, and excellence.\n\nDiscover how Clifton can be your dependable partner in the dynamic world of soy trading. Contact us today for more information and let\'s grow together.',
-      specifications: ['Protein content: 34-38%', 'Oil content: 18-20%', 'Moisture: 13% max', 'GMO and non-GMO varieties'],
-      origins: ['Brazil', 'Argentina', 'USA', 'Ukraine'],
-      certifications: ['RTRS Certified', 'Non-GMO Project', 'ISCC Plus'],
-      tradeVolume: '1,500-15,000 MT',
-      minOrder: '5000 MT'
+      gradient: 'from-emerald-600 via-green-600 to-lime-600',
+      description: 'World-class sustainable soybean products for premium food and industrial applications',
+      premiumSoybeansStyle: true, // Special flag for enhanced styling
+      detailedDescription: 'CLIFTON leads the global soybean trade with an unwavering commitment to sustainability, quality, and innovation. Our premium soybeans represent the pinnacle of agricultural excellence, sourced exclusively from certified farms that embrace regenerative farming practices and environmental stewardship.\n\nAs a pioneer in sustainable soy trading, we collaborate with select growers across the world\'s premier soybean-producing regions. Each farm in our network is rigorously vetted for their commitment to sustainable agriculture, biodiversity preservation, and carbon-neutral farming practices. This ensures that every shipment meets the highest environmental and quality standards.\n\nOur comprehensive soy product portfolio includes premium whole soybeans, organic soymeal, cold-pressed soy oil, and specialized soy derivatives. Each product undergoes extensive laboratory testing and quality assurance protocols to guarantee superior protein content, optimal oil levels, and consistent grain quality that exceeds international commodity standards.\n\nWith state-of-the-art logistics infrastructure and real-time supply chain monitoring, we ensure complete traceability from farm to destination. Our advanced storage facilities maintain optimal conditions to preserve nutritional integrity and prevent quality degradation during international transportation.\n\nWhether you\'re sourcing for premium food manufacturing, sustainable feed production, or innovative industrial applications, CLIFTON delivers customized soybean solutions that drive your business forward while supporting global sustainability goals. Partner with us to access the world\'s finest sustainable soybeans.',
+      specifications: [
+        'Protein content: 36-40% (Premium Grade)',
+        'Oil content: 19-22% (High Oil Varieties)', 
+        'Moisture: 12% max (Optimal Storage)',
+        'Foreign matter: <1% (Ultra Clean)',
+        'Damaged kernels: <2% (Premium Quality)',
+        'GMO and Certified Non-GMO varieties available',
+        'Organic and conventional options',
+        'Custom grading available'
+      ],
+      origins: ['Brazil (Cerrado Region)', 'Argentina (Pampas)', 'USA (Midwest)', 'Ukraine (Premium Regions)', 'Paraguay (Sustainable Farms)'],
+      certifications: [
+        'RTRS Certified (Round Table on Responsible Soy)', 
+        'Non-GMO Project Verified', 
+        'ISCC Plus (Sustainability & Carbon Certification)',
+        'Fair Trade Certified',
+        'Organic Certification (USDA/EU)',
+        'Rainforest Alliance Certified',
+        'Carbon Neutral Verified',
+        'Zero Deforestation Commitment'
+      ],
+      tradeVolume: '2,000-25,000 MT annually',
+      minOrder: '1,000 MT (Premium contracts available from 500 MT)',
+      sustainabilityFeatures: [
+        'Zero deforestation commitment',
+        'Carbon-neutral supply chain',
+        'Biodiversity preservation programs',
+        'Regenerative agriculture practices',
+        'Water conservation initiatives',
+        'Fair labor standards certification'
+      ],
+      qualityGuarantees: [
+        '99.5% purity guarantee',
+        'Laboratory-tested for every shipment',
+        'Mycotoxin-free certification',
+        'Pesticide residue compliance',
+        'Nutritional consistency assurance',
+        'Extended shelf life guarantee'
+      ]
     },
     'corn': {
       name: 'Corn',
@@ -164,8 +199,10 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
     return null;
   }
 
-  // Special coffee styling
+  // Special product styling
   const isCoffeeProduct = productName === 'coffee';
+  const isSoybeansProduct = productName === 'soybeans';
+  
   const coffeeStyles = `
     @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
     
@@ -195,10 +232,56 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
     }
   `;
 
+  // Premium soybeans styling
+  const soybeansStyles = `
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    .soybeans-bg {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7, #bbf7d0);
+    }
+    
+    .soybeans-title {
+      background: linear-gradient(135deg, #059669, #10b981, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(5, 150, 105, 0.2);
+    }
+    
+    .soybeans-card {
+      background: linear-gradient(135deg, rgba(240, 253, 244, 0.95), rgba(220, 252, 231, 0.9));
+      border: 2px solid rgba(5, 150, 105, 0.1);
+      box-shadow: 0 12px 40px rgba(5, 150, 105, 0.15);
+    }
+    
+    .soybeans-feature {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(52, 211, 153, 0.1));
+      border-left: 4px solid #10b981;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    
+    .soybeans-certification {
+      background: linear-gradient(135deg, rgba(5, 150, 105, 0.05), rgba(16, 185, 129, 0.05));
+      border: 1px solid rgba(5, 150, 105, 0.2);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .soybeans-certification:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(5, 150, 105, 0.15);
+    }
+  `;
+
   return (
     <>
       {isCoffeeProduct && <style dangerouslySetInnerHTML={{ __html: coffeeStyles }} />}
-      <div className={`min-h-screen ${isCoffeeProduct ? 'coffee-bg' : 'bg-stone-50 dark:bg-gray-900'}`}>
+      {isSoybeansProduct && <style dangerouslySetInnerHTML={{ __html: soybeansStyles }} />}
+      <div className={`min-h-screen ${isCoffeeProduct ? 'coffee-bg' : isSoybeansProduct ? 'soybeans-bg' : 'bg-stone-50 dark:bg-gray-900'}`}>
         <ProductsThreeBackground />
         <Navigation />
         
@@ -220,7 +303,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
           <div className="animate-slide-up">
 
             
-            <h1 className={`text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 text-white drop-shadow-2xl ${isCoffeeProduct ? 'coffee-title' : ''}`}>
+            <h1 className={`text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 text-white drop-shadow-2xl ${isCoffeeProduct ? 'coffee-title' : isSoybeansProduct ? 'soybeans-title' : ''}`}>
               {product.title}
             </h1>
             <p className={`text-xl sm:text-2xl text-white/90 max-w-4xl mx-auto mb-12 leading-relaxed drop-shadow-lg ${isCoffeeProduct ? 'coffee-title' : ''}`}>
@@ -318,6 +401,69 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
               </ul>
             </div>
           </div>
+
+          {/* Premium Soybeans Additional Sections */}
+          {isSoybeansProduct && (product as any).sustainabilityFeatures && (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16">
+              {/* Sustainability Features */}
+              <div className="soybeans-card rounded-3xl p-8">
+                <h3 className="text-2xl font-bold text-green-800 mb-6 flex items-center">
+                  <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                    🌱
+                  </span>
+                  Sustainability Commitment
+                </h3>
+                <div className="space-y-4">
+                  {(product as any).sustainabilityFeatures.map((feature: string, index: number) => (
+                    <div key={index} className="soybeans-feature">
+                      <p className="text-green-700 font-medium">{feature}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Quality Guarantees */}
+              <div className="soybeans-card rounded-3xl p-8">
+                <h3 className="text-2xl font-bold text-green-800 mb-6 flex items-center">
+                  <span className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                    ✓
+                  </span>
+                  Quality Guarantees
+                </h3>
+                <div className="space-y-4">
+                  {(product as any).qualityGuarantees.map((guarantee: string, index: number) => (
+                    <div key={index} className="soybeans-feature">
+                      <p className="text-green-700 font-medium">{guarantee}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Enhanced Certifications Display for Soybeans */}
+          {isSoybeansProduct && (
+            <div className="mt-16">
+              <div className="text-center mb-12">
+                <h3 className="text-3xl font-bold text-green-800 mb-4">
+                  Premium Certifications & Standards
+                </h3>
+                <p className="text-lg text-green-600 max-w-3xl mx-auto">
+                  Our soybeans meet the highest international standards for sustainability, quality, and ethical trading
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {product.certifications?.map((cert: string, index: number) => (
+                  <div key={index} className="soybeans-certification text-center">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <span className="text-green-600 font-bold text-lg">✓</span>
+                    </div>
+                    <p className="text-green-700 font-medium text-sm leading-tight">{cert}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Call to Action */}
           <div className="mt-16 text-center">
