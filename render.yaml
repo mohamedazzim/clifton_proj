@@ -3,7 +3,7 @@ services:
     name: clifton-traders
     env: node
     plan: free
-    buildCommand: npm install && vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist --external:bufferutil --external:utf-8-validate
+    buildCommand: npm install && npm run build
     startCommand: NODE_ENV=production node dist/index.js
     envVars:
       - key: NODE_ENV

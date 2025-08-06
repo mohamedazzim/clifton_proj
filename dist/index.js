@@ -31,7 +31,7 @@ var MemStorage = class {
         name: "Benson Clement",
         position: "CEO",
         bio: "BA English Literature, MBA HR and Marketing. With 12 years of experience in textiles, trading, import and export, Benson leads strategic operations and business development.",
-        imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+        imageUrl: "/images/founders/real-owner.jpg",
         email: "benson@cliftontraders.com",
         linkedin: "https://linkedin.com/in/benson-clement-clifton",
         twitter: "https://twitter.com/bensonclement_md",
@@ -43,7 +43,7 @@ var MemStorage = class {
         name: "Joseph Ebenezer",
         position: "COO",
         bio: "B.Sc (Physics), MBA (HR & Marketing). With 10 years of experience in TRADING, IMPORT and EXPORT, sales & marketing in IT & Non-IT sector services, drives technical strategy and market expansion.",
-        imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+        imageUrl: "/images/founders/real-owner.jpg",
         email: "joseph@cliftontraders.com",
         linkedin: "https://linkedin.com/in/joseph-ebenezer-clifton",
         twitter: "https://twitter.com/josephebenezer_td",
@@ -319,6 +319,19 @@ async function registerRoutes(app2) {
       res.status(500).json({ message: "Failed to fetch contacts" });
     }
   });
+  app2.post("/api/contact", async (req, res) => {
+    try {
+      const validatedData = insertContactSchema.parse(req.body);
+      const contact = await storage.createContact(validatedData);
+      res.status(201).json({ message: "Contact form submitted successfully", contact });
+    } catch (error) {
+      if (error instanceof Error && error.name === "ZodError") {
+        res.status(400).json({ message: "Invalid contact data", errors: error });
+      } else {
+        res.status(500).json({ message: "Failed to submit contact form" });
+      }
+    }
+  });
   const httpServer = createServer(app2);
   return httpServer;
 }
@@ -433,6 +446,16 @@ function serveStatic(app2) {
 
 // server/index.ts
 var app = express2();
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  if (req.method === "OPTIONS") {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
 app.use(express2.json());
 app.use(express2.urlencoded({ extended: false }));
 app.use((req, res, next) => {
@@ -472,7 +495,7 @@ app.use((req, res, next) => {
   } else {
     serveStatic(app);
   }
-  const port = 5e3;
+  const port = process.env.PORT ? parseInt(process.env.PORT) : 5e3;
   server.listen({
     port,
     host: "0.0.0.0",
