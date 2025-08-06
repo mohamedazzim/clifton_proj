@@ -201,7 +201,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
 
   // Special product styling
   const isCoffeeProduct = productName === 'coffee';
-  const isSoybeansProduct = productName === 'soybeans';
+  const isPremiumProduct = !isCoffeeProduct; // All products except coffee get premium styling
   
   const coffeeStyles = `
     @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
@@ -232,11 +232,11 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
     }
   `;
 
-  // Premium soybeans styling
-  const soybeansStyles = `
+  // Premium styling for all products except coffee
+  const premiumStyles = `
     @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
     
-    .soybeans-title {
+    .premium-title {
       font-family: 'Dancing Script', cursive;
       color: white !important;
       font-weight: 700;
@@ -244,14 +244,21 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
       letter-spacing: 0.02em;
     }
     
-    .soybeans-card {
+    .premium-card {
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(249, 250, 251, 0.9));
       border: 1px solid rgba(0, 0, 0, 0.08);
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 8px 25px rgba(0, 0, 0, 0.06);
       backdrop-filter: blur(20px);
+      transition: all 0.4s ease;
     }
     
-    .soybeans-feature {
+    .premium-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.16), 0 12px 40px rgba(0, 0, 0, 0.08);
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+    
+    .premium-feature {
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.8));
       border-left: 3px solid #1f2937;
       padding: 1.5rem;
@@ -261,12 +268,12 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
       transition: all 0.3s ease;
     }
     
-    .soybeans-feature:hover {
+    .premium-feature:hover {
       transform: translateX(4px);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     }
     
-    .soybeans-certification {
+    .premium-certification {
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(249, 250, 251, 0.9));
       border: 1px solid rgba(0, 0, 0, 0.1);
       border-radius: 0.75rem;
@@ -275,29 +282,48 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     }
     
-    .soybeans-certification:hover {
+    .premium-certification:hover {
       transform: translateY(-6px);
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
       border-color: rgba(0, 0, 0, 0.2);
     }
     
-    .soybeans-section-title {
+    .premium-section-title {
       color: #1f2937;
       font-weight: 700;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
-    .soybeans-feature-text {
+    .premium-feature-text {
       color: #374151;
       font-weight: 500;
+    }
+    
+    .premium-hero-bg {
+      background: linear-gradient(135deg, 
+        rgba(15, 23, 42, 0.95) 0%, 
+        rgba(30, 41, 59, 0.9) 25%, 
+        rgba(51, 65, 85, 0.85) 50%, 
+        rgba(71, 85, 105, 0.9) 75%, 
+        rgba(15, 23, 42, 0.95) 100%
+      );
+      backdrop-filter: blur(10px);
+    }
+    
+    .premium-content-bg {
+      background: linear-gradient(135deg, 
+        rgba(248, 250, 252, 0.98) 0%, 
+        rgba(241, 245, 249, 0.95) 50%, 
+        rgba(248, 250, 252, 0.98) 100%
+      );
     }
   `;
 
   return (
     <>
       {isCoffeeProduct && <style dangerouslySetInnerHTML={{ __html: coffeeStyles }} />}
-      {isSoybeansProduct && <style dangerouslySetInnerHTML={{ __html: soybeansStyles }} />}
-      <div className={`min-h-screen ${isCoffeeProduct ? 'coffee-bg' : 'bg-stone-50 dark:bg-gray-900'}`}>
+      {isPremiumProduct && <style dangerouslySetInnerHTML={{ __html: premiumStyles }} />}
+      <div className={`min-h-screen ${isCoffeeProduct ? 'coffee-bg' : isPremiumProduct ? 'premium-content-bg' : 'bg-stone-50 dark:bg-gray-900'}`}>
         <ProductsThreeBackground />
         <Navigation />
         
@@ -311,7 +337,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${product.image})`
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50 z-10"></div>
+          <div className={`absolute inset-0 z-10 ${isPremiumProduct ? 'premium-hero-bg' : 'bg-gradient-to-b from-black/50 via-black/30 to-black/50'}`}></div>
         </div>
 
         {/* Content */}
@@ -319,7 +345,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
           <div className="animate-slide-up">
 
             
-            <h1 className={`text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 text-white drop-shadow-2xl ${isCoffeeProduct ? 'coffee-title' : isSoybeansProduct ? 'soybeans-title' : ''}`}>
+            <h1 className={`text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 text-white drop-shadow-2xl ${isCoffeeProduct ? 'coffee-title' : isPremiumProduct ? 'premium-title' : ''}`}>
               {product.title}
             </h1>
             <p className={`text-xl sm:text-2xl text-white/90 max-w-4xl mx-auto mb-12 leading-relaxed drop-shadow-lg ${isCoffeeProduct ? 'coffee-title' : ''}`}>
@@ -338,7 +364,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
             {/* Product Image */}
             <div className="lg:col-span-1">
-              <div className="noise-grid gradient-border glass rounded-3xl p-8 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30">
+              <div className={`noise-grid gradient-border glass rounded-3xl p-8 ${isPremiumProduct ? 'premium-card' : isCoffeeProduct ? 'coffee-card' : 'bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30'}`}>
                 <div className="aspect-square overflow-hidden rounded-2xl mb-6">
                   <img 
                     src={product.image} 
@@ -363,7 +389,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
 
             {/* Product Description */}
             <div className="lg:col-span-2">
-              <div className="noise-grid gradient-border glass rounded-3xl p-8 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30">
+              <div className={`noise-grid gradient-border glass rounded-3xl p-8 ${isPremiumProduct ? 'premium-card' : isCoffeeProduct ? 'coffee-card' : 'bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30'}`}>
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{t("productDetail.aboutProduct")}</h2>
                 <div className="prose prose-gray dark:prose-invert max-w-none">
                   {product.detailedDescription.split('\n\n').map((paragraph: string, index: number) => (
@@ -379,7 +405,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
           {/* Specifications Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Specifications */}
-            <div className="noise-grid gradient-border glass rounded-3xl p-8 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30">
+            <div className={`noise-grid gradient-border glass rounded-3xl p-8 ${isPremiumProduct ? 'premium-card' : isCoffeeProduct ? 'coffee-card' : 'bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30'}`}>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t("productDetail.specifications")}</h3>
               <ul className="space-y-3">
                 {product.specifications?.map((spec: string, index: number) => (
@@ -392,7 +418,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
             </div>
 
             {/* Origins */}
-            <div className="noise-grid gradient-border glass rounded-3xl p-8 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30">
+            <div className={`noise-grid gradient-border glass rounded-3xl p-8 ${isPremiumProduct ? 'premium-card' : isCoffeeProduct ? 'coffee-card' : 'bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30'}`}>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t("productDetail.origins")}</h3>
               <ul className="space-y-3">
                 {product.origins?.map((origin: string, index: number) => (
@@ -405,7 +431,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
             </div>
 
             {/* Certifications */}
-            <div className="noise-grid gradient-border glass rounded-3xl p-8 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30">
+            <div className={`noise-grid gradient-border glass rounded-3xl p-8 ${isPremiumProduct ? 'premium-card' : isCoffeeProduct ? 'coffee-card' : 'bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30'}`}>
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t("productDetail.certifications")}</h3>
               <ul className="space-y-3">
                 {product.certifications?.map((cert: string, index: number) => (
@@ -418,12 +444,12 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
             </div>
           </div>
 
-          {/* Premium Soybeans Additional Sections */}
-          {isSoybeansProduct && (product as any).sustainabilityFeatures && (
+          {/* Premium Products Additional Sections */}
+          {isPremiumProduct && (product as any).sustainabilityFeatures && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16">
               {/* Sustainability Features */}
-              <div className="soybeans-card rounded-3xl p-8">
-                <h3 className="text-2xl soybeans-section-title mb-6 flex items-center">
+              <div className="premium-card rounded-3xl p-8">
+                <h3 className="text-2xl premium-section-title mb-6 flex items-center">
                   <span className="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center mr-3 text-sm font-bold">
                     S
                   </span>
@@ -431,16 +457,16 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
                 </h3>
                 <div className="space-y-4">
                   {(product as any).sustainabilityFeatures.map((feature: string, index: number) => (
-                    <div key={index} className="soybeans-feature">
-                      <p className="soybeans-feature-text">{feature}</p>
+                    <div key={index} className="premium-feature">
+                      <p className="premium-feature-text">{feature}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Quality Guarantees */}
-              <div className="soybeans-card rounded-3xl p-8">
-                <h3 className="text-2xl soybeans-section-title mb-6 flex items-center">
+              <div className="premium-card rounded-3xl p-8">
+                <h3 className="text-2xl premium-section-title mb-6 flex items-center">
                   <span className="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center mr-3 text-sm font-bold">
                     Q
                   </span>
@@ -448,8 +474,8 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
                 </h3>
                 <div className="space-y-4">
                   {(product as any).qualityGuarantees.map((guarantee: string, index: number) => (
-                    <div key={index} className="soybeans-feature">
-                      <p className="soybeans-feature-text">{guarantee}</p>
+                    <div key={index} className="premium-feature">
+                      <p className="premium-feature-text">{guarantee}</p>
                     </div>
                   ))}
                 </div>
@@ -457,20 +483,20 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
             </div>
           )}
 
-          {/* Enhanced Certifications Display for Soybeans */}
-          {isSoybeansProduct && (
+          {/* Enhanced Certifications Display for Premium Products */}
+          {isPremiumProduct && (product as any).sustainabilityFeatures && (
             <div className="mt-16">
               <div className="text-center mb-12">
                 <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
                   Premium Certifications & Standards
                 </h3>
                 <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                  Our soybeans meet the highest international standards for sustainability, quality, and ethical trading
+                  Our products meet the highest international standards for sustainability, quality, and ethical trading
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {product.certifications?.map((cert: string, index: number) => (
-                  <div key={index} className="soybeans-certification text-center">
+                  <div key={index} className="premium-certification text-center">
                     <div className="w-12 h-12 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                       <span className="font-bold text-lg">✓</span>
                     </div>
@@ -483,7 +509,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
 
           {/* Call to Action */}
           <div className="mt-16 text-center">
-            <div className="noise-grid gradient-border glass rounded-3xl p-12 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30">
+            <div className={`noise-grid gradient-border glass rounded-3xl p-12 ${isPremiumProduct ? 'premium-card' : isCoffeeProduct ? 'coffee-card' : 'bg-white/20 dark:bg-gray-800/20 backdrop-blur-md border border-gray-200/30 dark:border-gray-600/30'}`}>
               <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Ready to Order?</h3>
               <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
                 Contact our team to discuss your requirements and get a competitive quote for {product.name.toLowerCase()}.
