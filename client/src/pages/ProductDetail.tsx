@@ -113,7 +113,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ category, productName }) 
     'corn': {
       name: 'Corn',
       title: 'Premium Corn (Maize)',
-      image: '/images/products/agricultural/sugar.jpg',
+      image: 'https://img.freepik.com/premium-photo/corn-wallpaper-download-hd_963476-177.jpg',
       gradient: 'from-yellow-600 to-yellow-800',
       description: 'Premium quality corn sourced from certified farms worldwide',
       detailedDescription: 'Corn, also known as maize, is one of the world\'s most vital staple crops, integral to global food security and agricultural economies. As a versatile grain, corn serves diverse purposes—from human consumption and animal feed to industrial applications such as biofuel production.\n\nOur company specializes in the export of high-quality corn, connecting farmers and producers with markets worldwide. We prioritize sourcing corn that meets international standards for purity, moisture content, and quality, ensuring our clients receive products that adhere to strict regulations and customer specifications.\n\nWith extensive logistics networks and advanced supply chain management, we facilitate seamless trade, ensuring timely delivery across continents. We are committed to sustainable and traceable sourcing practices, supporting farmers who use environmentally responsible cultivation methods.\n\nWhether you seek bulk shipments for large-scale industrial use or quality corn for retail, our expertise and global reach enable us to provide tailored solutions that meet your business needs. Trust us to be your reliable partner in navigating the dynamic landscape of corn trade internationally.',

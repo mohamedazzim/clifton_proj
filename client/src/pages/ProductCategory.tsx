@@ -106,7 +106,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({ category }) => {
         },
         {
           name: 'Corn',
-          image: '/images/products/agricultural/sugar.jpg',
+          image: 'https://img.freepik.com/premium-photo/corn-wallpaper-download-hd_963476-177.jpg',
           gradient: 'from-yellow-600 to-yellow-800',
           description: 'Premium quality corn sourced from certified farms worldwide',
           tradeVolume: '2,000-20,000 MT',
