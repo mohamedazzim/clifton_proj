@@ -271,22 +271,6 @@ export function HeroSection() {
           }
         }}
       >
-        <div className="flex flex-col items-center space-y-2">
-          {/* Mouse Icon - Outline Only */}
-          <div className="w-7 h-11 border-2 border-gray-700 dark:border-gray-300 rounded-2xl relative group-hover:border-gray-900 dark:group-hover:border-gray-100 transition-colors duration-300 animate-mouse-scroll">
-            {/* Mouse button separator line */}
-            <div className="absolute top-0 left-1/2 w-px h-4 bg-gray-700 dark:bg-gray-300 transform -translate-x-1/2"></div>
-            {/* Scroll Wheel */}
-            <div className="w-1 h-2 border border-gray-700 dark:border-gray-300 rounded-full absolute top-2 left-1/2 transform -translate-x-1/2 group-hover:border-gray-900 dark:group-hover:border-gray-100 transition-colors duration-300">
-              {/* Scroll indicator dot */}
-              <div className="w-0.5 h-0.5 bg-gray-700 dark:bg-gray-300 rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-bounce group-hover:bg-gray-900 dark:group-hover:bg-gray-100 transition-colors duration-300"></div>
-            </div>
-          </div>
-          {/* Scroll Down Text */}
-          <span className="text-xs text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors duration-300 font-medium">
-            {t("heroSection.scrollDown")}
-          </span>
-        </div>
       </div>
 
 
